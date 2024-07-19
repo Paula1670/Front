@@ -1,0 +1,23 @@
+<app-Header
+  [title]="'Formulario para Agregar/ Editar Datos de Contactos'"
+></app-Header>
+<body>
+  <form class="time-form" [formGroup]="ContactoForm">
+    <label for="nombre">Nombre:</label><br />
+    <input type="text" id="nombre" formControlName="nombre" /><br /><br />
+
+    <label for="dato">Dato:</label><br />
+    <input type="text" id="dato" formControlName="dato" /><br /><br />
+    @if(!editMode){
+    <div>
+      <button class="addition" (click)="Add_Contacto()">Agregar Minima</button>
+    </div>
+    } @else {
+    <div>
+      <button class="addition" (click)="Update_Contacto(idDatosContacto)">
+        Editar Minima
+      </button>
+    </div>
+    }
+  </form>
+</body>

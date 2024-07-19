@@ -1,0 +1,216 @@
+<body>
+  <app-Header [title]="'Mi Cuenta'"></app-Header>
+
+  <app-Nav_Bar> </app-Nav_Bar>
+  <!--también puedes ponerles parametros-->
+  <!--<app-Nav_Bar [color]="1"> </app-Nav_Bar>-->
+
+  <main>
+    <div class="container">
+      <section id="contenido-educativo">
+        <h2>Contenido Educativo</h2>
+        <article>
+          <h3>Consejos para mejorar tu técnica de natación</h3>
+          <p>Aquí algunos consejos útiles...</p>
+
+          @if(!readmore){
+
+          <button (click)="readmore = true">Leer más</button>
+          } @else {
+
+          <h1>20- Desliz</h1>
+          <p>
+            Cuando nadas es importante ahorrar energía y el deslizamiento te
+            ayuda a hacerlo, mientras te deslizas todavía estás avanzando sin
+            consumir energía. Comienza exagerando el deslizamiento y luego lo
+            vas acortando hasta que se sienta correcto.
+          </p>
+          <h1>19- Control de la Respiración</h1>
+          <p>
+            Aprende a controlar tu respiración, inhala rápidamente y exhala
+            lentamente. Mantén la respiración relajada y sin apresurarla, para
+            no aumentar el ritmo cardiaco. Esto te ayudará a cansarte menos.
+          </p>
+          <h1>18- Siente el Agua</h1>
+          <p>
+            Es muy importante sentir el agua, cómo te deslizas a través de ella
+            y cómo pasa por tu cuerpo. swimming tips, swimming tips for
+            beginners, swimming tips of triathlets Siente y entiende cómo puedes
+            jalar mejor el agua y como crear menos resistencia, así nadaras más
+            rápido.
+          </p>
+
+          <h1>17. Entrena Mas Fuerte</h1>
+          <p>
+            Los mejores nadadores tienen una gran tolerancia al dolor, si sigues
+            practicando duro, los tiempos que pensabas que eran difíciles serán
+            más fáciles de hacer. Tus músculos se harán más fuertes y más
+            resistentes. Pero recuerda que esto no significa que debes ir rápido
+            en todo el entrenamiento, tienes que entrenar inteligentemente.
+            Cuando practiques la técnica, concéntrate en los movimientos de tu
+            cuerpo. Cuando toque nadar suave nada tranquilo y cuando se trate de
+            un set rápido y fuerte, da todo.
+          </p>
+          <h1>16-Nada en un tubo más pequeño</h1>
+          <p>
+            Cuando tratamos de nadar rápido, tendemos a extender el área por
+            donde estamos nadando. Permanecer en un área más pequeña creará
+            menos resistencia. swimming tips, swimming tips for beginners,
+            swimming tips of triathletes Si compites o tienes un carril para ti
+            mismo, debes nadar lo más recto posible, moverse en círculos o
+            alrededor del carril te hará nadar más y ademas crearás más
+            resistencia.
+          </p>
+          <h1>15- Afloje</h1>
+          <p>
+            Cuando nadas, tus músculos se tensan y se llenan de ácido láctico.
+            También tu sangre fluye rápidamente desde tu corazón. Aflojar (nadar
+            lento) alrededor de 20 minutos hace que tu cuerpo vuelva a la
+            normalidad, dando a los músculos la oportunidad de relajarse y
+            recuperarse para la próxima practica.
+          </p>
+          <h1>14-No Respires en la Primera Brazada</h1>
+          <p>
+            Cuando nadas en estilo libre es importante no respirar en la primer
+            brazada después del viraje/vuelta de campana o al empuje del inicio,
+            de esta manera mantendrás la velocidad del empuje de la pared.
+            swimming tips, swimming tips for beginners, swimming tips of
+            triathlets, how to breath swimming Esto también te ayudará a
+            expandir la capacidad pulmonar.
+          </p>
+          <h1>13- Usa tu Patada</h1>
+          <p>
+            Tendemos a enfocarnos más en la parte superior del cuerpo, pero las
+            piernas son increíblemente importantes. swimming kick, how to kick
+            on freestyle, front crawl kick, freestyle kick ¡Así que mejora tu
+            patada haciendo algunos series extra!
+          </p>
+          <h1>12- Rotación</h1>
+          <p>
+            Para crol y espalda es importante rotar, la mayoría de los nadadores
+            no rotan lo suficiente. Si no estás nadando en una carrera de 50
+            metros, entonces debería estar rotando. estilo dorso, estilo
+            espalda, dorso tecnica, espalda tecnica, estilo natacion dorso, how
+            to swim backstroke faster, how to swim backstroke, backstroke
+            swimming Te ayudará en 3 cosas principalmente: previene lesiones.
+            Usar músculos más grandes. Disminuir arrastre.
+          </p>
+          <h1>11- Usa Músculos más Grandes</h1>
+          <p>
+            Jalaras más fuerte y mejor si usas los pectorales y músculos de la
+            espalda enteros que si solo usas los hombros y bíceps. Los músculos
+            más grandes tienen más potencia y te ayudarán a nadar más rápido si
+            los utilizas de forma adecuada. También serás menos vulnerable a
+            lesionarte.
+          </p>
+          <h1>10- Estira</h1>
+          <p>
+            Hay muchos beneficios para el estiramiento, por ejemplo, dar más
+            espacio para que tus músculos se fortalezcan, se recuperen más
+            rápido y reduzcan el ácido láctico. stretch in swimming, swimming
+            tips, swimming tips for beginners, swimming tips of triathletes, how
+            to breath swimming Al mejorar la flexibilidad, obtienes un mejor
+            rango de movimiento, y es muy probable que tu técnica mejore por lo
+            tanto que consumas menos energía mientras nadas.
+          </p>
+
+          <h1>9 Practica en el Espejo</h1>
+          <p>
+            A veces es muy difícil cambiar lo que estás haciendo mal mientras
+            nadas, incluso si tu entrenador te dice lo que es. Fingir que estás
+            nadando mientras te miras al espejo te ayudará a ver tus errores y
+            será más fácil corregirlos. practice swimming, swimming tips,
+            swimming tips for beginners, swimming tips of triathlets, how to
+            breath swimming, muscles swimming
+          </p>
+
+          <h1>8- Meditación – Visualización</h1>
+          <p>
+            Pensar en ti mismo nadando con un buen estilo, ganando una carrera,
+            haciendo una patada de delfín perfecta o simplemente preparándote
+            para la práctica es muy útil. Si haces esto una vez al día o cada
+            dos días, verás una mejoría en tu nado. Necesitas visualizarte para
+            que tu mente se prepare y tengas un mejor entrenamiento, mejoraras
+            tu técnica, estarás listo para las competencias de natación y te
+            ayudara en todas las cosas relacionadas con la natación.
+          </p>
+
+          <h1>7- Baila</h1>
+          <p>
+            La coordinación es algo muy importante tanto en el baile como la
+            natación. Si quieres mejorar tu coordinación de todo el cuerpo, es
+            bueno practicar algunos movimientos de baile.
+          </p>
+          <h1>6- Flexibilidad en los Tobillos</h1>
+          <p>
+            La flexibilidad de tus tobillos es extremadamente importante,
+            necesitas una gran flexibilidad como la de una bailarina para no
+            arrastrar los pies y avanzar más con cada patada.
+          </p>
+          <h1>5- Fuerza Fuera del Agua</h1>
+          <p>
+            Hoy un día simplemente nadar no es suficiente, si realmente quieres
+            mejorar necesitas obtener fuerza de otros ejercicios.
+          </p>
+          <h1>4- Abdomen</h1>
+          <p>
+            Los nadadores de élite tienen un abdomen muy fuerte, es
+            probablemente una de las cosas que te falta. Cada vez que nades lo
+            usaras, no importa qué estilo. Tener un abdominales fuertes te dará
+            estabilidad y equilibrio además de que podrás flotar más fácilmente.
+            Recuerda que usaras la espalda baja y el abdomen en todos los
+            movimientos de natación.
+          </p>
+          <h1>3- Grábate a ti mismo</h1>
+          <p>
+            La mejor manera de mejorar tu técnica es la retroalimentación y la
+            mayoría de las veces los comentarios de otras personas no son
+            suficientes. swimming recording Así que grábate y ve exactamente que
+            estás haciendo mal, la próxima vez que nades será más fácil de
+            corregir tu estilo.
+          </p>
+          <h1>2-Come Sano</h1>
+          <p>
+            La natación es uno de los deportes que quema más calorías, por lo
+            que podrías pensar que puedes comer comida chatarra o comida no
+            nutritiva. swimmers diet, swimming tips, swimming tips for
+            beginners, swimming tips of triathlets, how to breath swimming,
+            muscles swimming, swimming tips Pero no tan rápido … La calidad de
+            la comida afectará tu desempeño en la piscina. Así que asegúrate de
+            comer equilibrado y saludable, ¡sentirás la diferencia!
+          </p>
+          <h1>1- Aprende,Enseña y Concentrate</h1>
+          <p>
+            Encuentra a los nadadores mas rápidos en tu piscina y mira lo que
+            están haciendo bien también puedes buscar videos de youtube de
+            personas nadando (Skills NT). Enseña a otros nadadores que quieran
+            recibir consejos y ayúdalos con lo que sabes a nadar mejor. Recuerda
+            lo que aprendiste en los últimos 2 pasos y aplicalos a tu nado.
+          </p>
+
+          <button (click)="readmore = false">Leer menos</button>
+          }
+        </article>
+
+        <article>
+          <h3>Videos Instructivos</h3>
+          <p>Explora nuestra colección de videos...</p>
+
+          <br />
+          <a href="https://www.youtube.com/watch?v=VQxykkE2t-g">Ver videos</a>
+          <!--
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/watch?v=VQxykkE2t-g"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      BUSCAR LA FORMA DE Q FUNCIONE-->
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <app-Footer></app-Footer>
+</body>

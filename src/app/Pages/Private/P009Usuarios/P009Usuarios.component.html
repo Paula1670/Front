@@ -1,0 +1,61 @@
+<app-Header [title]="'Usuarios'"></app-Header>
+<app-Nav_Bar_Junta></app-Nav_Bar_Junta>
+<br /><br /><br /><br />
+
+<div class="centrar">
+  <button class="addition" (click)="Get_Socios()">Visualizar Socios</button>
+  <button class="addition" (click)="Get_Entrenadores()">
+    Visualizar Entrenadores
+  </button>
+  <button class="addition" (click)="Get_Nadadores()">
+    Visualizar Nadadores
+  </button>
+
+  <button class="addition" (click)="abrirConfirmacion()">
+    Actualizar Categorias
+  </button>
+</div>
+@if(mostrarConfirmacion){
+<div>
+  <div class="textoConfirmacion">
+    <p>
+      ¿Está seguro que desea cambiar las categorías? Una vez que las cambie, no
+      habrá marcha atrás
+    </p>
+  </div>
+  <div class="botonesConfirmacion">
+    <button class="Aceptar" (click)="actualizarAllCategorias()">Aceptar</button>
+
+    <button class="Cancelar" (click)="cancelarActualizacion()">Cancelar</button>
+  </div>
+</div>
+}
+<br /><br /><br /><br />
+@if(usuariosTabla){
+<app-Table
+  [memberlist]="memberlist"
+  [usuariosActivos]="usuariosActivos"
+></app-Table>
+}@if(socioTabla){
+<app-Table_Socios [sociolist]="sociolist"></app-Table_Socios>
+} @if(entrenadoresTabla){
+<app-Table_Entrenadores
+  [entrenadorlist]="entrenadorlist"
+></app-Table_Entrenadores>
+} @if(nadadoresTabla){
+<app-Table_Nadadores [swimerlist]="swimerlist"></app-Table_Nadadores>
+}
+
+<br /><br />
+
+<button class="addition" (click)="gotoFormulario()">Agregar Usuario</button>
+<button class="addition" (click)="Get_UsersActivated()">
+  Visualizar Todos los Usuarios Activos
+</button>
+
+<button class="addition" (click)="Get_UsersInactivated()">
+  Visualizar Todos los Usuarios Inactivos
+</button>
+
+<br /><br /><br /><br /><br /><br />
+<app-Footer></app-Footer>

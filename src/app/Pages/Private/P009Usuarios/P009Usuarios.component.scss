@@ -1,0 +1,47 @@
+.addition {
+  padding: 10px 20px;
+  float: right;
+  background-color: var(--Opcion);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin-right: 10%;
+}
+.centrar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px; /* Espacio entre los bordes laterales y los botones */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  max-width: 800px; /* Puedes ajustar este valor según sea necesario */
+}
+
+.botonesConfirmacion {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
+  // background-color: #0c4c77;
+}
+p {
+  background-color: #0c4c77;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 40px 40px;
+  width: 20rem;
+}
+
+.textoConfirmacion {
+  display: flex;
+  justify-content: center;
+}
+
+.Aceptar,
+.Cancelar {
+  background-color: #0c4c77;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}

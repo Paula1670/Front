@@ -1,0 +1,50 @@
+header {
+  background-color: var(--Opcion);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 20px;
+  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center; /* Centra verticalmente los elementos dentro del header */
+  justify-content: space-between; /* Distribuye los elementos a lo largo del header */
+}
+
+.button-login {
+  padding: 10px 20px;
+  background-color: #030f18;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.icon {
+  width: 50px; /* Ajusta el ancho de la imagen */
+  height: 50px; /* Ajusta la altura de la imagen */
+  cursor: pointer; /* Cambia el cursor cuando se pasa por encima */
+}
+
+h1 {
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+}
+
+.logout-icon {
+  margin-left: auto; /* Empuja el icono hacia el extremo derecho del header */
+}

@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment.development';
+import { P010Contrato } from '../../Models/Private/DtosP010/P010Get_contratosDto';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class P010Service {
+  constructor(private http: HttpClient) {}
+
+  Delete_Contrato(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P010/Delete_Contrato/' + id;
+
+    return this.http.delete(apiUrl);
+  }
+
+  Get_Contratos() {
+    const apiUrl: string = environment.UrlBackend + '/P010/Get_Contratos';
+
+    return this.http.get<P010Contrato>(apiUrl);
+  }
+}

@@ -1,0 +1,42 @@
+<app-Header [title]="'Récords Del Club'"></app-Header>
+<app-Nav_Bar_public></app-Nav_Bar_public>
+
+<table class="">
+  <thead>
+    <tr>
+      <th>Categoria</th>
+      <th>Nombre Del Nadador</th>
+      <th>Temporada</th>
+      <th>Fecha de la marca</th>
+      <th>Prueba</th>
+      <th>Piscina</th>
+
+      <th>Tiempo</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  @for(record of recordlist;track record.IDTiempos){
+  <tr>
+    <td>{{ record.NombreCategoria }}</td>
+    <td>{{ record.NombreUsuario }} -{{ record.ApellidoUsuario }}</td>
+    <td>
+      {{ record.Temporada }}
+    </td>
+    <td>
+      {{ record.FechaMarcaNadador }}
+    </td>
+    <td>{{ record.Prueba }} - {{ record.Estilo }}</td>
+    <td>
+      {{ record.Piscina }}
+    </td>
+
+    <td>
+      {{ record.Tiempo }}
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }
+</table>
+<br /><br /><br /><br /><br /><br />
+<app-Footer></app-Footer>

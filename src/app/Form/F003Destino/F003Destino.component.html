@@ -1,0 +1,66 @@
+<app-Header [title]="'Formulario de Destinos'"></app-Header>
+<body>
+  <div class="destinos-form">
+    <h2>Formulario de Destinos</h2>
+    <form action="/submit_destino" method="POST">
+      <label for="destino">Destino:</label>
+      <input type="text" id="destino" name="destino" required /><br /><br />
+
+      <label for="fechaSalida">Fecha de Salida:</label>
+      <input
+        type="date"
+        id="fechaSalida"
+        name="fechaSalida"
+        required
+      /><br /><br />
+
+      <label for="fechaRegreso">Fecha de Regreso:</label>
+      <input
+        type="date"
+        id="fechaRegreso"
+        name="fechaRegreso"
+        required
+      /><br /><br />
+
+      <label for="hotel">Hotel:</label>
+      <input type="text" id="hotel" name="hotel" /><br /><br />
+
+      <label for="personas">Número de Personas:</label>
+      <input type="number" id="personas" name="personas" min="1" /><br /><br />
+
+      <label for="precio">Precio:</label>
+      <input
+        type="number"
+        id="precio"
+        name="precio"
+        step="0.01"
+        min="0"
+      /><br /><br />
+
+      <label for="numeroContacto">Número de Contacto:</label>
+      <input
+        type="text"
+        id="numeroContacto"
+        name="numeroContacto"
+      /><br /><br />
+
+      <label for="comentarios">Comentarios:</label><br />
+      <textarea
+        id="comentarios"
+        name="comentarios"
+        rows="4"
+        cols="50"
+      ></textarea
+      ><br /><br />
+
+      <label for="idMiembroJunta">ID Miembro de la Junta:</label>
+      <input
+        type="text"
+        id="idMiembroJunta"
+        name="idMiembroJunta"
+      /><br /><br />
+      <a href="/destination" class="addition">Agregar Destino</a>
+      <!--<input type="submit" value="Agregar Destino" />-->
+    </form>
+  </div>
+</body>

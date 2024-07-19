@@ -1,0 +1,34 @@
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Nombre De Contrato</th>
+      <th>Fecha de Inicio</th>
+      <th>Fecha de Vencimiento</th>
+      <th>Precio</th>
+      <th>Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  @for(P010Contratos of contratolist;track $index){
+  <tr>
+    <!-- {{
+      contrato | json
+    }}-->
+
+    <td>{{ P010Contratos.NombreUsuario }}</td>
+    <td>{{ P010Contratos.ApellidoUsuario }}</td>
+    <td>{{ P010Contratos.NombreContrato }}</td>
+    <td>{{ P010Contratos.FechaInicio | date }}</td>
+    <td>{{ P010Contratos.FechaVencimiento | date }}</td>
+    <td>{{ P010Contratos.Precio }}</td>
+    <td>{{ P010Contratos.Estado }}</td>
+    <td>
+      <button class="addition" onclick="eliminarMiembro()">Eliminar</button>
+      <button class="addition" onclick="editarMiembro()">Editar</button>
+    </td>
+  </tr>
+  }
+</table>

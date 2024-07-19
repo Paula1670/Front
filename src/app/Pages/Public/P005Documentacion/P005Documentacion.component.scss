@@ -1,0 +1,21 @@
+.Container {
+  display: flex;
+  gap: 20px;
+}
+.addition {
+  padding: 10px 20px;
+  float: right;
+  background-color: var(--Opcion);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin-right: 10%;
+}
+.icon {
+  width: 20px; /* Ajusta el ancho de la imagen */
+  height: 20px; /* Ajusta la altura de la imagen */
+  cursor: pointer; /* Cambia el cursor cuando se pasa por encima */
+  margin-right: 8px;
+  margin-left: 8px;
+}

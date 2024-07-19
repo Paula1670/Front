@@ -1,0 +1,43 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: var(--Opcion2);
+  text-align: center;
+}
+
+.Cuotas {
+  width: 30%;
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #336699;
+  background-color: #b3d9ff;
+  text-align: center;
+}
+
+.Cuotas th,
+.Cuotas td {
+  border: 1px solid #336699;
+  padding: 10px;
+  background-color: #b3d9ff;
+}
+
+.price-box {
+  margin-top: 15px;
+  padding: 10px;
+  border: 1px solid #336699;
+  background-color: #b3d9ff;
+}
+.addition {
+  padding: 10px 20px;
+  float: right;
+  background-color: var(--Opcion);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin-right: 10%;
+}

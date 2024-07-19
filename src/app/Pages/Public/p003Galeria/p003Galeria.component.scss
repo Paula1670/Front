@@ -1,0 +1,43 @@
+.imagenprincipal {
+  width: 100%;
+}
+.imagen {
+  height: 150px;
+  width: 200px;
+
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.galery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+
+.foot {
+  max-width: 200px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.centercontainer {
+  display: flex;
+  justify-content: center;
+}
+.addition {
+  padding: 10px 20px;
+  float: right;
+  background-color: var(--Opcion);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin-right: 10%;
+}
+
+.icon {
+  width: 20px; /* Ajusta el ancho de la imagen */
+  height: 20px; /* Ajusta la altura de la imagen */
+  cursor: pointer; /* Cambia el cursor cuando se pasa por encima */
+  margin-left: 200px;
+}

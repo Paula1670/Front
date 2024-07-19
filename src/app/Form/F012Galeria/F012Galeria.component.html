@@ -1,0 +1,34 @@
+<app-Header [title]="'Formulario para Agregar/ Editar la galeria'"></app-Header>
+<body>
+  <form class="time-form" [formGroup]="GaleriaForm">
+    <label for="url">URL:</label><br />
+    <input type="text" id="url" formControlName="url" /><br /><br />
+
+    <label for="pie">Pie de foto:</label><br />
+    <input type="text" id="pie" formControlName="pie" /><br /><br />
+
+    <label for="nombreFoto">Nombre de la foto que presenta al album:</label
+    ><br />
+    <input
+      type="text"
+      id="nombreFoto"
+      formControlName="nombreFoto"
+    /><br /><br />
+
+    <form>
+      <input type="file" (change)="onFileSelected($event)" />
+    </form>
+
+    @if(!editMode){
+    <div>
+      <button class="addition" (click)="Add_Galeria()">Agregar Galeria</button>
+    </div>
+    } @else {
+    <div>
+      <button class="addition" (click)="Update_Galeria(1)">
+        Editar Galeria
+      </button>
+    </div>
+    }
+  </form>
+</body>

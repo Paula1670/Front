@@ -1,0 +1,61 @@
+<app-Header [title]="'Tipos de Cuotas'"></app-Header>
+<app-Nav_Bar></app-Nav_Bar>
+<body>
+  <table class="Cuotas">
+    <tr>
+      <th>Federados</th>
+      <th>Precio (euros/mes)</th>
+    </tr>
+
+    <ng-container *ngFor="let cuota of cuotaslist">
+      <tr *ngIf="cuota.Federado === 1">
+        <!-- Aquí irá el contenido de cada fila -->
+        <td>{{ cuota.Nombre }}</td>
+        <td>{{ cuota.Precio }}</td>
+        <td>
+          <button class="addition" (click)="Delete_Cuota(cuota.IdCuota)">
+            Eliminar
+          </button>
+        </td>
+        <td>
+          <button class="addition" (click)="Update_Cuota(cuota.IdCuota)">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+
+  <table class="Cuotas">
+    <tr>
+      <th>No Federados</th>
+      <th>Precio (euros/mes)</th>
+    </tr>
+    <ng-container *ngFor="let cuota of cuotaslist">
+      <tr *ngIf="cuota.Federado === 0">
+        <!-- Aquí irá el contenido de cada fila -->
+        <td>{{ cuota.Nombre }}</td>
+        <td>{{ cuota.Precio }}</td>
+        <td>
+          <button class="addition" (click)="Delete_Cuota(cuota.IdCuota)">
+            Eliminar
+          </button>
+        </td>
+        <td>
+          <button class="addition" (click)="Update_Cuota(cuota.IdCuota)">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </table>
+
+  <div class="price-box">
+    <h3>Matrícula: 30 euros (primer mes)</h3>
+    <p>Mes de agosto: Se abona aunque no se entrene</p>
+  </div>
+</body>
+<br /><br />
+<button class="addition" (click)="goToFormulario()">Agregar Cuota</button>
+<br /><br /><br /><br />
+<app-Footer></app-Footer>

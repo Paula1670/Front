@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+/*body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(22, 106, 184);
+  color: #fdf9f9;
+}*/
+:root {
+  --Primario: black;
+  --Secundario: rgba(255, 255, 255, 0.99);
+  --Opcion: #280ba5;
+  --Opcion2: #a9b8e1;
+  --letra: #343434;
+}
+body {
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--letra);
+  background-color: var(--Opcion2);
+  margin: 0;
+}

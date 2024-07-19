@@ -1,0 +1,30 @@
+<footer>
+  <section id="contacto">
+    <h2>Contacto y Soporte</h2>
+    <p>Para cualquier consulta o ayuda, no dudes en contactarnos:</p>
+    <ul>
+      @for(contacto of contactoList; track contacto.idDatosContacto){
+
+      <li>
+        {{ contacto.nombre }} : {{ contacto.dato }}
+        <img
+          src="assets/images/white-trash.png"
+          alt="Trash"
+          class="icon trash-icon"
+          (click)="Delete_Contacto(contacto.idDatosContacto)"
+        />
+        <img
+          src="assets/images/white-pencil.png"
+          alt="Pencil"
+          class="icon pencil-icon"
+          (click)="Update_Contacto(contacto.idDatosContacto)"
+        />
+      </li>
+
+      }
+    </ul>
+    <a (click)="gotoFormulario()">
+      <img src="assets/images/add.png" alt="Pencil" class="icon pencil-icon" />
+    </a>
+  </section>
+</footer>

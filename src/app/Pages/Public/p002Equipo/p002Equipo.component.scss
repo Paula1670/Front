@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  gap: 5rem;
+
+  font-size: 25px;
+  line-height: 120%;
+  p {
+    max-width: 400px;
+  }
+  margin-right: 5rem;
+}
+
+.imagen {
+  width: 600px;
+  height: 650px;
+  justify-content: left;
+}

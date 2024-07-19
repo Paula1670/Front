@@ -1,0 +1,25 @@
+<head>
+  <title>Iniciar Sesión - Socio</title>
+</head>
+<body>
+  <h2>Iniciar Sesión - Socio</h2>
+  <form action="autenticar_socio.php" method="POST" [formGroup]="Login_Form">
+    <label for="nombre_usuario">Nombre de Usuario:</label>
+    <input
+      type="text"
+      id="nombre_usuario"
+      formControlName="nombre_usuario"
+    /><br /><br />
+
+    <label for="contrasena">Contraseña:</label>
+    <input
+      type="password"
+      id="contrasena"
+      formControlName="contrasena"
+    /><br /><br />
+
+    <button type="submit" [disabled]="Login_Form.invalid" (click)="login()">
+      Iniciar Sesión
+    </button>
+  </form>
+</body>

@@ -1,0 +1,15 @@
+.addition {
+  padding: 10px 20px;
+  float: right;
+  background-color: var(--Opcion);
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  margin-right: 10%;
+
+  // Estilo de hover específico para la clase .addition
+  &:hover {
+    background-color: lighten(#280ba5, 10%);
+  }
+}

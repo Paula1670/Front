@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <!--<th>Género</th>
+    <th>Categoria</th>-->
+    <th>Id</th>
+    <th>Piscina</th>
+    <th>Estilo</th>
+    <th>Prueba</th>
+
+    <th>Tiempo</th>
+    <th></th>
+  </tr>
+  @for(P006Tiempo of timelist;track P006Tiempo.IDTiempos ){
+  <tr>
+    <td>{{ P006Tiempo.IDTiempos }}</td>
+
+    <td>{{ P006Tiempo.Piscina }}</td>
+    <td>{{ P006Tiempo.Estilo }}</td>
+    <td>{{ P006Tiempo.Prueba }}</td>
+    <td>
+      {{ P006Tiempo.Tiempo }}
+    </td>
+    <td>
+      <button class="addition" (click)="Delete_Tiempo(P006Tiempo.IDTiempos)">
+        Eliminar
+      </button>
+      <button class="addition" (click)="editarTiempo(P006Tiempo.IDTiempos)">
+        Editar
+      </button>
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }
+</table>

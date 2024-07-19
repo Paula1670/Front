@@ -1,0 +1,31 @@
+<app-Header [title]="'Mínimas'"></app-Header>
+<app-Nav_Bar_EN></app-Nav_Bar_EN>
+
+<!--<label for="categoria">Categoria:</label>
+<select formControlName="categoria" id="categoria">
+  @for( opcion of opcionPiscina; track opcion.valor){
+  <option [value]="opcion.valor">
+    {{ opcion.etiqueta }}
+  </option>
+  }-->
+
+<app-Table_Minimas [minimalist]="minimalist"></app-Table_Minimas>
+<body>
+  <p><br /></p>
+
+  <div class="centrarBotones">
+    <button class="addition" (click)="Get_Minimas()">
+      Visualizar todas las Minimas
+    </button>
+
+    <button class="addition" (click)="Get_MinimasByAno()">
+      Visualizar minimas según el año
+    </button>
+
+    <button class="addition" (click)="Get_MinimasByCategoria()">
+      Visualizar minimas segun la categoria
+    </button>
+
+    <button class="addition" (click)="gotoFormulario()">Agregar Minima</button>
+  </div>
+</body>

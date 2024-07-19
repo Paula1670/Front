@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-around;
+  font-size: 25px;
+  line-height: 120%;
+  p {
+    max-width: 400px;
+  }
+  margin-right: 5rem;
+}

@@ -1,0 +1,113 @@
+<app-Header [title]="'Documentacion'"> </app-Header>
+<app-Nav_Bar_public></app-Nav_Bar_public>
+
+<div class="Container">
+  <img src="assets/images/Documentacion.jpg" />
+
+  <div>
+    <h1>Estatutos Del Club</h1>
+    <h3>
+      Haga clic en el siguiente enlace para descargar un documento con los
+      estatutos del club:
+    </h3>
+
+    @for( docu of documentosList; track docu.idDocumentacion){ @if
+    (docu.categoriaDocumento == 'estatutos') {
+
+    <h3>
+      <span>{{ docu.titulo }}</span>
+      <a href="{{ docu.url }}" target="_blank" download
+        >"{{ docu.nombreUrl }}"</a
+      >
+      <img
+        src="assets/images/trash.png"
+        alt="Trash"
+        class="icon trash-icon"
+        (click)="Delete_Documento(docu.idDocumentacion)"
+      />
+      <img
+        src="assets/images/pencil.png"
+        alt="Pencil"
+        class="icon pencil-icon"
+        (click)="editarDocumentacion(docu.idDocumentacion)"
+      />
+    </h3>
+
+    } }
+    <h2>De la Federación Andaluza</h2>
+    @for( docu of documentosList; track docu.idDocumentacion){ @if
+    (docu.categoriaDocumento == 'and') {
+
+    <h3>
+      <span>{{ docu.titulo }}</span>
+      <a href="{{ docu.url }}" target="_blank" download
+        >"{{ docu.nombreUrl }}"</a
+      >
+      <img
+        src="assets/images/trash.png"
+        alt="Trash"
+        class="icon trash-icon"
+        (click)="Delete_Documento(docu.idDocumentacion)"
+      />
+      <img
+        src="assets/images/pencil.png"
+        alt="Pencil"
+        class="icon pencil-icon"
+        (click)="editarDocumentacion(docu.idDocumentacion)"
+      />
+    </h3>
+
+    } }
+    <h2>De la Federación Española</h2>
+    @for( docu of documentosList; track docu.idDocumentacion){ @if
+    (docu.categoriaDocumento == 'esp') {
+
+    <h3>
+      <span>{{ docu.titulo }}</span>
+      <a href="{{ docu.url }}" target="_blank" download
+        >"{{ docu.nombreUrl }}"</a
+      >
+      <img
+        src="assets/images/trash.png"
+        alt="Trash"
+        class="icon trash-icon"
+        (click)="Delete_Documento(docu.idDocumentacion)"
+      />
+      <img
+        src="assets/images/pencil.png"
+        alt="Pencil"
+        class="icon pencil-icon"
+        (click)="editarDocumentacion(docu.idDocumentacion)"
+      />
+    </h3>
+
+    } }
+    <h2>Otros Documentos</h2>
+    @for( docu of documentosList; track docu.idDocumentacion){ @if
+    (docu.categoriaDocumento == 'otros') {
+
+    <h3>
+      <span>{{ docu.titulo }}</span>
+      <a href="{{ docu.url }}" target="_blank" download
+        >"{{ docu.nombreUrl }}"</a
+      >
+      <img
+        src="assets/images/trash.png"
+        alt="Trash"
+        class="icon trash-icon"
+        (click)="Delete_Documento(docu.idDocumentacion)"
+      />
+      <img
+        src="assets/images/pencil.png"
+        alt="Pencil"
+        class="icon pencil-icon"
+        (click)="editarDocumentacion(docu.idDocumentacion)"
+      />
+    </h3>
+
+    } }
+  </div>
+</div>
+<button class="addition" (click)="gotoFormulario()">Agregar Documento</button>
+<br /><br /><br />
+<app-Footer></app-Footer>

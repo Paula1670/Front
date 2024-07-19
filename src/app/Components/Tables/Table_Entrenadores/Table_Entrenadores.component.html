@@ -1,0 +1,47 @@
+<table class="">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Especialidad</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Fecha de inscripcion</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  @for(P009Entrenador of entrenadorlist; track P009Entrenador.IDUsuario){
+  <tr>
+    <td>{{ P009Entrenador.IDUsuario }}</td>
+    <td>
+      {{ P009Entrenador.Nombre }}
+    </td>
+    <td>
+      {{ P009Entrenador.Apellido }}
+    </td>
+    <td>
+      {{ P009Entrenador.especialidad }}
+    </td>
+    <td>{{ P009Entrenador.FechaNacimiento | date : "mediumDate" }}</td>
+    <td>{{ P009Entrenador.FechaInscripcion | date : "mediumDate" }}</td>
+    <td>
+      {{ P009Entrenador.Direccion }}
+    </td>
+
+    <td>
+      <button class="addition" (click)="Delete_User(P009Entrenador.IDUsuario)">
+        Eliminar
+      </button>
+      <button
+        class="addition"
+        (click)="editarMiembro(P009Entrenador.IDUsuario)"
+      >
+        Editar
+      </button>
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }
+</table>

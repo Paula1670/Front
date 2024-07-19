@@ -1,0 +1,40 @@
+<table>
+  <tr>
+    <!--<th>Género</th>
+    <th>Categoria</th>-->
+    <th>Id</th>
+    <th>Temporada</th>
+    <th>Tipo de Prueba</th>
+    <th>Estilo</th>
+    <th>Piscina</th>
+    <th>Campeonato</th>
+    <th>Tiempo</th>
+    <th></th>
+  </tr>
+  @for(P007Minima of minimalist;track P007Minima.IDMinima ){
+  <tr>
+    <td>{{ P007Minima.IDMinima }}</td>
+    <td>
+      {{ P007Minima.Temporada }}
+    </td>
+    <td>{{ P007Minima.Piscina }}</td>
+    <td>{{ P007Minima.Estilo }}</td>
+    <td>{{ P007Minima.Prueba }}</td>
+    <td>
+      {{ P007Minima.Campeonato }}
+    </td>
+    <td>
+      {{ P007Minima.TiempoMinimo }}
+    </td>
+    <td>
+      <button class="addition" (click)="Delete_Minima(P007Minima.IDMinima)">
+        Eliminar
+      </button>
+      <button class="addition" (click)="editarMinima(P007Minima.IDMinima)">
+        Editar
+      </button>
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }
+</table>

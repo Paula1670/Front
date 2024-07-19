@@ -1,0 +1,47 @@
+<table class="">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Fecha de Nacimiento</th>
+      <th>Fecha de inscripcion</th>
+      <th>Email</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  @for(P009Usuario of memberlist;track P009Usuario.IDUsuario){
+  <tr>
+    <td>{{ P009Usuario.IDUsuario }}</td>
+    <td>
+      {{ P009Usuario.Nombre }}
+    </td>
+    <td>
+      {{ P009Usuario.Apellido }}
+    </td>
+    <td>{{ P009Usuario.FechaNacimiento | date : "mediumDate" }}</td>
+    <td>{{ P009Usuario.FechaInscripcion | date : "mediumDate" }}</td>
+    <td>
+      {{ P009Usuario.Direccion }}
+    </td>
+
+    <td>
+      @if(usuariosActivos){
+      <button class="addition" (click)="Delete_User(P009Usuario.IDUsuario)">
+        Eliminar
+      </button>
+      <button class="addition" (click)="editarMiembro(P009Usuario.IDUsuario)">
+        Editar
+      </button>
+      }@else {
+
+      <button class="addition" (click)="activar_User(P009Usuario.IDUsuario)">
+        Activar
+      </button>
+      }
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }
+</table>

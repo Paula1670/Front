@@ -1,0 +1,38 @@
+<app-Header [title]="'Galería'"></app-Header>
+<app-Nav_Bar_public></app-Nav_Bar_public>
+<body>
+  <img class="imagenprincipal" src="assets/images/foto.jpg" />
+  <p><br /><br /><br /></p>
+  <div class="centercontainer">
+    <h1><strong>Galería De Fotos</strong></h1>
+  </div>
+  <p><br /><br /><br /></p>
+
+  <div class="galery">
+    @for( imagen of Competiciones; track imagen.idGaleria){
+
+    <div>
+      <img
+        src="assets/images/trash.png"
+        alt="Trash"
+        class="icon trash-icon"
+        (click)="deleteGalery(imagen.idGaleria)"
+      />
+      <br />
+      <a [href]="imagen.url">
+        <img class="imagen" [src]="imagen.imagenBase64" alt="Imagen" />
+      </a>
+
+      <div class="foot">
+        {{ imagen.pie }}
+      </div>
+    </div>
+    }
+  </div>
+  <button class="addition" (click)="gotoFormulario()">Agregar Galeria</button>
+  <!--<button class="addition" (click)="deleteGalery()">
+Borrar Galeria
+</button>-->
+  <p><br /><br /></p>
+</body>
+<app-Footer></app-Footer>
