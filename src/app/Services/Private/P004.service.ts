@@ -1,10 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment.development';
+import { P004Get_CuotasDto } from '../../Models/Private/DtosP004/P004Get_CuotaDto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class P004Service {
-
-constructor() { }
-
-}
+export class P004Service {}

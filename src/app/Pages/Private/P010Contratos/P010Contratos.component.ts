@@ -4,7 +4,7 @@ import { FooterComponent } from '../../../Components/Footer/Footer.component';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { Nav_Bar_JuntaComponent } from '../../../Components/Nav_Bars/Nav_Bar_Junta/Nav_Bar_Junta.component';
 import { Table_ContratosComponent } from '../../../Components/Tables/Table_Contratos/Table_Contratos.component';
-import { P010Contrato } from '../../../Models/Private/DtosP010/P010Get_contratosDto';
+import { P010ContratoDto } from '../../../Models/Private/DtosP010/P010Get_contratosDto';
 import { P010Service } from '../../../Services/Private/P010.service';
 
 @Component({
@@ -21,7 +21,7 @@ import { P010Service } from '../../../Services/Private/P010.service';
   styleUrls: ['./P010Contratos.component.scss'],
 })
 export class P010ContratosComponent implements OnInit {
-  contratolist: P010Contrato[] = [];
+  contratolist: P010ContratoDto[] = [];
 
   constructor(private service: P010Service) {}
 

@@ -52,3 +52,8 @@ export const OpcionDocumento: Opcion[] = [
   { valor: 'otros', etiqueta: 'Otros' },
   { valor: 'estatutos', etiqueta: 'Estatutos' },
 ];
+
+export const OpcionEstado: Opcion[] = [
+  { valor: 'pendiente', etiqueta: 'Pendiente de pago' },
+  { valor: 'pagado', etiqueta: 'Pagado' },
+];

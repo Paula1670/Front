@@ -100,6 +100,7 @@ export class F009MiembroComponent implements OnInit {
         }
       );
     }
+    this.router.navigate(['/users']);
   }
 
   Add_User() {
@@ -129,6 +130,7 @@ export class F009MiembroComponent implements OnInit {
         console.error('Error al llamar al endpoint:', error);
       }
     );
+    this.router.navigate(['/users']);
   }
 
   opcionPersonal: Opcion[] = [
@@ -175,7 +177,6 @@ export class F009MiembroComponent implements OnInit {
             };
           }
         );
-        console.log(data);
       });
   }
 }

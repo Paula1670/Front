@@ -27,15 +27,16 @@ export class Log_InComponent implements OnInit {
     private router: Router
   ) {
     this.Login_Form = fb.group({
-      nombre_usuario: ['', [Validators.required]],
+      direccion_usuario: ['', [Validators.required]],
       contrasena: ['', [Validators.required]],
     });
   }
   ngOnInit(): void {}
 
   login() {
-    const nombre_usuario: string = this.Login_Form.get('nombre_usuario')?.value;
+    const direccion_usuario: string =
+      this.Login_Form.get('direccion_usuario')?.value;
     const contrasena: string = this.Login_Form.get('contrasena')?.value;
-    this.auth.log_in(nombre_usuario, contrasena);
+    this.auth.log_in(direccion_usuario, contrasena);
   }
 }

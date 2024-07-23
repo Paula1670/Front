@@ -14,10 +14,6 @@
 
   @for(P010Contratos of contratolist;track $index){
   <tr>
-    <!-- {{
-      contrato | json
-    }}-->
-
     <td>{{ P010Contratos.NombreUsuario }}</td>
     <td>{{ P010Contratos.ApellidoUsuario }}</td>
     <td>{{ P010Contratos.NombreContrato }}</td>
@@ -26,8 +22,18 @@
     <td>{{ P010Contratos.Precio }}</td>
     <td>{{ P010Contratos.Estado }}</td>
     <td>
-      <button class="addition" onclick="eliminarMiembro()">Eliminar</button>
-      <button class="addition" onclick="editarMiembro()">Editar</button>
+      <button
+        class="addition"
+        (click)="Delete_Contrato(P010Contratos.IDMiCuota)"
+      >
+        Eliminar
+      </button>
+      <button
+        class="addition"
+        (click)="editarContrato(P010Contratos.IDMiCuota)"
+      >
+        Editar
+      </button>
     </td>
   </tr>
   }

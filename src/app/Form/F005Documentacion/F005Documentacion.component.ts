@@ -62,7 +62,6 @@ export class F005DocumentacionComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Respuesta del servidor:', response);
-          console.log(this.documentacionForm.value);
         },
         (error: any) => {
           console.error('Error al llamar al endpoint:', error);

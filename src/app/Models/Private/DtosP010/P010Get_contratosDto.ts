@@ -1,5 +1,5 @@
-export interface P010Contrato {
-  Id: number;
+export interface P010ContratoDto {
+  IDMiCuota: number;
   NombreUsuario: string;
   ApellidoUsuario: string;
   NombreContrato: string;

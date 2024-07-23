@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
-  log_in(nombre_usuario: string, contrasena: string) {
+  log_in(direccion_usuario: string, contrasena: string) {
     console.log(environment.UrlBackend + '/auth/logIn');
     const logInResponse = this.http
       .post<LogInAuthResponseDto>(environment.UrlBackend + '/auth/logIn', {
-        nombre: nombre_usuario,
+        direccion: direccion_usuario,
         contrasena: contrasena,
       })
       .subscribe({

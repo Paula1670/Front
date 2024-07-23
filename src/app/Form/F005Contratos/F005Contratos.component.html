@@ -2,40 +2,55 @@
 
 <body>
   <h2>Agregar Nuevo Contrato</h2>
-  <form action="/agregarContrato()" method="POST">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required /><br /><br />
-
-    <label for="precio">Precio:</label>
-    <input type="number" id="precio" name="precio" required /><br /><br />
-
-    <label for="fechaInicio">Fecha de Inicio:</label>
-    <input
-      type="date"
-      id="fechaInicio"
-      name="fechaInicio"
-      required
-    /><br /><br />
-
-    <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+  <form [formGroup]="contratoForm">
+    <label for="socioAsociado">¿Con que socio está asociado?</label>
+    <select formControlName="socioAsociado" id="socioAsociado">
+      @for( opcion of opcionSocio; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }</select
+    ><br /><br />
+    <label for="cuotaAsociada">Que cuota desea:</label>
+    <select formControlName="cuotaAsociada" id="cuotaAsociada">
+      @for( opcion of opcionCuota; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    <br />
+    <br />
+    <label>Fecha de Inicio:</label>
+    <input type="date" id="fechaInicio" formControlName="fechaInicio" /><br />
+    <br />
+    <label>Fecha de Vencimiento:</label>
     <input
       type="date"
       id="fechaVencimiento"
-      name="fechaVencimiento"
-      required
-    /><br /><br />
-
-    <label for="idSocio">ID del Socio:</label>
-    <input type="number" id="idSocio" name="idSocio" required /><br /><br />
-
-    <label for="idCuotasPosibles">ID de Cuotas Posibles:</label>
-    <select id="idCuotasPosibles" name="idCuotasPosibles" required>
-      <!-- Agrega opciones según IDCuotasPosiblesEnum -->
-      <option value="cuota1">Cuota 1</option>
-      <option value="cuota2">Cuota 2</option>
-      <!-- Agrega más opciones según sea necesario --></select
-    ><br /><br />
-    <a href="/contratos" class="addition">Agregar Contrato</a>
-    <!-- <input type="submit" value="Agregar Contrato" />-->
+      formControlName="fechaVencimiento"
+    />
+    <br /><br />
+    <label for="estado">Estado:</label>
+    <select formControlName="estado" id="estado">
+      @for( opcion of opcionEstado; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    <br />
+    @if(!editMode){
+    <div>
+      <button class="addition" (click)="Add_Contrato()">Agregar Cuota</button>
+    </div>
+    } @else {
+    <div>
+      <button class="addition" (click)="Update_Contrato(IDMiCuota)">
+        Editar Cuota
+      </button>
+    </div>
+    }
   </form>
+  /><br /><br />
 </body>
