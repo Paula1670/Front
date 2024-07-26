@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { P012Galeria } from '../../Models/Public/DtosP012/P012Get_Galeria';
 
 @Injectable({

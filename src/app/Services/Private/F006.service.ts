@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { P006Get_TiemposDto } from '../../Models/Private/DtosP006/P006Get_TiemposDto';
 import { F006Update_TiempoDto } from '../../Models/Private/DtosF006/F006Update_TiempoDto';

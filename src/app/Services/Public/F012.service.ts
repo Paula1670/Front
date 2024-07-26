@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { F012UpdateGaleriaDto } from '../../Models/Public/DtosF012/F012Update_Galeria';
 import { F012CreateGaleriaDto } from '../../Models/Public/DtosF012/F012Create_Galeria';
 import { Form } from '@angular/forms';

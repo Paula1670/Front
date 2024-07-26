@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment.prod';
 import { Observable } from 'rxjs';
 import { P010ContratoDto } from '../../Models/Private/DtosP010/P010Get_contratosDto';
 import { F010Update_ContratoDto } from '../../Models/Private/DtosF010/F010Update_ContratoDto';
