@@ -8,13 +8,14 @@ import { P012Galeria } from '../../../Models/Public/DtosP012/P012Get_Galeria';
 import { P12Service } from '../../../Services/Public/P12.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-p003Galeria',
   standalone: true,
   imports: [
     CommonModule,
-    Nav_Bar_publicComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     FooterComponent,
   ],

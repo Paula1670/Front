@@ -6,6 +6,7 @@ import { Nav_Bar_JuntaComponent } from '../../../Components/Nav_Bars/Nav_Bar_Jun
 import { Table_ContratosComponent } from '../../../Components/Tables/Table_Contratos/Table_Contratos.component';
 import { P010ContratoDto } from '../../../Models/Private/DtosP010/P010Get_contratosDto';
 import { P010Service } from '../../../Services/Private/P010.service';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-P010Contratos',
@@ -13,7 +14,7 @@ import { P010Service } from '../../../Services/Private/P010.service';
   imports: [
     CommonModule,
     Table_ContratosComponent,
-    Nav_Bar_JuntaComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     FooterComponent,
   ],

@@ -1,7 +1,7 @@
 <app-Header [title]="'Usuarios'"></app-Header>
-<app-Nav_Bar_Junta></app-Nav_Bar_Junta>
+<app-Final_Nav_Bar></app-Final_Nav_Bar>
 <br /><br /><br /><br />
-
+@if((authState$ | async) ;as authState){ @if(authState.user?.juntaDirectiva){
 <div class="centrar">
   <button class="addition" (click)="Get_Socios()">Visualizar Socios</button>
   <button class="addition" (click)="Get_Entrenadores()">
@@ -56,6 +56,8 @@
 <button class="addition" (click)="Get_UsersInactivated()">
   Visualizar Todos los Usuarios Inactivos
 </button>
-
-<br /><br /><br /><br /><br /><br />
+<br /><br />
+} @if(authState.user?.socio){
+<p>SOCIO</p>
+} } <br /><br /><br /><br /><br /><br />
 <app-Footer></app-Footer>

@@ -3,13 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { Nav_BarComponent } from '../../../Components/Nav_Bars/Nav_Bar/Nav_Bar.component';
 import { Table_MisContratosComponent } from '../../../Components/Tables/Table_MisContratos/Table_MisContratos.component';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 @Component({
   selector: 'app-P003My_Contract',
   standalone: true,
   imports: [
     CommonModule,
     HeaderComponent,
-    Nav_BarComponent,
+    Final_Nav_BarComponent,
     Table_MisContratosComponent,
   ],
   templateUrl: './P003My_Contract.component.html',

@@ -6,6 +6,7 @@ import { Nav_Bar_publicComponent } from '../../../Components/Nav_Bars/Nav_Bar_pu
 import { P005GetDocumentacion } from '../../../Models/Public/DtosP005/P005Get_Documentacion';
 import { P005Service } from '../../../Services/Public/P005.service';
 import { Router } from '@angular/router';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-P005Documentacion',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
     CommonModule,
     HeaderComponent,
     FooterComponent,
-    Nav_Bar_publicComponent,
+    Final_Nav_BarComponent,
   ],
   templateUrl: './P005Documentacion.component.html',
   styleUrls: ['./P005Documentacion.component.scss'],

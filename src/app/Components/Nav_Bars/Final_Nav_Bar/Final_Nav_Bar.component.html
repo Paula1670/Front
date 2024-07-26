@@ -1,0 +1,43 @@
+<nav>
+  @if((authState$ | async) ;as authState){
+  <ul>
+    <!--Public-->
+    <li><a href="">Inicio</a></li>
+    <li><a href="equipo">Equipo</a></li>
+    <li><a href="galeria">Galeria</a></li>
+    <li><a href="cuotas">Cuotas</a></li>
+    <li><a href="documentacion">Documentacion</a></li>
+    <li><a href="records">Récords</a></li>
+    <!--Socios id y junta TODOS y presi y bipresi botones-->
+
+    @if(authState.user?.socio && authState.user?.juntaDirectiva){
+    <li><a href="contratos">Contratos</a></li>
+    <li><a href="users">Usuarios</a></li>
+    }
+
+    <!--Entrenador botones y nadador visualizar id-->
+    @if(authState.user?.entrenador && authState.user?.nadador){
+    <li><a href="logged">Ayudas</a></li>
+    <li><a href="mis-nadadores">Mis Nadadores</a></li>
+    <!--nadador byId-->
+    <li><a href="tiempos">Tiempos</a></li>
+    <!--nadador byId y todas-->
+    <li><a href="minimas">Minimas</a></li>
+    }
+
+    <li>
+      <p>Nadador: {{ authState.user?.nadador }}</p>
+    </li>
+    <li>
+      <p>Socio: {{ authState.user?.socio }}</p>
+    </li>
+    <li>
+      <p>Entrenador: {{ authState.user?.entrenador }}</p>
+    </li>
+    <li>
+      <p>Junta Directiva: {{ authState.user?.juntaDirectiva }}</p>
+    </li>
+  </ul>
+  <p>{{ authState | json }}</p>
+  }
+</nav>

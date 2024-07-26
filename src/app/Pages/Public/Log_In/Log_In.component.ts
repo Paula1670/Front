@@ -16,7 +16,6 @@ import { Router } from '@angular/router';
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './Log_In.component.html',
   styleUrls: ['./Log_In.component.scss'],
-  providers: [AuthService],
 })
 export class Log_InComponent implements OnInit {
   Login_Form: FormGroup;

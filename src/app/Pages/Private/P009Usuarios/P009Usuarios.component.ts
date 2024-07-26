@@ -13,6 +13,9 @@ import { Table_SociosComponent } from '../../../Components/Tables/Table_Socios/T
 import { Table_EntrenadoresComponent } from '../../../Components/Tables/Table_Entrenadores/Table_Entrenadores.component';
 import { P009Entrenador } from '../../../Models/Private/DtosP009/P009Get_EntrenadoresDto';
 import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
+import { Observable } from 'rxjs';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-P009Usuarios',
@@ -20,7 +23,7 @@ import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
   imports: [
     CommonModule,
     TableComponent,
-    Nav_Bar_JuntaComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     FooterComponent,
     Table_NadadoresComponent,
@@ -31,6 +34,7 @@ import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
   styleUrls: ['./P009Usuarios.component.scss'],
 })
 export class P009UsuariosComponent implements OnInit {
+  authState$: Observable<AuthState>;
   memberlist: P009Usuario[] = [];
   swimerlist: P009Nadador[] = [];
   entrenadorlist: P009Entrenador[] = [];
@@ -41,9 +45,21 @@ export class P009UsuariosComponent implements OnInit {
   usuariosTabla: boolean = false;
   socioTabla: boolean = false;
   mostrarConfirmacion: boolean = false;
-  constructor(private service: P009Service, private router: Router) {}
+  esJunta?: boolean;
+  constructor(
+    private service: P009Service,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
   ngOnInit() {
     this.Get_UsersActivated();
+    this.authState$.subscribe({
+      next: (data) => {
+        this.esJunta = data.user?.juntaDirectiva;
+      },
+    });
   }
 
   Get_UsersActivated() {
@@ -103,6 +119,7 @@ export class P009UsuariosComponent implements OnInit {
 
   actualizarAllCategorias() {
     this.service.actualizarAllCategorias();
+    this.mostrarConfirmacion = false;
   }
   abrirConfirmacion() {
     this.mostrarConfirmacion = true;

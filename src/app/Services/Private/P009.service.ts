@@ -35,7 +35,7 @@ export class P009Service {
 
     return this.http.get<P009Usuario[]>(apiUrl);
   }
-  
+
   Get_Socios() {
     const apiUrl: string = environment.UrlBackend + '/P009/findAllSocios';
 

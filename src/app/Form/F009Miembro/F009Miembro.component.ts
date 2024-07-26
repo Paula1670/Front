@@ -94,6 +94,7 @@ export class F009MiembroComponent implements OnInit {
       this.f009Service.Update_User(id, updateF009Dto).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
+          window.location.reload();
         },
         (error) => {
           console.error('Error al llamar al endpoint:', error);
@@ -125,6 +126,7 @@ export class F009MiembroComponent implements OnInit {
     this.f009Service.Create_User(createF009Dto).subscribe(
       (response: any) => {
         console.log('Respuesta del servidor:', response);
+        window.location.reload();
       },
       (error: any) => {
         console.error('Error al llamar al endpoint:', error);

@@ -6,6 +6,7 @@ import { Nav_BarComponent } from '../../../Components/Nav_Bars/Nav_Bar/Nav_Bar.c
 import { P004Cuotas } from '../../../Models/Private/DtosP004/P004Get_CuotaDto';
 import { P004Service } from '../../../Services/Public/P004.service';
 import { Router } from '@angular/router';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-P004Cuotas_Posibles',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
     CommonModule,
     HeaderComponent,
     FooterComponent,
-    Nav_BarComponent,
+    Final_Nav_BarComponent,
     FooterComponent,
   ],
   templateUrl: './P004Cuotas_Posibles.component.html',

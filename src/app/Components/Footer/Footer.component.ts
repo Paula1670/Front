@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PGetFooterDto } from '../../Models/Public/DtosPFooter/PGet_Footer';
 import { PFooterService } from '../../Services/Public/PFooter.service';
 import { Router } from '@angular/router';
+import { AuthService, AuthState } from '../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Footer',
@@ -13,7 +15,15 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
   contactoList: PGetFooterDto[] = [];
-  constructor(private router: Router, private service: PFooterService) {}
+  authState$: Observable<AuthState>;
+
+  constructor(
+    private router: Router,
+    private service: PFooterService,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {
     this.Get_Contactos();

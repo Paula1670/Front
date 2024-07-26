@@ -5,13 +5,14 @@ import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { P006Tiempo } from '../../../Models/Private/DtosP006/P006Get_TiemposDto';
 import { Public006Service } from '../../../Services/Public/P006.service';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 
 @Component({
   selector: 'app-P006Records',
   standalone: true,
   imports: [
     CommonModule,
-    Nav_Bar_publicComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     FooterComponent,
   ],

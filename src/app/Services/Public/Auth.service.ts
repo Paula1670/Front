@@ -1,31 +1,79 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
-import { LogInAuthResponseDto } from '../../Models/Public/DtosAuth/logIn_auth_response.dto';
+import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../../../environments/environment.development';
+
+interface LogInAuthResponseDto {
+  token: string;
+  nombre: string;
+  apellido: string;
+  idUsuario: number;
+  juntaDirectiva: boolean;
+  entrenador: boolean;
+  nadador: boolean;
+  socio: boolean;
+}
+
+export interface AuthState {
+  isAuthenticated: boolean;
+  user: LogInAuthResponseDto | null;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  private authState: BehaviorSubject<AuthState>;
+
+  authState$: Observable<AuthState>;
+
+  constructor(private http: HttpClient, private router: Router) {
+    if (this.checkCookies()) {
+      this.authState = new BehaviorSubject<AuthState>({
+        isAuthenticated: true,
+        user: this.getUserFromCookies(),
+      });
+    } else {
+      this.authState = new BehaviorSubject<AuthState>({
+        isAuthenticated: false,
+        user: null,
+      });
+    }
+    this.authState$ = this.authState.asObservable();
+
+    this.authState$.subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+    });
+  }
+
   log_in(direccion_usuario: string, contrasena: string) {
     console.log(environment.UrlBackend + '/auth/logIn');
-    const logInResponse = this.http
+
+    this.http
       .post<LogInAuthResponseDto>(environment.UrlBackend + '/auth/logIn', {
         direccion: direccion_usuario,
         contrasena: contrasena,
       })
       .subscribe({
         next: (data) => {
-          this.router.navigate(['']);
           this.setCookies(data);
+          console.log('haciendo loggin');
+          this.authState.next({
+            isAuthenticated: true,
+            user: data,
+          });
+          console.log(this.authState);
+          this.router.navigate(['']);
         },
         error: (e: Error) => {
           console.log(e.message);
         },
       });
   }
+
   setCookies(data: LogInAuthResponseDto) {
     sessionStorage.setItem('token', data.token);
     sessionStorage.setItem('nombre', data.nombre);
@@ -39,60 +87,34 @@ export class AuthService {
     sessionStorage.setItem('nadador', JSON.stringify(data.nadador));
     sessionStorage.setItem('socio', JSON.stringify(data.socio));
   }
+
+  checkCookies(): boolean {
+    const token = sessionStorage.getItem('token');
+    return token !== null;
+  }
+  getUserFromCookies(): any {
+    const user = {
+      token: sessionStorage.getItem('token'),
+      nombre: sessionStorage.getItem('nombre'),
+      apellido: sessionStorage.getItem('apellido'),
+      idUsuario: JSON.parse(sessionStorage.getItem('idUsuario') || 'null'),
+      juntaDirectiva: JSON.parse(
+        sessionStorage.getItem('juntaDirectiva') || 'null'
+      ),
+      entrenador: JSON.parse(sessionStorage.getItem('entrenador') || 'null'),
+      nadador: JSON.parse(sessionStorage.getItem('nadador') || 'null'),
+      socio: JSON.parse(sessionStorage.getItem('socio') || 'null'),
+    };
+
+    return user;
+  }
+
   log_out() {
-    this.http.post(environment.UrlBackend + '/auth/logOut', {});
-    this.removeCookies();
-  }
-
-  removeCookies() {
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('nombre');
-    sessionStorage.removeItem('apellido');
-    sessionStorage.removeItem('idUsuario');
-    sessionStorage.removeItem('juntaDirectiva');
-    sessionStorage.removeItem('entrenador');
-    sessionStorage.removeItem('nadador');
-    sessionStorage.removeItem('socio');
-  }
-
-  // Getters for individual session data
-  get token(): string | null {
-    const sessionData = sessionStorage.getItem('token');
-    return sessionData ? sessionData : null;
-  }
-
-  get nombre(): string | null {
-    const sessionData = sessionStorage.getItem('nombre');
-    return sessionData ? sessionData : null;
-  }
-
-  get apellido(): string | null {
-    const sessionData = sessionStorage.getItem('apellido');
-    return sessionData ? sessionData : null;
-  }
-
-  get idUsuario(): number | null {
-    const sessionData = sessionStorage.getItem('idUsuario');
-    return sessionData ? JSON.parse(sessionData) : null;
-  }
-
-  get juntaDirectiva(): boolean {
-    const sessionData = sessionStorage.getItem('juntaDirectiva');
-    return sessionData ? JSON.parse(sessionData) : false;
-  }
-
-  get entrenador(): boolean {
-    const sessionData = sessionStorage.getItem('entrenador');
-    return sessionData ? JSON.parse(sessionData) : false;
-  }
-
-  get nadador(): boolean {
-    const sessionData = sessionStorage.getItem('nadador');
-    return sessionData ? JSON.parse(sessionData) : false;
-  }
-
-  get socio(): boolean {
-    const sessionData = sessionStorage.getItem('socio');
-    return sessionData ? JSON.parse(sessionData) : false;
+    sessionStorage.clear();
+    this.authState.next({
+      isAuthenticated: false,
+      user: null,
+    });
+    this.router.navigate(['']);
   }
 }

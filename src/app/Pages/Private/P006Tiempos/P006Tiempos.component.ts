@@ -6,13 +6,16 @@ import { CommonModule } from '@angular/common';
 import { Table_TiemposComponent } from '../../../Components/Tables/Table_Tiempos/Table_Tiempos.component';
 import { P006Service } from '../../../Services/Private/p006.service';
 import { Router } from '@angular/router';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-P006Tiempos',
   standalone: true,
   imports: [
     CommonModule,
-    Nav_Bar_ENComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     Table_TiemposComponent,
   ],
@@ -22,7 +25,15 @@ import { Router } from '@angular/router';
 export class P006TiemposComponent implements OnInit {
   timelist: Time[] = [];
 
-  constructor(private service: P006Service, private router: Router) {}
+  authState$: Observable<AuthState>;
+
+  constructor(
+    private service: P006Service,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
   ngOnInit() {
     this.Get_Tiempos();
   }

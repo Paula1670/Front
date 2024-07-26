@@ -14,13 +14,16 @@ import {
   OpcionTemporada,
 } from '../../../Core/Constants/Constantes';
 import { Opcion } from '../../../Models/Desplegable/Opcion';
+import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-P007Minimas',
   standalone: true,
   imports: [
     CommonModule,
-    Nav_Bar_ENComponent,
+    Final_Nav_BarComponent,
     HeaderComponent,
     Table_MinimasComponent,
   ],
@@ -29,7 +32,15 @@ import { Opcion } from '../../../Models/Desplegable/Opcion';
 })
 export class P007MinimasComponent implements OnInit {
   minimalist: P007Minima[] = [];
-  constructor(private service: P007Service, private router: Router) {}
+  authState$: Observable<AuthState>;
+  constructor(
+    private service: P007Service,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
+
   ngOnInit() {
     this.Get_Minimas();
   }

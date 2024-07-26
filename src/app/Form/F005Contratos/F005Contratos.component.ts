@@ -44,11 +44,11 @@ export class F005ContratosComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.contratoForm = this.fb.group({
-      cuotaAsociada: ['', [Validators.required]],
-      socioAsociado: ['', [Validators.required]],
-      fechaVencimiento: ['', [Validators.required]],
-      fechaInicio: ['', [Validators.required]],
-      estado: ['', [Validators.required]],
+      cuotaAsociada: [null, [Validators.required]],
+      socioAsociado: [null, [Validators.required]],
+      fechaVencimiento: [null, [Validators.required]],
+      fechaInicio: [null, [Validators.required]],
+      estado: [null, [Validators.required]],
     });
   }
 
@@ -90,6 +90,7 @@ export class F005ContratosComponent implements OnInit {
         (response) => {
           console.log('Respuesta del servidor:', response);
           // Haz lo que necesites con la respuesta del servidor
+          this.router.navigate(['/contratos']);
         },
         (error) => {
           console.error('Error al llamar al endpoint:', error);
@@ -97,23 +98,24 @@ export class F005ContratosComponent implements OnInit {
         }
       );
     }
-    this.router.navigate(['/contratos']);
   }
 
   Add_Contrato() {
-    let createF010Dto = new F010Create_ContratoDto();
-
-    createF010Dto.Estado = this.contratoForm.value.estado;
-    createF010Dto.FechaInicio = this.contratoForm.value.fechaInicio;
-    createF010Dto.FechaVencimiento = this.contratoForm.value.fechaVencimiento;
-    createF010Dto.socio = this.contratoForm.value.socio;
-    createF010Dto.tipoCuota = this.contratoForm.value.tipoCuota;
+    let createF010Dto: F010Create_ContratoDto = {
+      Estado: this.contratoForm.value.estado,
+      FechaInicio: this.contratoForm.value.fechaInicio,
+      FechaVencimiento: this.contratoForm.value.fechaVencimiento,
+      IDSocio: this.contratoForm.value.socioAsociado,
+      IDCuotasPosibles: this.contratoForm.value.cuotaAsociada,
+    };
 
     console.log(createF010Dto);
+
     this.f010Service.Create_Contrato(createF010Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
         // Haz lo que necesites con la respuesta del servidor
+        this.router.navigate(['/contratos']);
       },
 
       (error) => {
@@ -121,7 +123,6 @@ export class F005ContratosComponent implements OnInit {
         // Maneja el error según tus necesidades
       }
     );
-    this.router.navigate(['/contratos']);
   }
 
   private findSocios() {
