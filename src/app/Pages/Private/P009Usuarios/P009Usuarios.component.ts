@@ -54,12 +54,25 @@ export class P009UsuariosComponent implements OnInit {
     this.authState$ = this.authService.authState$;
   }
   ngOnInit() {
-    this.Get_UsersActivated();
     this.authState$.subscribe({
       next: (data) => {
         this.esJunta = data.user?.juntaDirectiva;
+        if (this.esJunta) this.Get_UsersActivated();
+        else if (data.user?.idUsuario !== undefined) {
+          this.findById(data.user.idUsuario);
+        } else {
+          console.error('idUsuario es undefined');
+        }
       },
     });
+  }
+  findById(id: number) {
+    console.log(id);
+    this.service.FindById(id).subscribe((data: P009Usuario) => {
+      this.memberlist = [data];
+    });
+    this.usuariosActivos = true;
+    this.usuariosTabla = true;
   }
 
   Get_UsersActivated() {

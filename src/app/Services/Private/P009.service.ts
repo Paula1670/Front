@@ -28,6 +28,11 @@ export class P009Service {
 
     return this.http.get<P009Usuario[]>(apiUrl);
   }
+  FindById(id: number) {
+    const apiUrl: string = environment.UrlBackend + '/users/findById/' + id;
+
+    return this.http.get<P009Usuario>(apiUrl);
+  }
 
   Get_UsersInactivated() {
     const apiUrl: string =

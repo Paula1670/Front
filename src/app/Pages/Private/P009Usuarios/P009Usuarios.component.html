@@ -1,7 +1,7 @@
 <app-Header [title]="'Usuarios'"></app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
 <br /><br /><br /><br />
-@if((authState$ | async) ;as authState){ @if(authState.user?.juntaDirectiva){
+@if((authState$ | async) ;as authState){ @if(authState.user?.juntaDirectiva ){
 <div class="centrar">
   <button class="addition" (click)="Get_Socios()">Visualizar Socios</button>
   <button class="addition" (click)="Get_Entrenadores()">
@@ -10,12 +10,16 @@
   <button class="addition" (click)="Get_Nadadores()">
     Visualizar Nadadores
   </button>
+  @if(authState.user?.miembroPuesto=="Presidente" ||
+  authState.user?.miembroPuesto=="Vicepresidente" ){
 
   <button class="addition" (click)="abrirConfirmacion()">
     Actualizar Categorias
   </button>
+  }
 </div>
-@if(mostrarConfirmacion){
+} @if(authState.user?.miembroPuesto=="Presidente" ||
+authState.user?.miembroPuesto=="Vicepresidente" ){ @if(mostrarConfirmacion){
 <div>
   <div class="textoConfirmacion">
     <p>
@@ -23,13 +27,14 @@
       habrá marcha atrás
     </p>
   </div>
+
   <div class="botonesConfirmacion">
     <button class="Aceptar" (click)="actualizarAllCategorias()">Aceptar</button>
 
     <button class="Cancelar" (click)="cancelarActualizacion()">Cancelar</button>
   </div>
 </div>
-}
+} }
 <br /><br /><br /><br />
 @if(usuariosTabla){
 <app-Table
@@ -47,7 +52,7 @@
 }
 
 <br /><br />
-
+@if(authState.user?.juntaDirectiva ){
 <button class="addition" (click)="gotoFormulario()">Agregar Usuario</button>
 <button class="addition" (click)="Get_UsersActivated()">
   Visualizar Todos los Usuarios Activos
@@ -57,7 +62,5 @@
   Visualizar Todos los Usuarios Inactivos
 </button>
 <br /><br />
-} @if(authState.user?.socio){
-<p>SOCIO</p>
-} } <br /><br /><br /><br /><br /><br />
+} }<br /><br /><br /><br /><br /><br />
 <app-Footer></app-Footer>
