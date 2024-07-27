@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { P009Service } from '../../../Services/Private/P009.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Table_Socios',
@@ -14,9 +16,17 @@ import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
 export class Table_SociosComponent implements OnInit {
   @Input({ required: true })
   sociolist: P009Socio[] = [];
+  authState$: Observable<AuthState>;
+
   //member: P009Usuario;
 
-  constructor(private router: Router, private service: P009Service) {}
+  constructor(
+    private router: Router,
+    private service: P009Service,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
   editarMiembro(id: number) {

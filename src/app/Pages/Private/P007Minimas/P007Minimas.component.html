@@ -27,7 +27,9 @@
       Visualizar minimas segun la categoria
     </button>
 
-    @if(authState.user?.juntaDirectiva){
+    @if(authState.user?.miembroPuesto=="Presidente" ||
+    authState.user?.miembroPuesto=="Vicepresidente" ){
+
     <button class="addition" (click)="gotoFormulario()">Agregar Minima</button>
     }}
   </div>

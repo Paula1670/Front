@@ -1,4 +1,5 @@
 <table>
+  @if((authState$ | async) ;as authState){
   <thead>
     <tr>
       <th>Nombre</th>
@@ -22,6 +23,9 @@
     <td>{{ P010Contratos.Precio }}</td>
     <td>{{ P010Contratos.Estado }}</td>
     <td>
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <button
         class="addition"
         (click)="Delete_Contrato(P010Contratos.IDMiCuota)"
@@ -34,7 +38,8 @@
       >
         Editar
       </button>
+      }
     </td>
   </tr>
-  }
+  } }
 </table>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { P007Minima } from '../../../Models/Private/DtosP007/P007Get_MinimasDto';
 import { Router } from '@angular/router';
 import { P007Service } from '../../../Services/Private/P007.service';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Table_Minimas',
@@ -14,7 +16,15 @@ import { P007Service } from '../../../Services/Private/P007.service';
 export class Table_MinimasComponent implements OnInit {
   @Input({ required: true })
   minimalist: P007Minima[] = [];
-  constructor(private router: Router, private service: P007Service) {}
+  authState$: Observable<AuthState>;
+
+  constructor(
+    private router: Router,
+    private service: P007Service,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
 

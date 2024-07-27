@@ -1,5 +1,7 @@
 <app-Header [title]="'Tipos de Cuotas'"></app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
+@if((authState$ | async) ;as authState){
+
 <body>
   <table class="Cuotas">
     <tr>
@@ -12,6 +14,8 @@
         <!-- Aquí irá el contenido de cada fila -->
         <td>{{ cuota.Nombre }}</td>
         <td>{{ cuota.Precio }}</td>
+        @if(authState.user?.miembroPuesto=="Presidente" ||
+        authState.user?.miembroPuesto=="Vicepresidente" ){
         <td>
           <button class="addition" (click)="Delete_Cuota(cuota.IdCuota)">
             Eliminar
@@ -22,6 +26,7 @@
             Editar
           </button>
         </td>
+        }
       </tr>
     </ng-container>
   </table>
@@ -36,6 +41,8 @@
         <!-- Aquí irá el contenido de cada fila -->
         <td>{{ cuota.Nombre }}</td>
         <td>{{ cuota.Precio }}</td>
+        @if(authState.user?.miembroPuesto=="Presidente" ||
+        authState.user?.miembroPuesto=="Vicepresidente" ){
         <td>
           <button class="addition" (click)="Delete_Cuota(cuota.IdCuota)">
             Eliminar
@@ -46,6 +53,7 @@
             Editar
           </button>
         </td>
+        }
       </tr>
     </ng-container>
   </table>
@@ -55,7 +63,12 @@
     <p>Mes de agosto: Se abona aunque no se entrene</p>
   </div>
 </body>
+
 <br /><br />
+@if(authState.user?.miembroPuesto=="Presidente" ||
+authState.user?.miembroPuesto=="Vicepresidente" ){
 <button class="addition" (click)="goToFormulario()">Agregar Cuota</button>
+}
 <br /><br /><br /><br />
+}
 <app-Footer></app-Footer>

@@ -7,6 +7,8 @@ import { P005GetDocumentacion } from '../../../Models/Public/DtosP005/P005Get_Do
 import { P005Service } from '../../../Services/Public/P005.service';
 import { Router } from '@angular/router';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-P005Documentacion',
@@ -21,6 +23,8 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
   styleUrls: ['./P005Documentacion.component.scss'],
 })
 export class P005DocumentacionComponent implements OnInit {
+  authState$: Observable<AuthState>;
+
   /*Documentos = [
     {
       url: 'https://drive.google.com/file/d/1oRFAj-ORRSWQCFEgx-t2F4h-i4NuBAbF/view?usp=drive_link',
@@ -70,7 +74,13 @@ export class P005DocumentacionComponent implements OnInit {
   ];*/
   documentosList: P005GetDocumentacion[] = [];
 
-  constructor(private service: P005Service, private router: Router) {}
+  constructor(
+    private service: P005Service,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
   ngOnInit() {
     this.Get_Documentos();
   }

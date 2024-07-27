@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { P009Usuario } from '../../../Models/Private/DtosP009/P009Get_UsersDto';
 import { Router } from '@angular/router';
 import { P009Service } from '../../../Services/Private/P009.service';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Table',
@@ -16,8 +18,15 @@ export class TableComponent implements OnInit {
   memberlist: P009Usuario[] = [];
   @Input({ required: true })
   usuariosActivos: boolean = true;
+  authState$: Observable<AuthState>;
 
-  constructor(private router: Router, private service: P009Service) {}
+  constructor(
+    private router: Router,
+    private service: P009Service,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
   editarMiembro(id: number) {

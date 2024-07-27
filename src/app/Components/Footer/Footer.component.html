@@ -8,7 +8,8 @@
 
       <li>
         {{ contacto.nombre }} : {{ contacto.dato }}
-        @if(authState.user?.juntaDirectiva){
+        @if(authState.user?.miembroPuesto=="Presidente" ||
+        authState.user?.miembroPuesto=="Vicepresidente" ){
         <img
           src="assets/images/white-trash.png"
           alt="Trash"
@@ -26,7 +27,8 @@
 
       }
     </ul>
-    @if(authState.user?.juntaDirectiva){
+    @if(authState.user?.miembroPuesto=="Presidente" ||
+    authState.user?.miembroPuesto=="Vicepresidente" ){
     <a (click)="gotoFormulario()">
       <img src="assets/images/add.png" alt="Pencil" class="icon pencil-icon" />
     </a>

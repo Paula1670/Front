@@ -52,8 +52,10 @@ authState.user?.miembroPuesto=="Vicepresidente" ){ @if(mostrarConfirmacion){
 }
 
 <br /><br />
-@if(authState.user?.juntaDirectiva ){
+@if(authState.user?.miembroPuesto=="Presidente" ||
+authState.user?.miembroPuesto=="Vicepresidente" ){
 <button class="addition" (click)="gotoFormulario()">Agregar Usuario</button>
+} @if(authState.user?.juntaDirectiva ){
 <button class="addition" (click)="Get_UsersActivated()">
   Visualizar Todos los Usuarios Activos
 </button>

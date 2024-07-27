@@ -1,4 +1,6 @@
 <table>
+  @if((authState$ | async) ;as authState){
+
   <tr>
     <!--<th>Género</th>
     <th>Categoria</th>-->
@@ -27,14 +29,18 @@
       {{ P007Minima.TiempoMinimo }}
     </td>
     <td>
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <button class="addition" (click)="Delete_Minima(P007Minima.IDMinima)">
         Eliminar
       </button>
       <button class="addition" (click)="editarMinima(P007Minima.IDMinima)">
         Editar
       </button>
+      }
     </td>
   </tr>
   <!--td columna y tr fila-->
-  }
+  }}
 </table>

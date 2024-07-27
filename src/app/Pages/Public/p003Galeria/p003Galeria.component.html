@@ -1,5 +1,7 @@
 <app-Header [title]="'Galería'"></app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
+@if((authState$ | async) ;as authState){
+
 <body>
   <img class="imagenprincipal" src="assets/images/foto.jpg" />
   <p><br /><br /><br /></p>
@@ -12,12 +14,16 @@
     @for( imagen of Competiciones; track imagen.idGaleria){
 
     <div>
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <img
         src="assets/images/trash.png"
         alt="Trash"
         class="icon trash-icon"
         (click)="deleteGalery(imagen.idGaleria)"
       />
+      }
       <br />
       <a [href]="imagen.url">
         <img class="imagen" [src]="imagen.imagenBase64" alt="Imagen" />
@@ -35,4 +41,5 @@ Borrar Galeria
 </button>-->
   <p><br /><br /></p>
 </body>
+}
 <app-Footer></app-Footer>

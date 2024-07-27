@@ -1,4 +1,6 @@
 <table class="">
+  @if((authState$ | async) ;as authState){
+
   <thead>
     <tr>
       <th>ID</th>
@@ -31,14 +33,18 @@
     </td>
 
     <td>
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <button class="addition" (click)="Delete_User(P009Nadador.IDUsuario)">
         Eliminar
       </button>
       <button class="addition" (click)="editarMiembro(P009Nadador.IDUsuario)">
         Editar
       </button>
+      }
     </td>
   </tr>
   <!--td columna y tr fila-->
-  }
+  }}
 </table>

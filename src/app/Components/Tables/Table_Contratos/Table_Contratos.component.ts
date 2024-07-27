@@ -3,6 +3,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { P010Service } from '../../../Services/Private/P010.service';
 import { P010ContratoDto } from '../../../Models/Private/DtosP010/P010Get_contratosDto';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Table_Contratos',
@@ -14,8 +16,15 @@ import { P010ContratoDto } from '../../../Models/Private/DtosP010/P010Get_contra
 export class Table_ContratosComponent implements OnInit {
   @Input({ required: true })
   contratolist: P010ContratoDto[] = [];
+  authState$: Observable<AuthState>;
 
-  constructor(private router: Router, private service: P010Service) {}
+  constructor(
+    private router: Router,
+    private service: P010Service,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
 

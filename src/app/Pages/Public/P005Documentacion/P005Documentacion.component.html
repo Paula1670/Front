@@ -1,5 +1,6 @@
 <app-Header [title]="'Documentacion'"> </app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
+@if((authState$ | async) ;as authState){
 
 <div class="Container">
   <img src="assets/images/Documentacion.jpg" />
@@ -19,6 +20,9 @@
       <a href="{{ docu.url }}" target="_blank" download
         >"{{ docu.nombreUrl }}"</a
       >
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <img
         src="assets/images/trash.png"
         alt="Trash"
@@ -31,6 +35,7 @@
         class="icon pencil-icon"
         (click)="editarDocumentacion(docu.idDocumentacion)"
       />
+      }
     </h3>
 
     } }
@@ -43,6 +48,9 @@
       <a href="{{ docu.url }}" target="_blank" download
         >"{{ docu.nombreUrl }}"</a
       >
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <img
         src="assets/images/trash.png"
         alt="Trash"
@@ -55,6 +63,7 @@
         class="icon pencil-icon"
         (click)="editarDocumentacion(docu.idDocumentacion)"
       />
+      }
     </h3>
 
     } }
@@ -67,6 +76,9 @@
       <a href="{{ docu.url }}" target="_blank" download
         >"{{ docu.nombreUrl }}"</a
       >
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <img
         src="assets/images/trash.png"
         alt="Trash"
@@ -79,6 +91,7 @@
         class="icon pencil-icon"
         (click)="editarDocumentacion(docu.idDocumentacion)"
       />
+      }
     </h3>
 
     } }
@@ -91,6 +104,9 @@
       <a href="{{ docu.url }}" target="_blank" download
         >"{{ docu.nombreUrl }}"</a
       >
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
       <img
         src="assets/images/trash.png"
         alt="Trash"
@@ -103,11 +119,17 @@
         class="icon pencil-icon"
         (click)="editarDocumentacion(docu.idDocumentacion)"
       />
+      }
     </h3>
 
     } }
   </div>
 </div>
+@if(authState.user?.miembroPuesto=="Presidente" ||
+authState.user?.miembroPuesto=="Vicepresidente" ){
+
 <button class="addition" (click)="gotoFormulario()">Agregar Documento</button>
+}
 <br /><br /><br />
+}
 <app-Footer></app-Footer>

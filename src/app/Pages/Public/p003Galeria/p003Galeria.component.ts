@@ -9,6 +9,8 @@ import { P12Service } from '../../../Services/Public/P12.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-p003Galeria',
@@ -25,12 +27,15 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
 export class P003GaleriaComponent implements OnInit {
   Competiciones: P012Galeria[] = [];
   imagenParaMostrar: any;
-
+  authState$: Observable<AuthState>;
   constructor(
     private service: P12Service,
     private router: Router,
-    private sanitizer: DomSanitizer
-  ) {}
+    private sanitizer: DomSanitizer,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {
     this.GetGalery();

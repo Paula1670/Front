@@ -7,6 +7,8 @@ import { P004Cuotas } from '../../../Models/Private/DtosP004/P004Get_CuotaDto';
 import { P004Service } from '../../../Services/Public/P004.service';
 import { Router } from '@angular/router';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-P004Cuotas_Posibles',
@@ -25,7 +27,15 @@ export class P004Cuotas_PosiblesComponent implements OnInit {
   @Input({ required: true })
   cuotaslist: P004Cuotas[] = [];
   idCuota?: number;
-  constructor(private service: P004Service, private router: Router) {}
+  authState$: Observable<AuthState>;
+
+  constructor(
+    private service: P004Service,
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {
     this.Get_Cuotas();

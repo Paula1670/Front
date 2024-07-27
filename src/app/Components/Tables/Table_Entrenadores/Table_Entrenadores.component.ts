@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { P009Service } from '../../../Services/Private/P009.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { P009Entrenador } from '../../../Models/Private/DtosP009/P009Get_EntrenadoresDto';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Table_Entrenadores',
@@ -14,9 +16,15 @@ import { P009Entrenador } from '../../../Models/Private/DtosP009/P009Get_Entrena
 export class Table_EntrenadoresComponent implements OnInit {
   @Input({ required: true })
   entrenadorlist: P009Entrenador[] = [];
-  //member: P009Usuario;
+  authState$: Observable<AuthState>;
 
-  constructor(private router: Router, private service: P009Service) {}
+  constructor(
+    private router: Router,
+    private service: P009Service,
+    private authService: AuthService
+  ) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
   editarMiembro(id: number) {
