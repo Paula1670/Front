@@ -1,11 +1,18 @@
 <app-Header [title]="'Contratos'"></app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
+@if((authState$ | async) ;as authState){
+
 <app-Table_Contratos [contratolist]="contratolist"></app-Table_Contratos>
 <br />
 <br />
+
+@if(authState.user?.miembroPuesto=="Presidente" ||
+authState.user?.miembroPuesto=="Vicepresidente" ){
 <a href="/add_edit_contratos" class="addition">Agregar Contrato</a>
+}
 <br />
 <br />
 <br />
 <br />
+}
 <footer></footer>

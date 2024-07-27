@@ -35,7 +35,11 @@
     </div>
     }
   </div>
+  @if(authState.user?.miembroPuesto=="Presidente" ||
+  authState.user?.miembroPuesto=="Vicepresidente" ){
+
   <button class="addition" (click)="gotoFormulario()">Agregar Galeria</button>
+  }
   <!--<button class="addition" (click)="deleteGalery()">
 Borrar Galeria
 </button>-->

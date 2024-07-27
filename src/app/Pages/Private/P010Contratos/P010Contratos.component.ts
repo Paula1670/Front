@@ -7,6 +7,8 @@ import { Table_ContratosComponent } from '../../../Components/Tables/Table_Contr
 import { P010ContratoDto } from '../../../Models/Private/DtosP010/P010Get_contratosDto';
 import { P010Service } from '../../../Services/Private/P010.service';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-P010Contratos',
@@ -23,8 +25,11 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
 })
 export class P010ContratosComponent implements OnInit {
   contratolist: P010ContratoDto[] = [];
+  authState$: Observable<AuthState>;
 
-  constructor(private service: P010Service) {}
+  constructor(private service: P010Service, private authService: AuthService) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {
     this.Get_Contratos();
