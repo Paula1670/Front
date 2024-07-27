@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment.development';
 
 interface LogInAuthResponseDto {
   token: string;
@@ -13,6 +13,13 @@ interface LogInAuthResponseDto {
   entrenador: boolean;
   nadador: boolean;
   socio: boolean;
+  miembroPuesto: PuestoEnum;
+}
+export enum PuestoEnum {
+  Presidente = 'Presidente',
+  Vicepresidente = 'Vicepresidente',
+  Secretario = 'Secretario',
+  Vocal = 'Vocal',
 }
 
 export interface AuthState {
@@ -86,6 +93,7 @@ export class AuthService {
     sessionStorage.setItem('entrenador', JSON.stringify(data.entrenador));
     sessionStorage.setItem('nadador', JSON.stringify(data.nadador));
     sessionStorage.setItem('socio', JSON.stringify(data.socio));
+    sessionStorage.setItem('miembroPuesto', JSON.stringify(data.miembroPuesto));
   }
 
   checkCookies(): boolean {
@@ -104,6 +112,9 @@ export class AuthService {
       entrenador: JSON.parse(sessionStorage.getItem('entrenador') || 'null'),
       nadador: JSON.parse(sessionStorage.getItem('nadador') || 'null'),
       socio: JSON.parse(sessionStorage.getItem('socio') || 'null'),
+      miembroPuesto: JSON.parse(
+        sessionStorage.getItem('miembroPuesto') || 'null'
+      ),
     };
 
     return user;

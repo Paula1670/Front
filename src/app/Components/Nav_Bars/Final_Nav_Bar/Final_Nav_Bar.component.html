@@ -10,13 +10,13 @@
     <li><a href="records">Récords</a></li>
     <!--Socios id y junta TODOS y presi y bipresi botones-->
 
-    @if(authState.user?.socio && authState.user?.juntaDirectiva){
+    @if(authState.user?.socio || authState.user?.juntaDirectiva){
     <li><a href="contratos">Contratos</a></li>
     <li><a href="users">Usuarios</a></li>
     }
 
     <!--Entrenador botones y nadador visualizar id-->
-    @if(authState.user?.entrenador && authState.user?.nadador){
+    @if(authState.user?.entrenador || authState.user?.nadador){
     <li><a href="logged">Ayudas</a></li>
     <li><a href="mis-nadadores">Mis Nadadores</a></li>
     <!--nadador byId-->

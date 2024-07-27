@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment.development';
 import { P006Get_TiemposDto } from '../../Models/Private/DtosP006/P006Get_TiemposDto';
 import { HttpClient } from '@angular/common/http';
 

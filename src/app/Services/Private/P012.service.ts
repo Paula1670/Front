@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment.development';
 import { P012Get_NadadoresDto } from '../../Models/Private/Dtosp012/P012Get_NadadoresDto';
 
 @Injectable({

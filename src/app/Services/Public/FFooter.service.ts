@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.prod';
+import { environment } from '../../../environments/environment.development';
 import { FUpdateFooterDto } from '../../Models/Public/DtosFFooter/FUpdate_Footer';
 import { FGetFooterDto } from '../../Models/Public/DtosFFooter/FGet_Footer';
 
