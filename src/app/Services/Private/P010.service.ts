@@ -21,4 +21,18 @@ export class P010Service {
 
     return this.http.get<P010ContratoDto>(apiUrl);
   }
+
+  /* Get_ContratosBySocio(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P010/Get_ContratosBySocio' + id;
+
+    return this.http.get<P010ContratoDto[]>(apiUrl);
+  }*/
+
+  Get_ContratosByUser(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P010/Get_ContratosByUsuario/' + id;
+
+    return this.http.get<P010ContratoDto[]>(apiUrl);
+  }
 }

@@ -26,18 +26,41 @@ import { Observable } from 'rxjs';
 export class P010ContratosComponent implements OnInit {
   contratolist: P010ContratoDto[] = [];
   authState$: Observable<AuthState>;
-
+  esJunta?: boolean;
   constructor(private service: P010Service, private authService: AuthService) {
     this.authState$ = this.authService.authState$;
   }
 
   ngOnInit() {
-    this.Get_Contratos();
+    this.authState$.subscribe({
+      next: (data) => {
+        this.esJunta = data.user?.juntaDirectiva;
+        if (this.esJunta) this.Get_Contratos();
+        else if (data.user?.idUsuario !== undefined) {
+          this.Get_ContratosByUser(data.user.idUsuario);
+        } else {
+          console.error('idUsuario es undefined');
+        }
+      },
+    });
   }
 
   Get_Contratos() {
     this.service.Get_Contratos().subscribe((data: any) => {
       this.contratolist = data;
     });
+  }
+
+  /* Get_ContratosBySocio(id:number) {
+    this.service.Get_ContratosBySocio(id).subscribe((data: any) => {
+      this.contratolist = data;
+    });
+  }*/
+
+  Get_ContratosByUser(id: number) {
+    this.service.Get_ContratosByUser(id).subscribe((data: any) => {
+      this.contratolist = data;
+    });
+    console.log(this.contratolist);
   }
 }
