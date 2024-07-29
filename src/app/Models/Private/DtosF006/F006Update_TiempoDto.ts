@@ -1,3 +1,5 @@
+import { TemporadaEnum } from '../../../Core/Constants/Enums/TemporadaEnum';
+
 export class F006Update_TiempoDto {
   IDNadador?: number;
   Tiempo?: string;
@@ -7,10 +9,6 @@ export class F006Update_TiempoDto {
   Categoria?: CategoriaEnum;
   Estilo?: EstiloEnum;
   constructor() {}
-}
-export enum TemporadaEnum {
-  Invierno = 'invierno',
-  Verano = 'verano',
 }
 
 export enum PruebaEnum {

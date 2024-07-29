@@ -3,14 +3,14 @@ export class F010Create_ContratoDto {
   FechaVencimiento: Date;
   Estado: string;
 
-  IDCuotasPosibles: number;
-  IDSocio: number;
+  CuotasPosibles: number;
+  Socio: number;
   constructor() {
     this.FechaInicio = new Date('2023-01-01');
     this.FechaVencimiento = new Date('2023-12-31');
     this.Estado = 'Vigente';
 
-    this.IDSocio = 1;
-    this.IDCuotasPosibles = 1;
+    this.Socio = 1;
+    this.CuotasPosibles = 1;
   }
 }

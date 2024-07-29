@@ -3,7 +3,10 @@ import { HeaderComponent } from '../../Components/Header/Header.component';
 import { CommonModule } from '@angular/common';
 import { F006Service } from '../../Services/Private/F006.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { F006Update_TiempoDto } from '../../Models/Private/DtosF006/F006Update_TiempoDto';
+import {
+  CategoriaEnum,
+  F006Update_TiempoDto,
+} from '../../Models/Private/DtosF006/F006Update_TiempoDto';
 import {
   AbstractControl,
   FormBuilder,
@@ -20,6 +23,9 @@ import {
   OpcionPrueba,
   OpcionTemporada,
 } from '../../Core/Constants/Constantes';
+import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_NadadoresDto';
+import { F009Service } from '../../Services/Private/F009.service';
+import { TemporadaEnum } from '../../Core/Constants/Enums/TemporadaEnum';
 
 @Component({
   selector: 'app-F006Tiempo',
@@ -33,6 +39,7 @@ export class F006TiempoComponent implements OnInit {
   editMode?: boolean;
   idTiempo?: number;
 
+  opcionNadador: Opcion[] = [];
   opcionEstilo: Opcion[] = OpcionEstilo;
   opcionPrueba: Opcion[] = OpcionPrueba;
   opcionPiscina: Opcion[] = OpcionPiscina;
@@ -43,7 +50,7 @@ export class F006TiempoComponent implements OnInit {
     private f006Service: F006Service,
     private router: Router,
     private fb: FormBuilder,
-
+    private f009Service: F009Service,
     private route: ActivatedRoute
   ) {
     this.tiempoForm = this.fb.group({
@@ -51,7 +58,12 @@ export class F006TiempoComponent implements OnInit {
       prueba: [null, [Validators.required]],
       piscina: [null, [Validators.required]],
       estilo: [null, [Validators.required]],
+      nadador: [null, [Validators.required]],
+      temporada: [null, [Validators.required]],
+      categoria: [null, [Validators.required]],
+      FechaMarcaNadador: [null, [Validators.required]],
     });
+    this.findNadadores();
   }
 
   ngOnInit(): void {
@@ -82,7 +94,7 @@ export class F006TiempoComponent implements OnInit {
   Update_Tiempo(id: number | undefined) {
     const updateF006Dto: F006Update_TiempoDto = {
       Tiempo: this.tiempoForm.value.tiempo,
-      Temporada: this.tiempoForm.value.temporada,
+      Temporada: TemporadaEnum.Invierno,
       Prueba: this.tiempoForm.value.prueba,
       Piscina: this.tiempoForm.value.piscina,
       Categoria: this.tiempoForm.value.categoria,
@@ -93,7 +105,7 @@ export class F006TiempoComponent implements OnInit {
       this.f006Service.Update_Tiempo(id, updateF006Dto).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          // Haz lo que necesites con la respuesta del servidor
+          this.router.navigate(['tiempos']);
         },
         (error) => {
           console.error('Error al llamar al endpoint:', error);
@@ -104,22 +116,39 @@ export class F006TiempoComponent implements OnInit {
   }
 
   Add_Tiempo() {
-    let createF006Dto = new F006CreateTiempoDto();
-
-    createF006Dto.Estilo = this.tiempoForm.value.estilo;
-    createF006Dto.Prueba = this.tiempoForm.value.prueba;
-    createF006Dto.Piscina = this.tiempoForm.value.piscina;
-    createF006Dto.Tiempo = this.tiempoForm.value.tiempo;
-
+    console.log('hola');
+    let createF006Dto: F006CreateTiempoDto = {
+      Estilo: this.tiempoForm.value.estilo,
+      Prueba: this.tiempoForm.value.prueba,
+      Piscina: this.tiempoForm.value.piscina,
+      Tiempo: this.tiempoForm.value.tiempo,
+      IDNadador: this.tiempoForm.value.nadador,
+      Temporada: TemporadaEnum.Invierno,
+      FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
+    };
+    console.log(createF006Dto);
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
-        // Haz lo que necesites con la respuesta del servidor
+        this.router.navigate(['tiempos']);
       },
       (error) => {
         console.error('Error al llamar al endpoint:', error);
         // Maneja el error según tus necesidades
       }
     );
+  }
+
+  private findNadadores() {
+    this.f009Service
+      .findNadadores()
+      .subscribe((data: F009GetNadadoresDto[]) => {
+        this.opcionNadador = data.map((nadador: F009GetNadadoresDto) => {
+          return {
+            valor: nadador.IDNadador,
+            etiqueta: nadador.nombreUsuario + ' ' + nadador.apellidoUsuario,
+          };
+        });
+      });
   }
 }

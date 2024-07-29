@@ -105,8 +105,8 @@ export class F005ContratosComponent implements OnInit {
       Estado: this.contratoForm.value.estado,
       FechaInicio: this.contratoForm.value.fechaInicio,
       FechaVencimiento: this.contratoForm.value.fechaVencimiento,
-      IDSocio: this.contratoForm.value.socioAsociado,
-      IDCuotasPosibles: this.contratoForm.value.cuotaAsociada,
+      Socio: this.contratoForm.value.socioAsociado,
+      CuotasPosibles: this.contratoForm.value.cuotaAsociada,
     };
 
     console.log(createF010Dto);

@@ -6,6 +6,7 @@ import { P006Tiempo } from '../../../Models/Private/DtosP006/P006Get_TiemposDto'
 import { Public006Service } from '../../../Services/Public/P006.service';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { P006Records } from '../../../Models/Private/DtosP006/P006Get_RecordsDTO';
 
 @Component({
   selector: 'app-P006Records',
@@ -22,7 +23,7 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
 })
 export class P006RecordsComponent implements OnInit {
   @Input({ required: true })
-  recordlist: P006Tiempo[] = [];
+  recordlist: P006Records[] = [];
   constructor(private service: Public006Service) {}
 
   ngOnInit() {

@@ -61,6 +61,5 @@ export class P010ContratosComponent implements OnInit {
     this.service.Get_ContratosByUser(id).subscribe((data: any) => {
       this.contratolist = data;
     });
-    console.log(this.contratolist);
   }
 }

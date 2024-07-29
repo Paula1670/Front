@@ -1,20 +1,20 @@
 import { TemporadaEnum } from '../../../Core/Constants/Enums/TemporadaEnum';
 
-export class P006Get_TiemposDto {
-  tiempolist: P006Tiempo[] = [];
+export class P006Get_RecordsDto {
+  tiempolist: P006Records[] = [];
 }
-export interface P006Tiempo {
+export interface P006Records {
   Tiempo: string;
   Temporada: TemporadaEnum;
   Prueba: PruebaEnum;
   Piscina: PiscinaEnum;
-  Categoria: CategoriaEnum;
+  NombreCategoria: CategoriaEnum;
   Estilo: EstiloEnum;
   CumpleMinima: boolean;
   IDCategoria: number;
   IDUsuario: number;
-  Nombre: string;
-  Apellido: string;
+  NombreUsuario: string;
+  ApellidoUsuario: string;
   IDTiempo: number;
   FechaMarcaNadador: Date;
 }

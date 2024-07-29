@@ -24,7 +24,7 @@ import { Observable } from 'rxjs';
 })
 export class P006TiemposComponent implements OnInit {
   timelist: Time[] = [];
-
+  esEntrenador?: boolean;
   authState$: Observable<AuthState>;
 
   constructor(
@@ -35,15 +35,32 @@ export class P006TiemposComponent implements OnInit {
     this.authState$ = this.authService.authState$;
   }
   ngOnInit() {
-    this.Get_Tiempos();
+    this.authState$.subscribe({
+      next: (data) => {
+        this.esEntrenador = data.user?.entrenador;
+        if (this.esEntrenador) this.Get_Tiempos();
+        else if (data.user?.idUsuario !== undefined) {
+          this.findAllByUserId(data.user.idUsuario);
+        } else {
+          console.error('idUsuario es undefined');
+        }
+      },
+    });
   }
 
   Get_Tiempos() {
     this.service.Get_Tiempos().subscribe((data: any) => {
       this.timelist = data;
+      console.log(data);
     });
   }
   gotoFormulario() {
     this.router.navigate(['/add_edit_tiempo']);
+  }
+
+  findAllByUserId(id: number) {
+    this.service.findAllByUserId(id).subscribe((data: any) => {
+      this.timelist = data;
+    });
   }
 }

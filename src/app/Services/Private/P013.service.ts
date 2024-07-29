@@ -17,7 +17,7 @@ export class P013Service {
 
   Find_Entrenador(id: number) {
     const apiUrl: string =
-      environment.UrlBackend + '/P013/Find_Entrenador' + id;
+      environment.UrlBackend + '/P013/Find_Entrenador/' + id;
 
     return this.http.get<P013Get_EntrenadoresDto>(apiUrl);
   }

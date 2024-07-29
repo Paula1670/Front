@@ -16,10 +16,10 @@
       <th></th>
     </tr>
   </thead>
-  @for(record of recordlist;track record.IDTiempos){
+  @for(record of recordlist;track record.IDTiempo){
   <tr>
     <td>{{ record.NombreCategoria }}</td>
-    <td>{{ record.NombreUsuario }} -{{ record.ApellidoUsuario }}</td>
+    <td>{{ record.NombreUsuario }} {{ record.ApellidoUsuario }}</td>
     <td>
       {{ record.Temporada }}
     </td>

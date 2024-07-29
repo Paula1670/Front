@@ -7,6 +7,7 @@ import { F009GetCuotasDto } from '../../Models/Private/DtosF009/F009Get_CuotasDt
 import { F009GetSociosDto } from '../../Models/Private/DtosF009/F009Get_SociosDto';
 import { P009Usuario } from '../../Models/Private/DtosP009/P009Get_UsersDto';
 import { F009Get_EntrenadoresDto } from '../../Models/Private/DtosF009/F009Get_EntrenadoresDto';
+import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_NadadoresDto';
 
 @Injectable({
   providedIn: 'root',
@@ -52,5 +53,11 @@ export class F009Service {
     const apiUrl: string = environment.UrlBackend + '/F009/findEntrenadores';
 
     return this.http.get<F009Get_EntrenadoresDto[]>(apiUrl);
+  }
+
+  findNadadores() {
+    const apiUrl: string = environment.UrlBackend + '/F009/findNadadores';
+
+    return this.http.get<F009GetNadadoresDto[]>(apiUrl);
   }
 }

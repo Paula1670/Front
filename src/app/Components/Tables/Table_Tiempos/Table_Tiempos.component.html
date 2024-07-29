@@ -4,6 +4,9 @@
     <!--<th>Género</th>
     <th>Categoria</th>-->
     <th>Id</th>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Categoria</th>
     <th>Piscina</th>
     <th>Estilo</th>
     <th>Prueba</th>
@@ -14,7 +17,15 @@
   @for(P006Tiempo of timelist;track P006Tiempo.IDTiempos ){
   <tr>
     <td>{{ P006Tiempo.IDTiempos }}</td>
-
+    <td>
+      {{ P006Tiempo.Nombre }}
+    </td>
+    <td>
+      {{ P006Tiempo.Apellido }}
+    </td>
+    <td>
+      {{ P006Tiempo.Categoria }}
+    </td>
     <td>{{ P006Tiempo.Piscina }}</td>
     <td>{{ P006Tiempo.Estilo }}</td>
     <td>{{ P006Tiempo.Prueba }}</td>

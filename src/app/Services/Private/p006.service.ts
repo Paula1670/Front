@@ -20,4 +20,11 @@ export class P006Service {
 
     return this.http.get<P006Get_TiemposDto>(apiUrl);
   }
+
+  findAllByUserId(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P006/findAllByUserId/' + id;
+
+    return this.http.get<P006Get_TiemposDto>(apiUrl);
+  }
 }
