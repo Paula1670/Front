@@ -6,7 +6,7 @@ export class F006Update_TiempoDto {
   Temporada?: TemporadaEnum;
   Prueba?: PruebaEnum;
   Piscina?: PiscinaEnum;
-  Categoria?: CategoriaEnum;
+  FechaMarcaNadador?: Date;
   Estilo?: EstiloEnum;
   constructor() {}
 }

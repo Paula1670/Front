@@ -17,7 +17,7 @@ export class P006Service {
 
   Get_Tiempos() {
     const apiUrl: string = environment.UrlBackend + '/P006/Get_Tiempos';
-
+    console.log(apiUrl);
     return this.http.get<P006Get_TiemposDto>(apiUrl);
   }
 

@@ -4,6 +4,7 @@
   <form class="time-form" [formGroup]="tiempoForm">
     <h2>Ingresar Tiempo de Nado</h2>
 
+    @if(editMode==false){
     <label for="nadador">Para que nadador?:</label>
     <select formControlName="nadador" id="nadador">
       @for( opcion of opcionNadador; track opcion.valor){
@@ -12,7 +13,7 @@
       </option>
       }
     </select>
-
+    }
     <label for="estilo">Estilo:</label>
     <select formControlName="estilo" id="estilo">
       @for( opcion of opcionEstilo; track opcion.valor){

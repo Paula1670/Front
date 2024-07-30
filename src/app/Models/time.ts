@@ -1,5 +1,5 @@
 export class Time {
-  IDTiempos: number;
+  IDTiempo: number;
   Temporada: string;
   Piscina: string;
   Prueba: string;
@@ -10,7 +10,7 @@ export class Time {
   Categoria: string;
 
   constructor() {
-    this.IDTiempos = 1;
+    this.IDTiempo = 1;
     this.Estilo = 'braza';
     this.Temporada = 'inv';
     this.Piscina = '50m';

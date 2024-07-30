@@ -30,7 +30,8 @@
     </td>
     <td>
       @if(authState.user?.miembroPuesto=="Presidente" ||
-      authState.user?.miembroPuesto=="Vicepresidente" ){
+      authState.user?.miembroPuesto=="Vicepresidente" ||
+      authState.user?.entrenador){
 
       <button class="addition" (click)="Delete_Minima(P007Minima.IDMinima)">
         Eliminar

@@ -50,6 +50,7 @@
     <label for="telefono">Teléfono:</label>
     <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
 
+    @if(!editMode){
     <label for="crearSocio">Socio</label>
     <input
       type="checkbox"
@@ -70,8 +71,7 @@
       id="crearEntrenador"
       formControlName="crearEntrenador"
     /><br /><br />
-
-    @if(userForm.value.crearSocio){
+    } @if(userForm.value.crearSocio){
 
     <label for="idCuota">Que cuota desea:</label>
     <select formControlName="idCuota" id="idCuota">

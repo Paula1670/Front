@@ -60,7 +60,6 @@ export class F006TiempoComponent implements OnInit {
       estilo: [null, [Validators.required]],
       nadador: [null, [Validators.required]],
       temporada: [null, [Validators.required]],
-      categoria: [null, [Validators.required]],
       FechaMarcaNadador: [null, [Validators.required]],
     });
     this.findNadadores();
@@ -88,6 +87,11 @@ export class F006TiempoComponent implements OnInit {
       this.tiempoForm.get('piscina')?.patchValue(data.Piscina);
 
       this.tiempoForm.get('estilo')?.patchValue(data.Estilo);
+
+      this.tiempoForm
+        .get('FechaMarcaNadador')
+        ?.patchValue(data.FechaMarcaNadador);
+      console.log(this.tiempoForm.value.FechaMarcaNadador);
     });
   }
 
@@ -97,7 +101,7 @@ export class F006TiempoComponent implements OnInit {
       Temporada: TemporadaEnum.Invierno,
       Prueba: this.tiempoForm.value.prueba,
       Piscina: this.tiempoForm.value.piscina,
-      Categoria: this.tiempoForm.value.categoria,
+      FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
       Estilo: this.tiempoForm.value.estilo,
     };
     console.log(updateF006Dto);
@@ -105,7 +109,7 @@ export class F006TiempoComponent implements OnInit {
       this.f006Service.Update_Tiempo(id, updateF006Dto).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          this.router.navigate(['tiempos']);
+          this.router.navigate(['/tiempos']);
         },
         (error) => {
           console.error('Error al llamar al endpoint:', error);
@@ -130,7 +134,7 @@ export class F006TiempoComponent implements OnInit {
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
-        this.router.navigate(['tiempos']);
+        this.router.navigate(['/tiempos']);
       },
       (error) => {
         console.error('Error al llamar al endpoint:', error);

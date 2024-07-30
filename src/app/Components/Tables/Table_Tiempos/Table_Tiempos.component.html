@@ -14,9 +14,9 @@
     <th>Tiempo</th>
     <th></th>
   </tr>
-  @for(P006Tiempo of timelist;track P006Tiempo.IDTiempos ){
+  @for(P006Tiempo of timelist;track P006Tiempo.IDTiempo ){
   <tr>
-    <td>{{ P006Tiempo.IDTiempos }}</td>
+    <td>{{ P006Tiempo.IDTiempo }}</td>
     <td>
       {{ P006Tiempo.Nombre }}
     </td>
@@ -35,12 +35,13 @@
 
     <td>
       @if(authState.user?.miembroPuesto=="Presidente" ||
-      authState.user?.miembroPuesto=="Vicepresidente" ){
+      authState.user?.miembroPuesto=="Vicepresidente" ||
+      authState.user?.entrenador){
 
-      <button class="addition" (click)="Delete_Tiempo(P006Tiempo.IDTiempos)">
+      <button class="addition" (click)="Delete_Tiempo(P006Tiempo.IDTiempo)">
         Eliminar
       </button>
-      <button class="addition" (click)="editarTiempo(P006Tiempo.IDTiempos)">
+      <button class="addition" (click)="editarTiempo(P006Tiempo.IDTiempo)">
         Editar
       </button>
       }
