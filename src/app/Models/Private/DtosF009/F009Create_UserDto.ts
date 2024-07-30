@@ -1,3 +1,5 @@
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+
 export class F009Create_UserDto {
   Nombre: string;
   Apellido: string;
@@ -31,8 +33,4 @@ export class F009Create_UserDto {
     this.especialidad = 'seco';
     this.idCuota = 1;
   }
-}
-export enum GeneroEnum {
-  Femenino = 'Femenino',
-  Masclino = 'Masculino',
 }

@@ -1,3 +1,5 @@
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+
 export interface P009Nadador {
   IDUsuario: number;
   Nombre: string;
@@ -9,9 +11,4 @@ export interface P009Nadador {
   FechaInscripcion: Date;
   Genero: GeneroEnum;
   NombreCategoria: string;
-}
-export enum GeneroEnum {
-  Femenino = 'fem',
-  Masclino = 'masc',
-  Otro = 'otro',
 }

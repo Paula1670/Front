@@ -1,3 +1,11 @@
+import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum copy 2';
+import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
+import { EstiloEnum } from '../../../Core/Constants/Enums/EstiloEnum copy 4';
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+import { PiscinaEnum } from '../../../Core/Constants/Enums/PiscinaEnum copy 3';
+import { PruebaEnum } from '../../../Core/Constants/Enums/PruebaEnum copy 5';
+import { TemporadaEnum } from '../../../Core/Constants/Enums/TemporadaEnum';
+
 export class F007Update_Minima {
   TiempoMinimo?: string;
   Temporada?: TemporadaEnum;
@@ -7,50 +15,4 @@ export class F007Update_Minima {
   Estilo?: EstiloEnum;
   Genero?: GeneroEnum;
   Campeonato?: CampeonatoEnum;
-}
-export enum GeneroEnum {
-  Femenino = 'fem',
-  Masclino = 'masc',
-}
-
-export enum CampeonatoEnum {
-  Regional = 'regional',
-  Nacional = 'nacional',
-  Continental = 'continental',
-  Mundial = 'mundial',
-  Olimpico = 'olimpico',
-}
-export enum TemporadaEnum {
-  Invierno = 'inv',
-  Verano = 'ver',
-}
-
-export enum PruebaEnum {
-  Metros50 = '50',
-  Metros100 = '100',
-  Metros200 = '200',
-  Metros400 = '400',
-  Metros800 = '800',
-  Metros1500 = '1500',
-}
-
-export enum PiscinaEnum {
-  Metros25 = '25m',
-  Metros50 = '50m',
-}
-
-export enum CategoriaEnum {
-  Prebenjamin = 'prebenjamin',
-  benjamin = 'benjamin',
-  Alevin = 'alevin',
-  Infantil = 'infantil',
-  Junior = 'junior',
-  Absoluto = 'absoluto',
-}
-
-export enum EstiloEnum {
-  Braza = 'braza',
-  Crol = 'crol',
-  Espalda = 'espalda',
-  Mariposa = 'mariposa',
 }

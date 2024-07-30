@@ -1,3 +1,5 @@
+import { CategoriaDocumentoEnum } from '../../../Core/Constants/Enums/CategoriaDocumentoEnum';
+
 export class P005GetDocumentacion {
   idDocumentacion: number;
   titulo: string;
@@ -11,10 +13,4 @@ export class P005GetDocumentacion {
     this.url = '';
     this.categoriaDocumento = CategoriaDocumentoEnum.Andalucia;
   }
-}
-export enum CategoriaDocumentoEnum {
-  Espana = 'esp',
-  Andalucia = 'and',
-  OtrosDocumentos = 'otros',
-  Estatutos = 'estatutos',
 }

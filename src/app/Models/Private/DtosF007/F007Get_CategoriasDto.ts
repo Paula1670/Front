@@ -1,3 +1,5 @@
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+
 export class F007GetCategoriasDto {
   IDCategoria: number;
   NombreCategoria: string;
@@ -12,9 +14,4 @@ export class F007GetCategoriasDto {
     this.AnoInicio = 2004;
     this.Genero = GeneroEnum.Femenino;
   }
-}
-
-export enum GeneroEnum {
-  Femenino = 'fem',
-  Masclino = 'masc',
 }

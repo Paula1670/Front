@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { PuestoEnum } from '../../Core/Constants/Enums/PuestoEnum';
 
 interface LogInAuthResponseDto {
   token: string;
@@ -14,12 +15,6 @@ interface LogInAuthResponseDto {
   nadador: boolean;
   socio: boolean;
   miembroPuesto: PuestoEnum;
-}
-export enum PuestoEnum {
-  Presidente = 'Presidente',
-  Vicepresidente = 'Vicepresidente',
-  Secretario = 'Secretario',
-  Vocal = 'Vocal',
 }
 
 export interface AuthState {

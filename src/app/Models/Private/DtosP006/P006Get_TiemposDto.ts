@@ -1,3 +1,7 @@
+import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
+import { EstiloEnum } from '../../../Core/Constants/Enums/EstiloEnum copy 4';
+import { PiscinaEnum } from '../../../Core/Constants/Enums/PiscinaEnum copy 3';
+import { PruebaEnum } from '../../../Core/Constants/Enums/PruebaEnum copy 5';
 import { TemporadaEnum } from '../../../Core/Constants/Enums/TemporadaEnum';
 
 export class P006Get_TiemposDto {
@@ -17,33 +21,4 @@ export interface P006Tiempo {
   Apellido: string;
   IDTiempo: number;
   FechaMarcaNadador: Date;
-}
-
-export enum PruebaEnum {
-  Metros50 = '50m',
-  Metros100 = '100m',
-  Metros200 = '200m',
-  Metros400 = '400m',
-  Metros800 = '800m',
-  Metros1500 = '1500m',
-}
-
-export enum PiscinaEnum {
-  Metros25 = '25m',
-  Metros50 = '50m',
-}
-
-export enum CategoriaEnum {
-  benjamin = 'benjamin',
-  Alevin = 'alevin',
-  Infantil = 'infantil',
-  Junior = 'junior',
-  Absoluto = 'absoluto',
-}
-
-export enum EstiloEnum {
-  Braza = 'braza',
-  Crol = 'crol',
-  Espalda = 'espalda',
-  Mariposa = 'mariposa',
 }
