@@ -11,7 +11,21 @@
 
 <h1>Tabla de Mínimas para la categoria {{ this.categoriaNombre }}</h1>
 
-<app-Table_Minimas [minimalist]="minimalist"></app-Table_Minimas>
+<h2>Campeonato Regional</h2>
+<app-Table_Minimas [minimalist]="regionalList"></app-Table_Minimas>
+<br /><br />
+<h2>Campeonato Nacional</h2>
+<app-Table_Minimas [minimalist]="nacionalList"></app-Table_Minimas>
+<br /><br />
+<h2>Campeonato Europeo</h2>
+<app-Table_Minimas [minimalist]="europeolist"></app-Table_Minimas>
+<br /><br />
+<h2>Campeonato Mundial</h2>
+<app-Table_Minimas [minimalist]="mundiallist"></app-Table_Minimas>
+<br /><br />
+<h2>Campeonato Olimpico</h2>
+<app-Table_Minimas [minimalist]="olimpicolist"></app-Table_Minimas>
+<br /><br />
 
 <body>
   <p><br /></p>
