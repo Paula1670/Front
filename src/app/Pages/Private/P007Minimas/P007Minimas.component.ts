@@ -8,7 +8,7 @@ import {
   P007Minima,
 } from '../../../Models/Private/DtosP007/P007Get_MinimasDto';
 import { P007Service } from '../../../Services/Private/P007.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   OpcionEstilo,
   OpcionGenero,
@@ -25,6 +25,14 @@ import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum cop
 import { P007GetGeneroCategoriaDto } from '../../../Models/Private/DtosP007/P007GetGeneroCategoriaDto';
 import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
 import { FiltrosMinimaDto } from '../../../Models/Private/DtosP007/filtros_minima.dto';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { F007Service } from '../../../Services/Private/F007.service';
+import { F007GetCategoriasDto } from '../../../Models/Private/DtosF007/F007Get_CategoriasDto';
 
 @Component({
   selector: 'app-P007Minimas',
@@ -34,6 +42,7 @@ import { FiltrosMinimaDto } from '../../../Models/Private/DtosP007/filtros_minim
     Final_Nav_BarComponent,
     HeaderComponent,
     Table_MinimasComponent,
+    ReactiveFormsModule,
   ],
   templateUrl: './P007Minimas.component.html',
   styleUrls: ['./P007Minimas.component.scss'],
@@ -52,12 +61,23 @@ export class P007MinimasComponent implements OnInit {
   genero?: GeneroEnum;
   categoriaNombre?: CategoriaEnum;
   categoria?: number;
+
+  minimaForm: FormGroup;
+  opcionGenero: Opcion[] = OpcionGenero;
+  opcionCategoria: Opcion[] = [];
   constructor(
     private service: P007Service,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private f007Service: F007Service
   ) {
     this.authState$ = this.authService.authState$;
+
+    this.minimaForm = this.fb.group({
+      categoria: [null, [Validators.required]],
+    });
   }
 
   ngOnInit() {
@@ -69,6 +89,7 @@ export class P007MinimasComponent implements OnInit {
         } else if (data.user?.idUsuario !== undefined) {
           this.GetGeneroCategoriaByIDUser(data.user?.idUsuario).subscribe(
             (data: P007GetGeneroCategoriaDto) => {
+              console.log(data.Genero);
               this.genero = data.Genero;
               this.categoria = data.IDCategoria;
               this.categoriaNombre = data.Categoria;
@@ -80,8 +101,10 @@ export class P007MinimasComponent implements OnInit {
         }
       },
     });
+    this.findCategorias();
   }
   GetMinimas() {
+    console.log(this.minimaForm.value);
     this.Get_MinimasEuropeas();
     this.Get_MinimasRegionales();
     this.Get_MinimasMundiales();
@@ -89,11 +112,14 @@ export class P007MinimasComponent implements OnInit {
     this.Get_MinimasOlimpicas();
   }
   Get_MinimasEuropeas() {
+    //Si es entrenador, que me coja el valor de genero del formulario, sino, el del idUser
     this.service
       .Get_MinimasByFilters({
         campeonato: CampeonatoEnum.Continental,
-        genero: this.genero,
-        categoria: this.categoria,
+        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+        categoria: this.esEntrenador
+          ? this.minimaForm.value.categoria
+          : this.categoria,
       })
       .subscribe((data: any) => {
         this.europeolist = data;
@@ -104,8 +130,10 @@ export class P007MinimasComponent implements OnInit {
     this.service
       .Get_MinimasByFilters({
         campeonato: CampeonatoEnum.Regional,
-        genero: this.genero,
-        categoria: this.categoria,
+        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+        categoria: this.esEntrenador
+          ? this.minimaForm.value.categoria
+          : this.categoria,
       })
       .subscribe((data: any) => {
         this.regionalList = data;
@@ -116,8 +144,10 @@ export class P007MinimasComponent implements OnInit {
     this.service
       .Get_MinimasByFilters({
         campeonato: CampeonatoEnum.Nacional,
-        genero: this.genero,
-        categoria: this.categoria,
+        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+        categoria: this.esEntrenador
+          ? this.minimaForm.value.categoria
+          : this.categoria,
       })
       .subscribe((data: any) => {
         this.nacionalList = data;
@@ -128,8 +158,10 @@ export class P007MinimasComponent implements OnInit {
     this.service
       .Get_MinimasByFilters({
         campeonato: CampeonatoEnum.Mundial,
-        genero: this.genero,
-        categoria: this.categoria,
+        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+        categoria: this.esEntrenador
+          ? this.minimaForm.value.categoria
+          : this.categoria,
       })
       .subscribe((data: any) => {
         this.mundiallist = data;
@@ -140,40 +172,38 @@ export class P007MinimasComponent implements OnInit {
     this.service
       .Get_MinimasByFilters({
         campeonato: CampeonatoEnum.Olimpico,
-        genero: this.genero,
-        categoria: this.categoria,
+        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+        categoria: this.esEntrenador
+          ? this.minimaForm.value.categoria
+          : this.categoria,
       })
       .subscribe((data: any) => {
         this.olimpicolist = data;
       });
   }
 
-  /*
-  Get_MinimasByAno() {
-    this.service.Get_MinimasByAno(2024).subscribe((data: any) => {
-      this.europeolist = data;
-    });
-  }
-
-  Get_MinimasByCategoria() {
-    this.service.Get_MinimasByCategoria(1).subscribe((data: any) => {
-      this.categoriaList = data;
-    });
-  }*/
-
   gotoFormulario() {
     this.router.navigate(['/add_edit_minima']);
   }
 
   Get_MinimasByFilters(filtros: FiltrosMinimaDto) {
-    this.service
-      .Get_MinimasByFilters(filtros)
-      .subscribe((data: P007Minima[]) => {
-        this.europeolist = data;
-      });
+    return this.service.Get_MinimasByFilters(filtros);
   }
 
   GetGeneroCategoriaByIDUser(id: number) {
     return this.service.GetGeneroCategoriaByIDUser(id);
+  }
+
+  private findCategorias() {
+    this.f007Service
+      .findCategorias()
+      .subscribe((data: F007GetCategoriasDto[]) => {
+        this.opcionCategoria = data.map((categoria: F007GetCategoriasDto) => {
+          return {
+            valor: categoria.IDCategoria,
+            etiqueta: categoria.NombreCategoria + ' - ' + categoria.Genero,
+          };
+        });
+      });
   }
 }

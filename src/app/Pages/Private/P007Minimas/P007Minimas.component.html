@@ -1,6 +1,6 @@
 <app-Header [title]="'Mínimas'"></app-Header>
 <app-Final_Nav_Bar></app-Final_Nav_Bar>
-
+@if((authState$ | async) ;as authState){
 <!--<label for="categoria">Categoria:</label>
 <select formControlName="categoria" id="categoria">
   @for( opcion of opcionPiscina; track opcion.valor){
@@ -8,7 +8,21 @@
     {{ opcion.etiqueta }}
   </option>
   }-->
-
+@if(authState.user?.entrenador){
+<form [formGroup]="minimaForm">
+  <label for="categoria">Categoria-Genero:</label>
+  <select formControlName="categoria" id="categoria">
+    @for( opcion of opcionCategoria; track opcion.valor){
+    <option [value]="opcion.valor">
+      {{ opcion.etiqueta }}
+    </option>
+    }
+  </select>
+</form>
+<br /><br /><br />
+<button class="addition" (click)="GetMinimas()">Buscar</button>
+}
+<br /><br /><br /><br />
 <h1>Tabla de Mínimas para la categoria {{ this.categoriaNombre }}</h1>
 
 <h2>Campeonato Regional</h2>
@@ -31,7 +45,6 @@
   <p><br /></p>
 
   <div class="centrarBotones">
-    @if((authState$ | async) ;as authState){
     <!--
     <button class="addition" (click)="Get_Minimas()">
       Visualizar todas las Minimas
@@ -49,6 +62,7 @@
     authState.user?.miembroPuesto=="Vicepresidente" ){
 
     <button class="addition" (click)="gotoFormulario()">Agregar Minima</button>
-    }}
+    }
   </div>
 </body>
+}

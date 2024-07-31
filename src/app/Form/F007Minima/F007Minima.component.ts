@@ -39,9 +39,10 @@ export class F007MinimaComponent implements OnInit {
   opcionPrueba: Opcion[] = OpcionPrueba;
   opcionPiscina: Opcion[] = OpcionPiscina;
   opcionGenero: Opcion[] = OpcionGenero;
+  opcionCategoria: Opcion[] = [];
   opcionTemporada: Opcion[] = OpcionTemporada;
   opcionCampeonato: Opcion[] = OpcionCampeonato;
-  opcionCategoria: Opcion[] = [];
+
   constructor(
     private f007Service: F007Service,
     private router: Router,
