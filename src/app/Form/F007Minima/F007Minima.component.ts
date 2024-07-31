@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../Components/Header/Header.component';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  F007Update_Minima,
-  PiscinaEnum,
-} from '../../Models/Private/DtosF007/F007Update_MinimaDto';
+import { F007Update_Minima } from '../../Models/Private/DtosF007/F007Update_MinimaDto';
 import { F007CreateMinimaDto } from '../../Models/Private/DtosF007/F007Create_MinimaDto';
 import {
   FormBuilder,

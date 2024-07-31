@@ -3,10 +3,7 @@ import { HeaderComponent } from '../../Components/Header/Header.component';
 import { CommonModule } from '@angular/common';
 import { F006Service } from '../../Services/Private/F006.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  CategoriaEnum,
-  F006Update_TiempoDto,
-} from '../../Models/Private/DtosF006/F006Update_TiempoDto';
+import { F006Update_TiempoDto } from '../../Models/Private/DtosF006/F006Update_TiempoDto';
 import {
   AbstractControl,
   FormBuilder,

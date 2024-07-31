@@ -1,19 +1,18 @@
 <table>
   @if((authState$ | async) ;as authState){
+  <!--@for(let categ of categoriaList;track categ.IDCategoria){-->
 
   <tr>
-    <!--<th>Género</th>
-    <th>Categoria</th>-->
     <th>Id</th>
     <th>Temporada</th>
     <th>Tipo de Prueba</th>
     <th>Estilo</th>
     <th>Piscina</th>
-    <th>Campeonato</th>
     <th>Tiempo</th>
     <th></th>
   </tr>
   @for(P007Minima of minimalist;track P007Minima.IDMinima ){
+
   <tr>
     <td>{{ P007Minima.IDMinima }}</td>
     <td>
@@ -22,9 +21,7 @@
     <td>{{ P007Minima.Piscina }}</td>
     <td>{{ P007Minima.Estilo }}</td>
     <td>{{ P007Minima.Prueba }}</td>
-    <td>
-      {{ P007Minima.Campeonato }}
-    </td>
+
     <td>
       {{ P007Minima.TiempoMinimo }}
     </td>
@@ -42,6 +39,6 @@
       }
     </td>
   </tr>
-  <!--td columna y tr fila-->
+
   }}
 </table>

@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { P007Service } from '../../../Services/Private/P007.service';
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
+import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
+import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum copy 2';
 
 @Component({
   selector: 'app-Table_Minimas',
@@ -17,6 +19,7 @@ export class Table_MinimasComponent implements OnInit {
   @Input({ required: true })
   minimalist: P007Minima[] = [];
   authState$: Observable<AuthState>;
+  categoriaList: CategoriaEnum[] = [];
 
   constructor(
     private router: Router,
@@ -33,6 +36,13 @@ export class Table_MinimasComponent implements OnInit {
       queryParams: { editMode: true, idMinima: id },
     });
   }
+
+  Get_MinimasByCategoria() {
+    this.service.Get_MinimasByCategoria(1).subscribe((data: any) => {
+      this.categoriaList = data;
+    });
+  }
+
   Delete_Minima(id: number) {
     if (id) {
       this.service.Delete_Minima(id).subscribe(

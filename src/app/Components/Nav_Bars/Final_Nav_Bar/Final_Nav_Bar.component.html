@@ -16,9 +16,11 @@
     }
 
     <!--Entrenador botones y nadador visualizar id-->
-    @if(authState.user?.entrenador || authState.user?.nadador){
-    <li><a href="logged">Ayudas</a></li>
+    @if(authState.user?.entrenador ){
+
     <li><a href="mis-nadadores">Mis Nadadores</a></li>
+    } @if(authState.user?.nadador|| authState.user?.entrenador){
+    <li><a href="logged">Ayudas</a></li>
     <!--nadador byId-->
     <li><a href="tiempos">Tiempos</a></li>
     <!--nadador byId y todas-->

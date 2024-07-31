@@ -9,12 +9,16 @@
   </option>
   }-->
 
+<h1>Tabla de Mínimas para la categoria {{ this.categoriaNombre }}</h1>
+
 <app-Table_Minimas [minimalist]="minimalist"></app-Table_Minimas>
+
 <body>
   <p><br /></p>
 
   <div class="centrarBotones">
     @if((authState$ | async) ;as authState){
+    <!--
     <button class="addition" (click)="Get_Minimas()">
       Visualizar todas las Minimas
     </button>
@@ -25,7 +29,7 @@
 
     <button class="addition" (click)="Get_MinimasByCategoria()">
       Visualizar minimas segun la categoria
-    </button>
+    </button>-->
 
     @if(authState.user?.miembroPuesto=="Presidente" ||
     authState.user?.miembroPuesto=="Vicepresidente" ){
