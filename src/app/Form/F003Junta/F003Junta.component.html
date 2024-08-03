@@ -1,0 +1,64 @@
+<app-Header [title]="'Agregar Nuevo Miembro De La Junta'"></app-Header>
+
+<body>
+  <h2>Agregar Nuevo Miembro De La Junta</h2>
+  <form [formGroup]="juntaForm">
+    <!--(ngSubmit)="onSubmit()"-->
+    @if(!editMode){
+    <label for="usuario">Usuario: </label>
+    <select formControlName="usuario" id="usuario">
+      @for( opcion of opcionUsuario; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    <br />
+    <br />
+    <br />
+    <label>Fecha de Inicio Cargo*:</label><br />
+    <input
+      type="date"
+      id="fechaInicioCargo"
+      formControlName="fechaInicioCargo"
+    /><br /><br />
+    }
+
+    <label>Fecha de Termino Cargo*:</label><br />
+    <input
+      type="date"
+      id="fechaTerminoCargo"
+      formControlName="fechaTerminoCargo"
+    /><br /><br />
+
+    <label for="puesto">Puesto*:</label>
+    <select formControlName="puesto" id="puesto">
+      @for( opcion of opcionPuesto; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    @if(!editMode){
+
+    <div>
+      {{ this.juntaForm.invalid }}
+      <button
+        [disabled]="this.juntaForm.invalid"
+        class="addition"
+        (click)="Add_MiembroJunta()"
+      >
+        Agregar Miembro de la Junta
+      </button>
+    </div>
+    } @else { @if(idUser){
+    <div>
+      <button class="addition" (click)="Update_MiembroJunta(idUser)">
+        Editar Miembro de la Junta
+      </button>
+    </div>
+    }}
+    <!--<a href="/users" class="addition">Agregar Miembro</a>-->
+    <!--<input (click)="Add_Member()" type="submit" value="Agregar Miembro" />-->
+  </form>
+</body>

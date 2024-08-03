@@ -5,7 +5,7 @@
     <h2>Ingresar Tiempo de Nado</h2>
 
     @if(editMode==false){
-    <label for="nadador">Para que nadador?:</label>
+    <label for="nadador">Para que nadador?*:</label>
     <select formControlName="nadador" id="nadador">
       @for( opcion of opcionNadador; track opcion.valor){
       <option [value]="opcion.valor">
@@ -14,7 +14,7 @@
       }
     </select>
     }
-    <label for="estilo">Estilo:</label>
+    <label for="estilo">Estilo*:</label>
     <select formControlName="estilo" id="estilo">
       @for( opcion of opcionEstilo; track opcion.valor){
       <option [value]="opcion.valor">
@@ -23,7 +23,7 @@
       }
     </select>
 
-    <label for="prueba">Prueba:</label>
+    <label for="prueba">Prueba*:</label>
     <select formControlName="prueba" id="prueba">
       @for( opcion of opcionPrueba; track opcion.valor){
       <option [value]="opcion.valor">
@@ -32,7 +32,7 @@
       }
     </select>
 
-    <label for="piscina">Piscina:</label>
+    <label for="piscina">Piscina*:</label>
     <select formControlName="piscina" id="piscina">
       @for( opcion of opcionPiscina; track opcion.valor){
       <option [value]="opcion.valor">
@@ -41,14 +41,14 @@
       }
     </select>
 
-    <label>Fecha de la Marca:</label>
+    <label>Fecha de la Marca*:</label>
     <input
       type="date"
       id="FechaMarcaNadador"
       formControlName="FechaMarcaNadador"
     />
 
-    <label for="tiempo">Tiempo:</label>
+    <label for="tiempo">Tiempo*:</label>
     <input type="text" formControlName="tiempo" id="tiempo" />
     @if(!editMode){
     <div>

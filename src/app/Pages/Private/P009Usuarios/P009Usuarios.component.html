@@ -10,6 +10,10 @@
   <button class="addition" (click)="Get_Nadadores()">
     Visualizar Nadadores
   </button>
+
+  <button class="addition" (click)="Get_Junta()">
+    Visualizar Junta Directiva
+  </button>
   @if(authState.user?.miembroPuesto=="Presidente" ||
   authState.user?.miembroPuesto=="Vicepresidente" ){
 
@@ -48,12 +52,19 @@ authState.user?.miembroPuesto=="Vicepresidente" ){ @if(mostrarConfirmacion){
   [entrenadorlist]="entrenadorlist"
 ></app-Table_Entrenadores>
 } @if(nadadoresTabla){
-<app-Table_Nadadores [swimerlist]="swimerlist"></app-Table_Nadadores>
+<app-Table_Nadadores [swimerlist]="swimerlist"></app-Table_Nadadores>}
+@if(juntaTabla) { <app-Table_Junta [juntalist]="juntalist"></app-Table_Junta>
+
 }
 
 <br /><br />
 @if(authState.user?.miembroPuesto=="Presidente" ||
-authState.user?.miembroPuesto=="Vicepresidente" ){
+authState.user?.miembroPuesto=="Vicepresidente" ){ @if(juntaTabla){<button
+  class="addition"
+  (click)="gotoFormularioJunta()"
+>
+  Añadir usuario a la junta Directiva</button
+>}
 <button class="addition" (click)="gotoFormulario()">Agregar Usuario</button>
 } @if(authState.user?.juntaDirectiva ){
 <button class="addition" (click)="Get_UsersActivated()">

@@ -3,4 +3,5 @@ export enum PuestoEnum {
   Vicepresidente = 'Vicepresidente',
   Secretario = 'Secretario',
   Vocal = 'Vocal',
+  Tesorero = 'Tesorero',
 }

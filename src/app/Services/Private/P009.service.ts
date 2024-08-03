@@ -5,6 +5,7 @@ import { P009Usuario } from '../../Models/Private/DtosP009/P009Get_UsersDto';
 import { P009Entrenador } from '../../Models/Private/DtosP009/P009Get_EntrenadoresDto';
 import { P009Socio } from '../../Models/Private/DtosP009/P009Get_SociosDto';
 import { P009Nadador } from '../../Models/Private/DtosP009/P009Get_NadadoresDto';
+import { P009GetJuntaDirectivaDto } from '../../Models/Private/DtosP009/P009GetJuntaDirectivaDto';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +54,12 @@ export class P009Service {
     return this.http.get<P009Entrenador[]>(apiUrl);
   }
 
+  Get_Junta() {
+    const apiUrl: string = environment.UrlBackend + '/P009/findAllJunta';
+
+    return this.http.get<P009GetJuntaDirectivaDto[]>(apiUrl);
+  }
+
   Get_Nadadores() {
     const apiUrl: string = environment.UrlBackend + '/P009/findAllNadadores';
 
@@ -64,5 +71,12 @@ export class P009Service {
       environment.UrlBackend + '/P009/actualizarAllCategorias';
 
     return this.http.put(apiUrl, null);
+  }
+
+  Delete_Miembro(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P009/Delete_MiembroJunta/' + id;
+
+    return this.http.delete(apiUrl);
   }
 }

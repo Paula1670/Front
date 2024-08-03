@@ -1,0 +1,58 @@
+<table class="">
+  @if((authState$ | async) ;as authState){
+
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Fecha de Inicio Cargo</th>
+      <th>Fecha de Termino de cargo</th>
+      <th>Puesto</th>
+      <th></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  @for(junta of juntalist; track junta.idPuesto){
+  <tr>
+    <td>{{ junta.idPuesto }}</td>
+    <td>
+      {{ junta.Nombre }}
+    </td>
+    <td>
+      {{ junta.Apellido }}
+    </td>
+    <td>
+      {{ junta.Direccion }}
+    </td>
+
+    <td>
+      {{ junta.FechaInicioCargo | date : "mediumDate" }}
+    </td>
+
+    <td>
+      {{ junta.FechaTerminoCargo | date : "mediumDate" }}
+    </td>
+
+    <td>
+      {{ junta.Puesto }}
+    </td>
+
+    <td>
+      @if(authState.user?.miembroPuesto=="Presidente" ||
+      authState.user?.miembroPuesto=="Vicepresidente" ){
+
+      <button class="addition" (click)="Delete_User(junta.idUsuario)">
+        Deshabilitar Miembro Junta
+      </button>
+      <button class="addition" (click)="editarMiembro(junta.idUsuario)">
+        Editar Miembro Junta
+      </button>
+      }
+    </td>
+  </tr>
+  <!--td columna y tr fila-->
+  }}
+</table>

@@ -4,7 +4,7 @@
   <form class="time-form" [formGroup]="minimaForm">
     <h2>Ingresar Minima</h2>
 
-    <label for="estilo">Estilo:</label>
+    <label for="estilo">Estilo*:</label>
     <select formControlName="estilo" id="estilo">
       @for( opcion of opcionEstilo; track opcion.valor){
       <option [value]="opcion.valor">
@@ -13,7 +13,7 @@
       }
     </select>
 
-    <label for="prueba">Prueba:</label>
+    <label for="prueba">Prueba*:</label>
     <select formControlName="prueba" id="prueba">
       @for( opcion of opcionPrueba; track opcion.valor){
       <option [value]="opcion.valor">
@@ -22,7 +22,7 @@
       }
     </select>
 
-    <label for="piscina">Piscina:</label>
+    <label for="piscina">Piscina*:</label>
     <select formControlName="piscina" id="piscina">
       @for( opcion of opcionPiscina; track opcion.valor){
       <option [value]="opcion.valor">
@@ -30,7 +30,7 @@
       </option>
       }
     </select>
-    <label for="temporada">Temporada:</label>
+    <label for="temporada">Temporada*:</label>
     <select formControlName="temporada" id="temporada">
       @for( opcion of opcionTemporada; track opcion.valor){
       <option [value]="opcion.valor">
@@ -39,7 +39,7 @@
       }
     </select>
 
-    <label for="genero">Genero:</label>
+    <label for="genero">Genero*:</label>
     <select formControlName="genero" id="genero">
       @for( opcion of opcionGenero; track opcion.valor){
       <option [value]="opcion.valor">
@@ -48,7 +48,7 @@
       }
     </select>
 
-    <label for="categoria">Categoria:</label>
+    <label for="categoria">Categoria*:</label>
     <select formControlName="categoria" id="categoria">
       @for( opcion of opcionCategoria; track opcion.valor){
       <option [value]="opcion.valor">
@@ -57,7 +57,7 @@
       }
     </select>
 
-    <label for="campeonato">Campeonato:</label>
+    <label for="campeonato">Campeonato*:</label>
     <select formControlName="campeonato" id="campeonato">
       @for( opcion of opcionCampeonato; track opcion.valor){
       <option [value]="opcion.valor">
@@ -66,7 +66,7 @@
       }
     </select>
 
-    <label for="tiempoMinimo">Minima</label>
+    <label for="tiempoMinimo">Minima*</label>
     <input type="text" formControlName="tiempoMinimo" id="tiempoMinimo" />
     @if(!editMode){
     <div>

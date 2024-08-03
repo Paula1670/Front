@@ -1,13 +1,13 @@
 <app-Header [title]="'Formulario para Agregar/ Editar Cuotas'"></app-Header>
 <body>
   <form class="time-form" [formGroup]="cuotasForm">
-    <label for="Nombre">Nombre de la cuota:</label><br />
+    <label for="Nombre">Nombre de la cuota*:</label><br />
     <input type="text" id="Nombre" formControlName="Nombre" /><br /><br />
 
-    <label for="Precio">Precio de la cuota:</label><br />
+    <label for="Precio">Precio de la cuota*:</label><br />
     <input type="text" id="Precio" formControlName="Precio" /><br /><br />
 
-    <label for="Federado">¿Es una cuota para federados?:</label><br />
+    <label for="Federado">¿Es una cuota para federados?*:</label><br />
     <input type="text" id="Federado" formControlName="Federado" /><br /><br />
 
     <br /><br /><br />

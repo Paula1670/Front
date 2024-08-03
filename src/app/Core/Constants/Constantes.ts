@@ -38,6 +38,15 @@ export const OpcionTemporada: Opcion[] = [
   { valor: 'Invierno', etiqueta: 'Invierno' },
   { valor: 'Verano', etiqueta: 'Verano' },
 ];
+
+export const OpcionPuesto: Opcion[] = [
+  { valor: 'Presidente', etiqueta: 'Presidente' },
+  { valor: 'Vicepresidente', etiqueta: 'Vicepresidente' },
+  { valor: 'Secretario', etiqueta: 'Secretario' },
+  { valor: 'Vocal', etiqueta: 'Vocal' },
+  { valor: 'Tesorero', etiqueta: 'Tesorero' },
+]; //TODO   { valor: puestoEnum.Presidente, etiqueta:  puestoEnum.Presidente},
+
 export const OpcionCategoria: Opcion[] = [
   { valor: 'Prebenjamin', etiqueta: 'Prebenjamin' },
   { valor: 'Benjamin', etiqueta: 'Benjamin' },

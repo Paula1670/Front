@@ -9,7 +9,6 @@ import { P003GaleriaComponent } from './Pages/Public/p003Galeria/p003Galeria.com
 import { P006TiemposComponent } from './Pages/Private/P006Tiempos/P006Tiempos.component';
 import { P007MinimasComponent } from './Pages/Private/P007Minimas/P007Minimas.component';
 import { F009MiembroComponent } from './Form/F009Miembro/F009Miembro.component';
-import { F003DestinoComponent } from './Form/F003Destino/F003Destino.component';
 import { P008DestinosComponent } from './Pages/Private/P008Destinos/P008Destinos.component';
 import { P009UsuariosComponent } from './Pages/Private/P009Usuarios/P009Usuarios.component';
 import { F005ContratosComponent } from './Form/F005Contratos/F005Contratos.component';
@@ -23,6 +22,7 @@ import { F012GaleriaComponent } from './Form/F012Galeria/F012Galeria.component';
 import { F005DocumentacionComponent } from './Form/F005Documentacion/F005Documentacion.component';
 import { FFooterComponent } from './Form/FFooter/FFooter.component';
 import { F004CuotasPosiblesComponent } from './Form/F004CuotasPosibles/F004CuotasPosibles.component';
+import { F003JuntaComponent } from './Form/F003Junta/F003Junta.component';
 
 export const routes: Routes = [
   { path: 'logged', component: P001Principal_SiteComponent },
@@ -39,7 +39,6 @@ export const routes: Routes = [
   { path: 'add_edit_tiempo', component: F006TiempoComponent },
   { path: 'add_edit_minima', component: F007MinimaComponent },
   { path: 'destination', component: P008DestinosComponent },
-  { path: 'add_edit_destination', component: F003DestinoComponent },
   { path: 'users', component: P009UsuariosComponent },
   { path: 'contratos', component: P010ContratosComponent },
   { path: 'add_edit_contratos', component: F005ContratosComponent },
@@ -48,5 +47,6 @@ export const routes: Routes = [
   { path: 'add_edit_documento', component: F005DocumentacionComponent },
   { path: 'add_edit_contacto', component: FFooterComponent },
   { path: 'add_edit_cuota', component: F004CuotasPosiblesComponent },
+  { path: 'add_edit_miembroJunta', component: F003JuntaComponent },
   { path: '**', component: ErrorComponent },
 ];

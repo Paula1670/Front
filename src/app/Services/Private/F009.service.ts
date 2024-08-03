@@ -8,6 +8,7 @@ import { F009GetSociosDto } from '../../Models/Private/DtosF009/F009Get_SociosDt
 import { P009Usuario } from '../../Models/Private/DtosP009/P009Get_UsersDto';
 import { F009Get_EntrenadoresDto } from '../../Models/Private/DtosF009/F009Get_EntrenadoresDto';
 import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_NadadoresDto';
+import { F003Update_MiembroJuntaDto } from '../../Models/Private/DtosF003/F003Update_MiembroJuntaDto';
 
 @Injectable({
   providedIn: 'root',

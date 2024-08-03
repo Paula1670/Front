@@ -16,6 +16,8 @@ import { P009Socio } from '../../../Models/Private/DtosP009/P009Get_SociosDto';
 import { Observable } from 'rxjs';
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
+import { P009GetJuntaDirectivaDto } from '../../../Models/Private/DtosP009/P009GetJuntaDirectivaDto';
+import { Table_JuntaComponent } from '../../../Components/Tables/Table_Junta/Table_Junta.component';
 
 @Component({
   selector: 'app-P009Usuarios',
@@ -29,6 +31,7 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
     Table_NadadoresComponent,
     Table_SociosComponent,
     Table_EntrenadoresComponent,
+    Table_JuntaComponent,
   ],
   templateUrl: './P009Usuarios.component.html',
   styleUrls: ['./P009Usuarios.component.scss'],
@@ -39,11 +42,13 @@ export class P009UsuariosComponent implements OnInit {
   swimerlist: P009Nadador[] = [];
   entrenadorlist: P009Entrenador[] = [];
   sociolist: P009Socio[] = [];
+  juntalist: P009GetJuntaDirectivaDto[] = [];
   usuariosActivos: boolean = true;
   entrenadoresTabla: boolean = false;
   nadadoresTabla: boolean = false;
   usuariosTabla: boolean = false;
   socioTabla: boolean = false;
+  juntaTabla: boolean = false;
   mostrarConfirmacion: boolean = false;
   esJunta?: boolean;
   constructor(
@@ -119,15 +124,29 @@ export class P009UsuariosComponent implements OnInit {
     this.usuariosActivos = true;
     this.entrenadoresTabla = true;
   }
+
+  Get_Junta() {
+    this.service.Get_Junta().subscribe((data: P009GetJuntaDirectivaDto[]) => {
+      this.juntalist = data;
+    });
+    this.resetTablas();
+    this.usuariosActivos = true;
+    this.juntaTabla = true;
+  }
+
   gotoFormulario() {
     this.router.navigate(['/add_edit_user']);
   }
 
+  gotoFormularioJunta() {
+    this.router.navigate(['/add_edit_miembroJunta']);
+  }
   private resetTablas() {
     this.entrenadoresTabla = false;
     this.socioTabla = false;
     this.usuariosTabla = false;
     this.nadadoresTabla = false;
+    this.juntaTabla = false;
   }
 
   actualizarAllCategorias() {

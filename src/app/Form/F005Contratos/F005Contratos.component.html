@@ -3,7 +3,7 @@
 <body>
   <h2>Agregar Nuevo Contrato</h2>
   <form [formGroup]="contratoForm">
-    <label for="socioAsociado">¿Con que socio está asociado?</label>
+    <label for="socioAsociado">¿Con que socio está asociado?*</label>
     <select formControlName="socioAsociado" id="socioAsociado">
       @for( opcion of opcionSocio; track opcion.valor){
       <option [value]="opcion.valor">
@@ -11,7 +11,7 @@
       </option>
       }</select
     ><br /><br />
-    <label for="cuotaAsociada">Que cuota desea:</label>
+    <label for="cuotaAsociada">Que cuota desea*:</label>
     <select formControlName="cuotaAsociada" id="cuotaAsociada">
       @for( opcion of opcionCuota; track opcion.valor){
       <option [value]="opcion.valor">
@@ -21,17 +21,17 @@
     </select>
     <br />
     <br />
-    <label>Fecha de Inicio:</label>
+    <label>Fecha de Inicio*:</label>
     <input type="date" id="fechaInicio" formControlName="fechaInicio" /><br />
     <br />
-    <label>Fecha de Vencimiento:</label>
+    <label>Fecha de Vencimiento*:</label>
     <input
       type="date"
       id="fechaVencimiento"
       formControlName="fechaVencimiento"
     />
     <br /><br />
-    <label for="estado">Estado:</label>
+    <label for="estado">Estado*:</label>
     <select formControlName="estado" id="estado">
       @for( opcion of opcionEstado; track opcion.valor){
       <option [value]="opcion.valor">

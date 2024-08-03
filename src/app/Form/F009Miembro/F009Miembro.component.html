@@ -4,52 +4,6 @@
   <h2>Agregar Nuevo Miembro</h2>
   <form [formGroup]="userForm">
     <!--(ngSubmit)="onSubmit()"-->
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" formControlName="nombre" />
-    <!-- <div *ngIf="userForm.get('nombre').hasError('required') && userForm.get('nombre').touched">
-      El nombre es obligatorio.
-    </div>-->
-    <br /><br />
-
-    <label for="apellido">Apellido:</label>
-
-    <input type="text" id="apellido" formControlName="apellido" /><br /><br />
-
-    <label for="contrasena">Contraseña:</label>
-    <input
-      type="password"
-      id="contrasena"
-      formControlName="contrasena"
-    /><br /><br />
-    <label>Género:</label><br />
-
-    <a class="space">
-      <input
-        type="radio"
-        id="genero_masculino"
-        name="genero"
-        value="Masculino"
-        formControlName="genero"
-      />
-
-      <label for="genero_masculino">Masculino</label><br />
-
-      <input
-        type="radio"
-        id="genero_femenino"
-        name="genero"
-        value="Femenino"
-        formControlName="genero"
-      />
-      <label for="genero_femenino">Femenino</label><br />
-    </a>
-
-    <label for="direccion">direccion:</label>
-    <input type="text" id="direccion" formControlName="direccion" /><br /><br />
-
-    <label for="telefono">Teléfono:</label>
-    <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
-
     @if(!editMode){
     <label for="crearSocio">Socio</label>
     <input
@@ -103,7 +57,55 @@
     } @if(userForm.value.crearEntrenador){
     <label for="especialidad">Que especialidad?:</label>
     <input formControlName="especialidad" id="especialidad" type="text" />
-    } @if(!editMode){
+    }
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" formControlName="nombre" />
+    <!-- <div *ngIf="userForm.get('nombre').hasError('required') && userForm.get('nombre').touched">
+      El nombre es obligatorio.
+    </div>-->
+    <br /><br />
+
+    <label for="apellido">Apellido:</label>
+
+    <input type="text" id="apellido" formControlName="apellido" /><br /><br />
+
+    <label for="contrasena">Contraseña:</label>
+    <input
+      type="password"
+      id="contrasena"
+      formControlName="contrasena"
+    /><br /><br />
+    <label>Género:</label><br />
+
+    <a class="space">
+      <input
+        type="radio"
+        id="genero_masculino"
+        name="genero"
+        value="Masculino"
+        formControlName="genero"
+      />
+
+      <label for="genero_masculino">Masculino</label><br />
+
+      <input
+        type="radio"
+        id="genero_femenino"
+        name="genero"
+        value="Femenino"
+        formControlName="genero"
+      />
+      <label for="genero_femenino">Femenino</label><br />
+    </a>
+
+    <label for="direccion">direccion:</label>
+    <input type="text" id="direccion" formControlName="direccion" /><br /><br />
+
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
+
+    @if(!editMode){
     <label>Fecha de Nacimiento:</label><br />
     <input
       type="date"

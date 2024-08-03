@@ -3,16 +3,16 @@
 ></app-Header>
 <body>
   <form class="time-form" [formGroup]="documentacionForm">
-    <label for="titulo">Titulo:</label><br />
+    <label for="titulo">Titulo*:</label><br />
     <input type="text" id="titulo" formControlName="titulo" /><br /><br />
 
-    <label for="nombreUrl">Nombre del enlace:</label><br />
+    <label for="nombreUrl">Nombre del enlace*:</label><br />
     <input type="text" id="nombreUrl" formControlName="nombreUrl" /><br /><br />
 
-    <label for="url">Enlace:</label><br />
+    <label for="url">Enlace*:</label><br />
     <input type="text" id="url" formControlName="url" /><br /><br />
 
-    <label for="categoriaDocumento">Tipo de documento:</label>
+    <label for="categoriaDocumento">Tipo de documento*:</label>
     <select formControlName="categoriaDocumento" id="categoriaDocumento">
       @for( opcion of opcionDocumento; track opcion.valor){
       <option [value]="opcion.valor">
