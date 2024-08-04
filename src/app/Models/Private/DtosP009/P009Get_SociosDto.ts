@@ -7,6 +7,7 @@ export interface P009Socio {
   Contrasena: string;
   FechaNacimiento: Date;
   Direccion: string;
+  Domicilio: string;
   Telefono: string;
   FechaInscripcion: Date;
   Genero: GeneroEnum;

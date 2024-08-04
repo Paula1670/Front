@@ -8,6 +8,7 @@
       <th>Fecha de Nacimiento</th>
       <th>Fecha de inscripcion</th>
       <th>Email</th>
+      <th>Domicilio</th>
 
       <th></th>
     </tr>
@@ -25,6 +26,9 @@
     <td>{{ P009Usuario.FechaInscripcion | date : "mediumDate" }}</td>
     <td>
       {{ P009Usuario.Direccion }}
+    </td>
+    <td>
+      {{ P009Usuario.Domicilio }}
     </td>
 
     <td>

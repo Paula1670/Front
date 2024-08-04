@@ -108,8 +108,11 @@
       <label for="genero_femenino">Femenino</label><br />
     </a>
 
-    <label for="direccion">direccion*:</label>
+    <label for="direccion">Correo Electronico*:</label>
     <input type="text" id="direccion" formControlName="direccion" /><br /><br />
+
+    <label for="domicilio">Domicilio*:</label>
+    <input type="text" id="domicilio" formControlName="domicilio" /><br /><br />
 
     <label for="telefono">Teléfono*:</label>
     <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
@@ -129,6 +132,7 @@
       formControlName="fechaInscripcion"
     /><br />
     <div>
+      {{ userForm.invalid }}
       <button
         [disabled]="this.userForm.invalid"
         class="addition"

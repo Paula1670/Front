@@ -46,11 +46,12 @@ export class F009MiembroComponent implements OnInit {
       contrasena: ['', [Validators.required]],
       fechaNacimiento: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
+      domicilio: ['', [Validators.required]],
       telefono: ['', [Validators.required]],
       fechaInscripcion: ['', [Validators.required]],
       genero: ['', [Validators.required]],
 
-      categoria: [null, [Validators.required]],
+      categoria: [0],
       crearSocio: [false],
       crearNadador: [false],
       crearEntrenador: [false],
@@ -83,6 +84,7 @@ export class F009MiembroComponent implements OnInit {
       this.userForm.get('direccion')?.patchValue(data.Direccion);
       this.userForm.get('genero')?.patchValue(data.Genero);
       this.userForm.get('telefono')?.patchValue(data.Telefono);
+      this.userForm.get('domicilio')?.patchValue(data.Domicilio);
     });
   }
 
@@ -92,6 +94,7 @@ export class F009MiembroComponent implements OnInit {
       Apellido: this.userForm.value.apellido,
       Contrasena: this.userForm.value.contrasena,
       Direccion: this.userForm.value.direccion,
+      Domicilio: this.userForm.value.domicilio,
       Telefono: this.userForm.value.telefono,
       Genero: this.userForm.value.genero,
     };
@@ -115,6 +118,7 @@ export class F009MiembroComponent implements OnInit {
       Apellido: this.userForm.value.apellido,
       Contrasena: this.userForm.value.contrasena,
       Direccion: this.userForm.value.direccion,
+      Domicilio: this.userForm.value.domicilio,
       FechaInscripcion: this.userForm.value.fechaInscripcion,
       FechaNacimiento: this.userForm.value.fechaNacimiento,
       Genero: this.userForm.value.genero,

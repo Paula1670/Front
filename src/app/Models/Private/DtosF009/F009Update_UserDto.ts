@@ -5,6 +5,7 @@ export class F009Update_UserDto {
   Apellido?: string;
   Contrasena?: string;
   Direccion?: string;
+  Domicilio?: string;
   Telefono?: number;
   FechaNacimiento?: Date;
   FechaIncripcion?: Date;

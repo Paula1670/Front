@@ -10,6 +10,7 @@
       <th>Fecha de Nacimiento</th>
       <th>Fecha de inscripcion</th>
       <th>Email</th>
+      <th>Domicilio</th>
 
       <th></th>
     </tr>
@@ -31,7 +32,9 @@
     <td>
       {{ P009Nadador.Direccion }}
     </td>
-
+    <td>
+      {{ P009Nadador.Domicilio }}
+    </td>
     <td>
       @if(authState.user?.miembroPuesto=="Presidente" ||
       authState.user?.miembroPuesto=="Vicepresidente" ){

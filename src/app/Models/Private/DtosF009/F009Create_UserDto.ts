@@ -6,6 +6,7 @@ export interface F009Create_UserDto {
   Contrasena: string;
   FechaNacimiento: Date;
   Direccion: string;
+  Domicilio: string;
   Telefono: number;
   FechaInscripcion: Date;
   Genero: GeneroEnum;
