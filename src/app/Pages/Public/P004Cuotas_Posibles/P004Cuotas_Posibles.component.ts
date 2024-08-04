@@ -43,7 +43,6 @@ export class P004Cuotas_PosiblesComponent implements OnInit {
 
   Get_Cuotas() {
     this.service.Get_Cuotas().subscribe((data: any) => {
-      console.log(data);
       this.cuotaslist = data;
     });
   }
@@ -58,8 +57,6 @@ export class P004Cuotas_PosiblesComponent implements OnInit {
     });
   }
   Delete_Cuota(id: number) {
-    console.log('he llegado');
-
     if (id) {
       this.service.Delete_Cuota(id).subscribe(
         (response) => {

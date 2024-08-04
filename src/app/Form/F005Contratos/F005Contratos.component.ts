@@ -65,7 +65,6 @@ export class F005ContratosComponent implements OnInit {
   }
 
   Get_Contrato(id: number) {
-    console.log(id);
     this.f010Service.Get_Contrato(id).subscribe((data: any) => {
       this.contratoForm.get('FechaInicio')?.patchValue(data.FechaInicio);
 
@@ -109,8 +108,6 @@ export class F005ContratosComponent implements OnInit {
       CuotasPosibles: this.contratoForm.value.cuotaAsociada,
     };
 
-    console.log(createF010Dto);
-
     this.f010Service.Create_Contrato(createF010Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
@@ -133,7 +130,6 @@ export class F005ContratosComponent implements OnInit {
           etiqueta: socio.nombreUsuario + ' ' + socio.apellidoUsuario,
         };
       });
-      console.log(data);
     });
   }
 
@@ -146,7 +142,6 @@ export class F005ContratosComponent implements OnInit {
             (cuota.Federado ? 'Federado: ' : 'No Federado: ') + cuota.Nombre,
         };
       });
-      console.log(data);
     });
   }
 }

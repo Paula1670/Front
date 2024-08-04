@@ -89,7 +89,6 @@ export class P005DocumentacionComponent implements OnInit {
     this.service.Get_Documentos().subscribe((data: any) => {
       this.documentosList = data;
     });
-    console.log(this.documentosList);
   }
 
   gotoFormulario() {
@@ -97,7 +96,6 @@ export class P005DocumentacionComponent implements OnInit {
   }
 
   editarDocumentacion(id: number) {
-    console.log(id);
     this.router.navigate(['/add_edit_documento'], {
       queryParams: { editMode: true, idDocumentacion: id },
     });

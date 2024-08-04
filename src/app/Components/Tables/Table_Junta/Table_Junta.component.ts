@@ -35,12 +35,11 @@ export class Table_JuntaComponent implements OnInit {
   }
 
   Delete_User(id: number) {
-    console.log(id);
     if (id) {
       this.service.Delete_Miembro(id).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
-          console.log();
+
           window.location.reload();
         },
         (error) => {

@@ -20,7 +20,6 @@ export class F004Service {
   constructor(private http: HttpClient) {}
 
   Create_Cuota(createF004Dto: F004CreateCuotaDto): Observable<any> {
-    console.log(createF004Dto);
     return this.http.post(
       environment.UrlBackend + '/F004/Create_Cuota',
       createF004Dto

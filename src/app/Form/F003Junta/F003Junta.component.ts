@@ -60,7 +60,6 @@ export class F003JuntaComponent implements OnInit {
     this.f003Service
       .Get_UserMiembroJunta(id)
       .subscribe((data: P009GetJuntaDirectivaDto) => {
-        console.log(data);
         this.juntaForm.get('puesto')?.patchValue(data.Puesto);
         this.juntaForm
           .get('fechaTerminoCargo')
@@ -69,12 +68,11 @@ export class F003JuntaComponent implements OnInit {
   }
 
   Update_MiembroJunta(id: number) {
-    console.log(id);
     const updateF009Dto: F003Update_MiembroJuntaDto = {
       puesto: this.juntaForm.value.puesto,
       fechaTerminoCargo: this.juntaForm.value.fechaTerminoCargo,
     };
-    console.log(updateF009Dto);
+
     if (id) {
       this.f003Service.Update_MiembroJunta(id, updateF009Dto).subscribe(
         (response) => {

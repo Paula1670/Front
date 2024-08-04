@@ -77,8 +77,6 @@ export class F005DocumentacionComponent implements OnInit {
       categoriaDocumento: this.documentacionForm.value.categoriaDocumento,
     };
 
-    console.log(this.documentacionForm.value.OpcionDocumento);
-
     if (id) {
       this.f005Service.Update_Documento(id, updateF005Dto).subscribe(
         (response: any) => {
@@ -93,7 +91,6 @@ export class F005DocumentacionComponent implements OnInit {
   }
 
   Get_Documentacion(id: number) {
-    console.log(id);
     this.f005Service
       .Get_Documentacion(id)
       .subscribe((data: F005GetDocumentacionDto) => {

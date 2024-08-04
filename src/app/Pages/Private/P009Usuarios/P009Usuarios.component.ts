@@ -72,7 +72,6 @@ export class P009UsuariosComponent implements OnInit {
     });
   }
   findById(id: number) {
-    console.log(id);
     this.service.FindById(id).subscribe((data: P009Usuario) => {
       this.memberlist = [data];
     });

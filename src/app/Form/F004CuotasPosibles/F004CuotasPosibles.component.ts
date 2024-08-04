@@ -68,13 +68,11 @@ export class F004CuotasPosiblesComponent implements OnInit {
     this.router.navigate(['/cuotas']);
   }
   Edit_Cuota(id: number | undefined) {
-    console.log(id);
     let updateF004Dto: F004UpdateCuotaDto = {
       Nombre: this.cuotasForm.value.Nombre,
       Precio: this.cuotasForm.value.Precio,
       Federado: this.cuotasForm.value.Federado,
     };
-    console.log(updateF004Dto);
 
     if (id) {
       this.f004Service.Update_Cuota(id, updateF004Dto).subscribe(

@@ -89,7 +89,6 @@ export class P007MinimasComponent implements OnInit {
         } else if (data.user?.idUsuario !== undefined) {
           this.GetGeneroCategoriaByIDUser(data.user?.idUsuario).subscribe(
             (data: P007GetGeneroCategoriaDto) => {
-              console.log(data.Genero);
               this.genero = data.Genero;
               this.categoria = data.IDCategoria;
               this.categoriaNombre = data.Categoria;
@@ -104,12 +103,11 @@ export class P007MinimasComponent implements OnInit {
     this.findCategorias();
   }
   GetMinimas() {
-    console.log(this.minimaForm.value);
-    this.Get_MinimasEuropeas();
+    //this.Get_MinimasEuropeas();
     this.Get_MinimasRegionales();
-    this.Get_MinimasMundiales();
+    /* this.Get_MinimasMundiales();
     this.Get_MinimasNacionales();
-    this.Get_MinimasOlimpicas();
+    this.Get_MinimasOlimpicas();*/
   }
   Get_MinimasEuropeas() {
     //Si es entrenador, que me coja el valor de genero del formulario, sino, el del idUser

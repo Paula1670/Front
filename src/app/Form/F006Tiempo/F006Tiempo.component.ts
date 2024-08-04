@@ -73,7 +73,6 @@ export class F006TiempoComponent implements OnInit {
   }
 
   Get_Tiempo(id: number) {
-    console.log(id);
     this.f006Service.Get_Tiempo(id).subscribe((data: any) => {
       this.tiempoForm.get('tiempo')?.patchValue(data.Tiempo);
 
@@ -88,7 +87,6 @@ export class F006TiempoComponent implements OnInit {
       this.tiempoForm
         .get('FechaMarcaNadador')
         ?.patchValue(data.FechaMarcaNadador);
-      console.log(this.tiempoForm.value.FechaMarcaNadador);
     });
   }
 
@@ -101,7 +99,7 @@ export class F006TiempoComponent implements OnInit {
       FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
       Estilo: this.tiempoForm.value.estilo,
     };
-    console.log(updateF006Dto);
+
     if (id) {
       this.f006Service.Update_Tiempo(id, updateF006Dto).subscribe(
         (response) => {
@@ -117,7 +115,6 @@ export class F006TiempoComponent implements OnInit {
   }
 
   Add_Tiempo() {
-    console.log('hola');
     let createF006Dto: F006CreateTiempoDto = {
       Estilo: this.tiempoForm.value.estilo,
       Prueba: this.tiempoForm.value.prueba,
@@ -127,7 +124,7 @@ export class F006TiempoComponent implements OnInit {
       Temporada: TemporadaEnum.Invierno,
       FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
     };
-    console.log(createF006Dto);
+
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);

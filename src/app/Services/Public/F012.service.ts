@@ -13,7 +13,6 @@ export class F012Service {
   constructor(private http: HttpClient) {}
 
   Create_Galeria(F012CreateGaleriaDto: F012CreateGaleriaDto): Observable<any> {
-    console.log('creando galeria');
     return this.http.post(
       environment.UrlBackend + '/F012/create_Galeria',
       F012CreateGaleriaDto

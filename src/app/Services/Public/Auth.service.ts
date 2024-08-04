@@ -45,15 +45,11 @@ export class AuthService {
     this.authState$ = this.authState.asObservable();
 
     this.authState$.subscribe({
-      next: (data) => {
-        console.log(data);
-      },
+      next: (data) => {},
     });
   }
 
   log_in(direccion_usuario: string, contrasena: string) {
-    console.log(environment.UrlBackend + '/auth/logIn');
-
     this.http
       .post<LogInAuthResponseDto>(environment.UrlBackend + '/auth/logIn', {
         direccion: direccion_usuario,
@@ -62,17 +58,15 @@ export class AuthService {
       .subscribe({
         next: (data) => {
           this.setCookies(data);
-          console.log('haciendo loggin');
+
           this.authState.next({
             isAuthenticated: true,
             user: data,
           });
-          console.log(this.authState);
+
           this.router.navigate(['']);
         },
-        error: (e: Error) => {
-          console.log(e.message);
-        },
+        error: (e: Error) => {},
       });
   }
 

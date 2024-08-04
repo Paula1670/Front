@@ -10,13 +10,9 @@ import { P005GetDocumentacion } from '../../Models/Public/DtosP005/P005Get_Docum
 export class P005Service {
   constructor(private http: HttpClient) {}
 
-  /* getEstatutos(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }*/
-
   Delete_Documento(id: number) {
     const apiUrl: string = environment.UrlBackend + '/P005/Delete/' + id;
-    console.log(id);
+
     return this.http.delete(apiUrl);
   }
 

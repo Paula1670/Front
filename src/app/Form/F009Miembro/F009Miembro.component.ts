@@ -126,7 +126,7 @@ export class F009MiembroComponent implements OnInit {
     this.f009Service.Create_User(createF009Dto).subscribe(
       (response: any) => {
         console.log('Respuesta del servidor:', response);
-        window.location.reload();
+        // window.location.reload();
       },
       (error: any) => {
         console.error('Error al llamar al endpoint:', error);
@@ -150,7 +150,6 @@ export class F009MiembroComponent implements OnInit {
             (cuota.Federado ? 'Federado: ' : 'No Federado: ') + cuota.Nombre,
         };
       });
-      console.log(data);
     });
   }
 
@@ -162,7 +161,6 @@ export class F009MiembroComponent implements OnInit {
           etiqueta: socio.nombreUsuario + ' ' + socio.apellidoUsuario,
         };
       });
-      console.log(data);
     });
   }
 

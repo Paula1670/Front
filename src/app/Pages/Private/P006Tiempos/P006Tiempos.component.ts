@@ -51,7 +51,6 @@ export class P006TiemposComponent implements OnInit {
   Get_Tiempos() {
     this.service.Get_Tiempos().subscribe((data: any) => {
       this.timelist = data;
-      console.log(data);
     });
   }
   gotoFormulario() {

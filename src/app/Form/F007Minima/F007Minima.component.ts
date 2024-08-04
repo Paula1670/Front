@@ -75,7 +75,6 @@ export class F007MinimaComponent implements OnInit {
 
   Get_Minima(id: number) {
     this.f007Service.Get_Minima(id).subscribe((data: F007Get_MinimaDto) => {
-      console.log(data);
       this.minimaForm.get('tiempoMinimo')?.patchValue(data.TiempoMinimo);
 
       this.minimaForm.get('temporada')?.patchValue(data.Temporada);

@@ -20,10 +20,4 @@ export class P12Service {
 
     return this.http.delete(apiUrl);
   }
-
-  /*
-  base64ToPng(base64: string): string {
-    //console.log(base64);
-    return `data:image/png;base64,${base64}`;
-  }*/
 }

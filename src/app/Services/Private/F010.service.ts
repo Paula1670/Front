@@ -22,8 +22,6 @@ export class F010Service {
     id: number,
     f010Update_ContratoDto: F010Update_ContratoDto
   ): Observable<any> {
-    console.log(id);
-    console.log(f010Update_ContratoDto);
     return this.http.patch(
       environment.UrlBackend + '/F010/Editar_Contrato/' + id,
       f010Update_ContratoDto
