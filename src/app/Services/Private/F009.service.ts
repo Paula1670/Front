@@ -9,6 +9,8 @@ import { P009Usuario } from '../../Models/Private/DtosP009/P009Get_UsersDto';
 import { F009Get_EntrenadoresDto } from '../../Models/Private/DtosF009/F009Get_EntrenadoresDto';
 import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_NadadoresDto';
 import { F003Update_MiembroJuntaDto } from '../../Models/Private/DtosF003/F003Update_MiembroJuntaDto';
+import { F009Create_UserDto } from '../../Models/Private/DtosF009/F009Create_UserDto';
+import { F009GetCategoriasDto } from '../../Models/Private/DtosF009/F009Get_CategoriasDto';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +18,7 @@ import { F003Update_MiembroJuntaDto } from '../../Models/Private/DtosF003/F003Up
 export class F009Service {
   constructor(private http: HttpClient) {}
 
-  Create_User(createF009Dto: any): Observable<any> {
+  Create_User(createF009Dto: F009Create_UserDto): Observable<any> {
     return this.http.post(
       environment.UrlBackend + '/F009/Create_User',
       createF009Dto
@@ -60,5 +62,10 @@ export class F009Service {
     const apiUrl: string = environment.UrlBackend + '/F009/findNadadores';
 
     return this.http.get<F009GetNadadoresDto[]>(apiUrl);
+  }
+  findCategorias() {
+    const apiUrl: string = environment.UrlBackend + '/F007/findCategorias';
+
+    return this.http.get<F009GetCategoriasDto[]>(apiUrl);
   }
 }

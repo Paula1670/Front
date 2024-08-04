@@ -5,7 +5,7 @@
   <form [formGroup]="juntaForm">
     <!--(ngSubmit)="onSubmit()"-->
     @if(!editMode){
-    <label for="usuario">Usuario: </label>
+    <label for="usuario">Usuario*: </label>
     <select formControlName="usuario" id="usuario">
       @for( opcion of opcionUsuario; track opcion.valor){
       <option [value]="opcion.valor">

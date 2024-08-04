@@ -144,7 +144,7 @@ export class F007MinimaComponent implements OnInit {
         this.opcionCategoria = data.map((categoria: F007GetCategoriasDto) => {
           return {
             valor: categoria.IDCategoria,
-            etiqueta: categoria.NombreCategoria,
+            etiqueta: categoria.NombreCategoria + '-' + categoria.Genero,
           };
         });
       });

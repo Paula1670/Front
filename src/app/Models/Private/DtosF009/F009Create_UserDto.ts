@@ -1,6 +1,6 @@
 import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
 
-export class F009Create_UserDto {
+export interface F009Create_UserDto {
   Nombre: string;
   Apellido: string;
   Contrasena: string;
@@ -12,25 +12,12 @@ export class F009Create_UserDto {
   //campos de socio
   crearSocio: boolean;
   idCuota: number;
+  socioAsociado: number;
   //campos de nadador
   crearNadador: boolean;
   //campos de Entrenador
   crearEntrenador: boolean;
   especialidad: string;
-
-  constructor() {
-    this.Nombre = 'Jose';
-    this.Apellido = 'Jimenez Sanchez';
-    this.Contrasena = '1234';
-    this.Direccion = '@gmail';
-    this.FechaNacimiento = new Date();
-    this.FechaInscripcion = new Date();
-    this.Telefono = 666666;
-    this.Genero = GeneroEnum.Femenino;
-    this.crearSocio = false;
-    this.crearNadador = false;
-    this.crearEntrenador = false;
-    this.especialidad = 'seco';
-    this.idCuota = 1;
-  }
+  entrenadorAsociado: number;
+  Categoria: number;
 }

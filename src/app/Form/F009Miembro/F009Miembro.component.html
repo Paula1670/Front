@@ -27,19 +27,28 @@
     /><br /><br />
     } @if(userForm.value.crearSocio){
 
-    <label for="idCuota">Que cuota desea:</label>
+    <!--<label for="idCuota">Que cuota desea:</label>
     <select formControlName="idCuota" id="idCuota">
       @for( opcion of opcionCuota; track opcion.valor){
       <option [value]="opcion.valor">
         {{ opcion.etiqueta }}
       </option>
       }
-    </select>
+    </select>-->
 
-    } @if(userForm.value.crearNadador){
+    } @if(userForm.value.crearNadador){ @if(!userForm.value.crearSocio){
     <label for="socioasociado">¿Con que socio está asociado?</label>
     <select formControlName="socioasociado" id="socioasociado">
       @for( opcion of opcionSocio; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    }
+    <label for="categoria">Categoria*:</label>
+    <select formControlName="categoria" id="categoria">
+      @for( opcion of opcionCategoria; track opcion.valor){
       <option [value]="opcion.valor">
         {{ opcion.etiqueta }}
       </option>
@@ -59,24 +68,24 @@
     <input formControlName="especialidad" id="especialidad" type="text" />
     }
 
-    <label for="nombre">Nombre:</label>
+    <label for="nombre">Nombre*:</label>
     <input type="text" id="nombre" formControlName="nombre" />
     <!-- <div *ngIf="userForm.get('nombre').hasError('required') && userForm.get('nombre').touched">
       El nombre es obligatorio.
     </div>-->
     <br /><br />
 
-    <label for="apellido">Apellido:</label>
+    <label for="apellido">Apellido*:</label>
 
     <input type="text" id="apellido" formControlName="apellido" /><br /><br />
 
-    <label for="contrasena">Contraseña:</label>
+    <label for="contrasena">Contraseña*:</label>
     <input
       type="password"
       id="contrasena"
       formControlName="contrasena"
     /><br /><br />
-    <label>Género:</label><br />
+    <label>Género*:</label><br />
 
     <a class="space">
       <input
@@ -99,28 +108,27 @@
       <label for="genero_femenino">Femenino</label><br />
     </a>
 
-    <label for="direccion">direccion:</label>
+    <label for="direccion">direccion*:</label>
     <input type="text" id="direccion" formControlName="direccion" /><br /><br />
 
-    <label for="telefono">Teléfono:</label>
+    <label for="telefono">Teléfono*:</label>
     <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
 
     @if(!editMode){
-    <label>Fecha de Nacimiento:</label><br />
+    <label>Fecha de Nacimiento*:</label><br />
     <input
       type="date"
       id="fecha_nacimiento"
       formControlName="fechaNacimiento"
     /><br /><br />
 
-    <label>Fecha de Inscripción:</label><br />
+    <label>Fecha de Inscripción*:</label><br />
     <input
       type="date"
       id="fecha_inscripcion"
       formControlName="fechaInscripcion"
     /><br />
     <div>
-      {{ this.userForm.invalid }}
       <button
         [disabled]="this.userForm.invalid"
         class="addition"

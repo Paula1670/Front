@@ -110,6 +110,7 @@ export class P009UsuariosComponent implements OnInit {
     this.service.Get_Nadadores().subscribe((data: P009Nadador[]) => {
       this.swimerlist = data;
     });
+
     this.resetTablas();
     this.usuariosActivos = true;
     this.nadadoresTabla = true;

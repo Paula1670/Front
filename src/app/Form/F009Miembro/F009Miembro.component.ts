@@ -15,6 +15,8 @@ import { Opcion } from '../../Models/Desplegable/Opcion';
 import { F009GetCuotasDto } from '../../Models/Private/DtosF009/F009Get_CuotasDto';
 import { F009GetSociosDto } from '../../Models/Private/DtosF009/F009Get_SociosDto';
 import { F009Get_EntrenadoresDto } from '../../Models/Private/DtosF009/F009Get_EntrenadoresDto';
+import { F009Create_UserDto } from '../../Models/Private/DtosF009/F009Create_UserDto';
+import { F009GetCategoriasDto } from '../../Models/Private/DtosF009/F009Get_CategoriasDto';
 
 @Component({
   selector: 'app-F009Miembro',
@@ -30,6 +32,7 @@ export class F009MiembroComponent implements OnInit {
   opcionCuota: Opcion[] = [];
   opcionSocio: Opcion[] = [];
   opcionEntrenador: Opcion[] = [];
+  opcionCategoria: Opcion[] = [];
   constructor(
     private f009Service: F009Service,
     private router: Router,
@@ -47,6 +50,7 @@ export class F009MiembroComponent implements OnInit {
       fechaInscripcion: ['', [Validators.required]],
       genero: ['', [Validators.required]],
 
+      categoria: [null, [Validators.required]],
       crearSocio: [false],
       crearNadador: [false],
       crearEntrenador: [false],
@@ -68,6 +72,7 @@ export class F009MiembroComponent implements OnInit {
       this.findSocios();
       this.findEntrenadores();
     });
+    this.findCategorias();
   }
 
   Get_User(id: number) {
@@ -105,7 +110,7 @@ export class F009MiembroComponent implements OnInit {
   }
 
   Add_User() {
-    let createF009Dto = {
+    let createF009Dto: F009Create_UserDto = {
       Nombre: this.userForm.value.nombre,
       Apellido: this.userForm.value.apellido,
       Contrasena: this.userForm.value.contrasena,
@@ -119,14 +124,15 @@ export class F009MiembroComponent implements OnInit {
       crearEntrenador: this.userForm.value.crearEntrenador,
       especialidad: this.userForm.value.especialidad,
       idCuota: this.userForm.value.idCuota,
-      socioasociado: this.userForm.value.socioasociado,
-      entrenadorasociado: this.userForm.value.entrenadorasociado,
+      socioAsociado: this.userForm.value.socioasociado,
+      entrenadorAsociado: this.userForm.value.entrenadorasociado,
+      Categoria: this.userForm.value.categoria,
     };
-
+    console.log(createF009Dto);
     this.f009Service.Create_User(createF009Dto).subscribe(
       (response: any) => {
         console.log('Respuesta del servidor:', response);
-        // window.location.reload();
+        window.location.reload();
       },
       (error: any) => {
         console.error('Error al llamar al endpoint:', error);
@@ -177,6 +183,19 @@ export class F009MiembroComponent implements OnInit {
             };
           }
         );
+      });
+  }
+
+  private findCategorias() {
+    this.f009Service
+      .findCategorias()
+      .subscribe((data: F009GetCategoriasDto[]) => {
+        this.opcionCategoria = data.map((categoria: F009GetCategoriasDto) => {
+          return {
+            valor: categoria.IDCategoria,
+            etiqueta: categoria.NombreCategoria + '-' + categoria.Genero,
+          };
+        });
       });
   }
 }

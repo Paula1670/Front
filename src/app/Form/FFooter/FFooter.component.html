@@ -3,10 +3,10 @@
 ></app-Header>
 <body>
   <form class="time-form" [formGroup]="ContactoForm">
-    <label for="nombre">Nombre:</label><br />
+    <label for="nombre">Nombre*:</label><br />
     <input type="text" id="nombre" formControlName="nombre" /><br /><br />
 
-    <label for="dato">Dato:</label><br />
+    <label for="dato">Dato*:</label><br />
     <input type="text" id="dato" formControlName="dato" /><br /><br />
     @if(!editMode){
     <div>
