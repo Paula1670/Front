@@ -14,4 +14,5 @@ export class FiltrosMinimaDto {
   genero?: GeneroEnum;
   categoria?: number;
   campeonato?: CampeonatoEnum;
+  IDNadador?: number;
 }

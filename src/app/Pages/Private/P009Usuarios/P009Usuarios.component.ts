@@ -159,4 +159,9 @@ export class P009UsuariosComponent implements OnInit {
   cancelarActualizacion() {
     this.mostrarConfirmacion = false;
   }
+  getMisNadadores() {
+    this.service.Get_MisNadadores().subscribe((data: P009Nadador[]) => {
+      this.swimerlist = data;
+    });
+  }
 }

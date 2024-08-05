@@ -66,6 +66,12 @@ export class P009Service {
     return this.http.get<P009Nadador[]>(apiUrl);
   }
 
+  Get_MisNadadores() {
+    const apiUrl: string = environment.UrlBackend + '/P009/findAllNadadores';
+
+    return this.http.get<P009Nadador[]>(apiUrl);
+  }
+
   actualizarAllCategorias() {
     const apiUrl: string =
       environment.UrlBackend + '/P009/actualizarAllCategorias';

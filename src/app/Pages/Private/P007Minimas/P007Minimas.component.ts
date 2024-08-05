@@ -103,11 +103,11 @@ export class P007MinimasComponent implements OnInit {
     this.findCategorias();
   }
   GetMinimas() {
-    //this.Get_MinimasEuropeas();
+    this.Get_MinimasEuropeas();
     this.Get_MinimasRegionales();
-    /* this.Get_MinimasMundiales();
+    this.Get_MinimasMundiales();
     this.Get_MinimasNacionales();
-    this.Get_MinimasOlimpicas();*/
+    this.Get_MinimasOlimpicas();
   }
   Get_MinimasEuropeas() {
     //Si es entrenador, que me coja el valor de genero del formulario, sino, el del idUser

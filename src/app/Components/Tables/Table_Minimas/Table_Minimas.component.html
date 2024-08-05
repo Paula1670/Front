@@ -3,7 +3,7 @@
   <!--@for(let categ of categoriaList;track categ.IDCategoria){-->
 
   <tr>
-    <th>Id</th>
+    <th>Conseguida</th>
     <th>Temporada</th>
     <th>Tipo de Prueba</th>
     <th>Estilo</th>
@@ -14,7 +14,11 @@
   @for(P007Minima of minimalist;track P007Minima.IDMinima ){
 
   <tr>
-    <td>{{ P007Minima.IDMinima }}</td>
+    @if(P007Minima.Conseguida){
+    <td><img class="imagen" src="assets/images/logro.png" /></td>
+    }@else {
+    <td><img class="imagen" src="assets/images/not.png" /></td>
+    }
     <td>
       {{ P007Minima.Temporada }}
     </td>

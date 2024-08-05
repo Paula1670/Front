@@ -14,11 +14,10 @@
     <li><a href="contratos">Contratos</a></li>
     <li><a href="users">Usuarios</a></li>
     }
-
     <!--Entrenador botones y nadador visualizar id-->
     @if(authState.user?.entrenador ){
 
-    <li><a href="mis-nadadores">Mis Nadadores</a></li>
+    <li><a href="users">Mis Nadadores</a></li>
     } @if(authState.user?.nadador|| authState.user?.entrenador){
     <li><a href="logged">Ayudas</a></li>
     <!--nadador byId-->

@@ -20,4 +20,5 @@ export interface P007Minima {
   Estilo: EstiloEnum;
   Genero: GeneroEnum;
   Campeonato: CampeonatoEnum;
+  Conseguida: boolean;
 }
