@@ -85,4 +85,18 @@ export class P009Service {
 
     return this.http.delete(apiUrl);
   }
+
+  findNadadoresBySocio(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P009/findNadadoresBySocio/' + id;
+
+    return this.http.get<P009Nadador[]>(apiUrl);
+  }
+
+  findNadadoresByEntrenador(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/P009/findNadadoresByEntrenador/' + id;
+
+    return this.http.get<P009Nadador[]>(apiUrl);
+  }
 }

@@ -3,19 +3,25 @@
   <tr>
     <!--<th>Género</th>
     <th>Categoria</th>-->
+
+    @if(authState.user?.entrenador){
     <th>Id</th>
     <th>Nombre</th>
     <th>Apellidos</th>
     <th>Categoria</th>
+    }
     <th>Piscina</th>
     <th>Estilo</th>
     <th>Prueba</th>
 
     <th>Tiempo</th>
+    @if(authState.user?.entrenador){
     <th></th>
+    }
   </tr>
   @for(P006Tiempo of timelist;track P006Tiempo.IDTiempo ){
   <tr>
+    @if(authState.user?.entrenador){
     <td>{{ P006Tiempo.IDTiempo }}</td>
     <td>
       {{ P006Tiempo.Nombre }}
@@ -26,26 +32,25 @@
     <td>
       {{ P006Tiempo.Categoria }}
     </td>
+    }
     <td>{{ P006Tiempo.Piscina }}</td>
     <td>{{ P006Tiempo.Estilo }}</td>
     <td>{{ P006Tiempo.Prueba }}</td>
     <td>
       {{ P006Tiempo.Tiempo }}
     </td>
-
+    @if(authState.user?.miembroPuesto=="Presidente" ||
+    authState.user?.miembroPuesto=="Vicepresidente" ||
+    authState.user?.entrenador){
     <td>
-      @if(authState.user?.miembroPuesto=="Presidente" ||
-      authState.user?.miembroPuesto=="Vicepresidente" ||
-      authState.user?.entrenador){
-
       <button class="addition" (click)="Delete_Tiempo(P006Tiempo.IDTiempo)">
         Eliminar
       </button>
       <button class="addition" (click)="editarTiempo(P006Tiempo.IDTiempo)">
         Editar
       </button>
-      }
     </td>
+    }
   </tr>
   <!--td columna y tr fila-->
   } }

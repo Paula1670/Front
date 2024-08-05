@@ -51,6 +51,8 @@ export class P009UsuariosComponent implements OnInit {
   juntaTabla: boolean = false;
   mostrarConfirmacion: boolean = false;
   esJunta?: boolean;
+  esSocio?: boolean;
+  esEntrenador?: boolean;
   constructor(
     private service: P009Service,
     private router: Router,
@@ -62,9 +64,19 @@ export class P009UsuariosComponent implements OnInit {
     this.authState$.subscribe({
       next: (data) => {
         this.esJunta = data.user?.juntaDirectiva;
+        this.esEntrenador = data.user?.entrenador;
+        this.esSocio = data.user?.socio;
         if (this.esJunta) this.Get_UsersActivated();
         else if (data.user?.idUsuario !== undefined) {
           this.findById(data.user.idUsuario);
+        } else {
+          console.error('idUsuario es undefined');
+        }
+
+        if (data.user?.idUsuario !== undefined && this.esEntrenador) {
+          this.Get_NadadoresForEntrenador(data.user?.idUsuario);
+        } else if (data.user?.idUsuario !== undefined && this.esSocio) {
+          this.Get_NadadoresForSocio(data.user?.idUsuario);
         } else {
           console.error('idUsuario es undefined');
         }
@@ -163,5 +175,19 @@ export class P009UsuariosComponent implements OnInit {
     this.service.Get_MisNadadores().subscribe((data: P009Nadador[]) => {
       this.swimerlist = data;
     });
+  }
+
+  Get_NadadoresForSocio(id: number) {
+    this.service.findNadadoresBySocio(id).subscribe((data: P009Nadador[]) => {
+      this.swimerlist = data;
+    });
+  }
+
+  Get_NadadoresForEntrenador(id: number) {
+    this.service
+      .findNadadoresByEntrenador(id)
+      .subscribe((data: P009Nadador[]) => {
+        this.swimerlist = data;
+      });
   }
 }
