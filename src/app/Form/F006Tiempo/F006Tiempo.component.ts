@@ -23,6 +23,8 @@ import {
 import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_NadadoresDto';
 import { F009Service } from '../../Services/Private/F009.service';
 import { TemporadaEnum } from '../../Core/Constants/Enums/TemporadaEnum';
+import { P009Nadador } from '../../Models/Private/DtosP009/P009Get_NadadoresDto';
+import { FooterComponent } from '../../Components/Footer/Footer.component';
 
 @Component({
   selector: 'app-F006Tiempo',
@@ -35,7 +37,6 @@ export class F006TiempoComponent implements OnInit {
   tiempoForm: FormGroup;
   editMode?: boolean;
   idTiempo?: number;
-
   opcionNadador: Opcion[] = [];
   opcionEstilo: Opcion[] = OpcionEstilo;
   opcionPrueba: Opcion[] = OpcionPrueba;
@@ -124,7 +125,7 @@ export class F006TiempoComponent implements OnInit {
       Temporada: TemporadaEnum.Invierno,
       FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
     };
-
+    console.log(createF006Dto);
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
@@ -145,6 +146,19 @@ export class F006TiempoComponent implements OnInit {
           return {
             valor: nadador.IDNadador,
             etiqueta: nadador.nombreUsuario + ' ' + nadador.apellidoUsuario,
+          };
+        });
+      });
+  }
+
+  Get_NadadoresForEntrenador(id: number) {
+    this.f009Service
+      .findNadadoresByEntrenador(id)
+      .subscribe((data: P009Nadador[]) => {
+        this.opcionNadador = data.map((nadador: P009Nadador) => {
+          return {
+            valor: nadador.IDUsuario,
+            etiqueta: nadador.Nombre + ' ' + nadador.Apellido,
           };
         });
       });

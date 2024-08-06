@@ -180,6 +180,8 @@ export class F009MiembroComponent implements OnInit {
       .subscribe((data: F009Get_EntrenadoresDto[]) => {
         this.opcionEntrenador = data.map(
           (entrenador: F009Get_EntrenadoresDto) => {
+            console.log(entrenador.IDEntrenador);
+            console.log(entrenador.nombreUsuario);
             return {
               valor: entrenador.IDEntrenador,
               etiqueta:

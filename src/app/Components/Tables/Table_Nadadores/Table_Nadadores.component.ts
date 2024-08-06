@@ -5,11 +5,18 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { P009Nadador } from '../../../Models/Private/DtosP009/P009Get_NadadoresDto';
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
+import { ActualizarCategoriaDeNadadorDto } from '../../../Models/Private/DtosP009/P009actualizarCategoriaDeNadador.dto';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-Table_Nadadores',
   standalone: true,
-  imports: [CommonModule, DatePipe],
+  imports: [CommonModule, DatePipe, ReactiveFormsModule],
   templateUrl: './Table_Nadadores.component.html',
   styleUrls: ['./Table_Nadadores.component.scss'],
 })
@@ -21,7 +28,8 @@ export class Table_NadadoresComponent implements OnInit {
   constructor(
     private router: Router,
     private service: P009Service,
-    private authService: AuthService
+    private authService: AuthService,
+    private fb: FormBuilder
   ) {
     this.authState$ = this.authService.authState$;
   }
@@ -44,5 +52,11 @@ export class Table_NadadoresComponent implements OnInit {
         }
       );
     }
+  }
+
+  actualizarCategoria(id: number) {
+    this.router.navigate(['/add_edit_Categoria'], {
+      queryParams: { editMode: true, idUser: id },
+    });
   }
 }

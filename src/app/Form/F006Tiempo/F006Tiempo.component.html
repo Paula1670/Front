@@ -4,7 +4,7 @@
   <form class="time-form" [formGroup]="tiempoForm">
     <h2>Ingresar Tiempo de Nado</h2>
 
-    @if(editMode==false){
+    @if(editMode){ }@else{
     <label for="nadador">Para que nadador?*:</label>
     <select formControlName="nadador" id="nadador">
       @for( opcion of opcionNadador; track opcion.valor){
@@ -50,15 +50,16 @@
 
     <label for="tiempo">Tiempo*:</label>
     <input type="text" formControlName="tiempo" id="tiempo" />
-    @if(!editMode){
-    <div>
-      <button class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
-    </div>
-    } @else {
+    @if(editMode){
+
     <div>
       <button class="addition" (click)="Update_Tiempo(idTiempo)">
         Editar Tiempo
       </button>
+    </div>
+    } @else {
+    <div>
+      <button class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
     </div>
     }
   </form>

@@ -1,6 +1,6 @@
 import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
 
-export interface P009Usuario {
+export interface F009Usuario {
   IDUsuario: number;
   Nombre: string;
   Apellido: string;

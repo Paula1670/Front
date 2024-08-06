@@ -45,6 +45,15 @@
       <button class="addition" (click)="editarMiembro(P009Nadador.IDUsuario)">
         Editar
       </button>
+      } @if(authState.user?.entrenador){
+
+      <button
+        class="addition"
+        (click)="actualizarCategoria(P009Nadador.IDUsuario)"
+      >
+        Actualizar Categoria
+      </button>
+
       }
     </td>
   </tr>

@@ -11,6 +11,7 @@ import { F009GetNadadoresDto } from '../../Models/Private/DtosF009/F009Get_Nadad
 import { F003Update_MiembroJuntaDto } from '../../Models/Private/DtosF003/F003Update_MiembroJuntaDto';
 import { F009Create_UserDto } from '../../Models/Private/DtosF009/F009Create_UserDto';
 import { F009GetCategoriasDto } from '../../Models/Private/DtosF009/F009Get_CategoriasDto';
+import { P009Nadador } from '../../Models/Private/DtosP009/P009Get_NadadoresDto';
 
 @Injectable({
   providedIn: 'root',
@@ -54,7 +55,7 @@ export class F009Service {
 
   findEntrenadores() {
     const apiUrl: string = environment.UrlBackend + '/F009/findEntrenadores';
-
+    console.log(apiUrl);
     return this.http.get<F009Get_EntrenadoresDto[]>(apiUrl);
   }
 
@@ -67,5 +68,12 @@ export class F009Service {
     const apiUrl: string = environment.UrlBackend + '/F007/findCategorias';
 
     return this.http.get<F009GetCategoriasDto[]>(apiUrl);
+  }
+
+  findNadadoresByEntrenador(id: number) {
+    const apiUrl: string =
+      environment.UrlBackend + '/F009/findNadadoresByEntrenador/' + id;
+
+    return this.http.get<P009Nadador[]>(apiUrl);
   }
 }
