@@ -23,6 +23,7 @@ import { F005DocumentacionComponent } from './Form/F005Documentacion/F005Documen
 import { FFooterComponent } from './Form/FFooter/FFooter.component';
 import { F004CuotasPosiblesComponent } from './Form/F004CuotasPosibles/F004CuotasPosibles.component';
 import { F003JuntaComponent } from './Form/F003Junta/F003Junta.component';
+import { F011CategoriaComponent } from './Form/F011Categoria/F011Categoria.component';
 
 export const routes: Routes = [
   { path: 'logged', component: P001Principal_SiteComponent },
@@ -48,5 +49,6 @@ export const routes: Routes = [
   { path: 'add_edit_contacto', component: FFooterComponent },
   { path: 'add_edit_cuota', component: F004CuotasPosiblesComponent },
   { path: 'add_edit_miembroJunta', component: F003JuntaComponent },
+  { path: 'add_edit_categoria', component: F011CategoriaComponent },
   { path: '**', component: ErrorComponent },
 ];

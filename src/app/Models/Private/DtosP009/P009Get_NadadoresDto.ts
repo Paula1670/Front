@@ -12,4 +12,5 @@ export interface P009Nadador {
   FechaInscripcion: Date;
   Genero: GeneroEnum;
   NombreCategoria: string;
+  Nadador: number;
 }

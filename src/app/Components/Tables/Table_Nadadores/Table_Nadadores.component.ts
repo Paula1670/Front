@@ -55,8 +55,8 @@ export class Table_NadadoresComponent implements OnInit {
   }
 
   actualizarCategoria(id: number) {
-    this.router.navigate(['/add_edit_Categoria'], {
-      queryParams: { editMode: true, idUser: id },
+    this.router.navigate(['/add_edit_categoria'], {
+      queryParams: { idUser: id },
     });
   }
 }

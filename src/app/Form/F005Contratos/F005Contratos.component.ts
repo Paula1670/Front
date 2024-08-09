@@ -55,6 +55,7 @@ export class F005ContratosComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.editMode = params['editMode'];
+      console.log(this.editMode);
       this.IDMiCuota = params['IDMiCuota'];
       if (this.editMode && this.IDMiCuota) {
         this.Get_Contrato(this.IDMiCuota);
