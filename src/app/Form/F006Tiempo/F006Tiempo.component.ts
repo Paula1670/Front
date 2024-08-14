@@ -125,7 +125,6 @@ export class F006TiempoComponent implements OnInit {
       Temporada: TemporadaEnum.Invierno,
       FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
     };
-    console.log(createF006Dto);
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);

@@ -2,6 +2,7 @@
 
 <body>
   <form class="time-form" [formGroup]="categoriaForm">
+    <h1>Actualizar Datos Nadador</h1>
     <label for="categoria">Categoria*:</label>
     <select formControlName="categoria" id="categoria">
       @for( opcion of opcionCategoria; track opcion.valor){
@@ -11,8 +12,17 @@
       }
     </select>
     <br /><br /><br />
+    <label for="entrenadorasociado">¿Cual será su entrenador?</label>
+    <select formControlName="entrenadorasociado" id="entrenadorasociado">
+      @for( opcion of opcionEntrenador; track opcion.valor){
+      <option [value]="opcion.valor">
+        {{ opcion.etiqueta }}
+      </option>
+      }
+    </select>
+    <br /><br /><br />
     <div>
-      <button class="addition" (click)="actualizarCategoria()">
+      <button class="addition" (click)="clickButton()">
         Actualizar categoria
       </button>
     </div>

@@ -60,6 +60,7 @@ export class F004CuotasPosiblesComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log('Respuesta del servidor:', response);
+          window.location.reload();
         },
         (error: any) => {
           console.error('Error al llamar al endpoint:', error);

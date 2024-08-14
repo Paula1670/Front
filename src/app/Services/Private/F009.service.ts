@@ -55,7 +55,7 @@ export class F009Service {
 
   findEntrenadores() {
     const apiUrl: string = environment.UrlBackend + '/F009/findEntrenadores';
-    console.log(apiUrl);
+
     return this.http.get<F009Get_EntrenadoresDto[]>(apiUrl);
   }
 

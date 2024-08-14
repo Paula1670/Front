@@ -132,7 +132,6 @@ export class F009MiembroComponent implements OnInit {
       entrenadorAsociado: this.userForm.value.entrenadorasociado,
       Categoria: this.userForm.value.categoria,
     };
-    console.log(createF009Dto);
     this.f009Service.Create_User(createF009Dto).subscribe(
       (response: any) => {
         console.log('Respuesta del servidor:', response);
@@ -180,8 +179,6 @@ export class F009MiembroComponent implements OnInit {
       .subscribe((data: F009Get_EntrenadoresDto[]) => {
         this.opcionEntrenador = data.map(
           (entrenador: F009Get_EntrenadoresDto) => {
-            console.log(entrenador.IDEntrenador);
-            console.log(entrenador.nombreUsuario);
             return {
               valor: entrenador.IDEntrenador,
               etiqueta:

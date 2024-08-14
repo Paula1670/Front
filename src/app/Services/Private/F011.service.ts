@@ -8,6 +8,9 @@ import { F010Create_ContratoDto } from '../../Models/Private/DtosF010/F010Create
 import { ActualizarCategoriaDeNadadorDto } from '../../Models/Private/DtosF011/F011actualizarCategoriaDeNadador.dto';
 import { F011GetCategoriasDto } from '../../Models/Private/DtosF011/F011Get_CategoriasDto';
 import { P009Nadador } from '../../Models/Private/DtosP009/P009Get_NadadoresDto';
+import { F011Get_EntrenadoresDto } from '../../Models/Private/DtosF011/F011Get_EntrenadoresDto';
+import { ActualizarEntrenadorDeNadadorDto } from '../../Models/Private/DtosF011/F011actualizarEntrenadorDeNadador.dto';
+import { NadadorDto } from '../../Models/Private/DtosF011/F011Nadador.dto';
 
 @Injectable({
   providedIn: 'root',
@@ -18,18 +21,24 @@ export class F011Service {
   actualizarCategoriaDeNadador(
     actualizarCategoriaDeNadadorDto: ActualizarCategoriaDeNadadorDto
   ) {
-    console.log(actualizarCategoriaDeNadadorDto);
     const apiUrl: string =
       environment.UrlBackend + '/F011/actualizarCategoriaDeNadador';
 
-    let f = this.http.put(apiUrl, actualizarCategoriaDeNadadorDto);
-    console.log(f);
-    return f;
+    return this.http.put(apiUrl, actualizarCategoriaDeNadadorDto);
+  }
+
+  actualizarEntrenadorDeNadador(
+    actualizarEntrenadorDeNadadorDto: ActualizarEntrenadorDeNadadorDto
+  ) {
+    const apiUrl: string =
+      environment.UrlBackend + '/F011/actualizarEntrenadorDeNadador';
+
+    return this.http.put(apiUrl, actualizarEntrenadorDeNadadorDto);
   }
 
   findCategorias() {
     const apiUrl: string = environment.UrlBackend + '/F011/findCategorias';
-    //console.log(this.http.get<F011GetCategoriasDto[]>(apiUrl));
+
     return this.http.get<F011GetCategoriasDto[]>(apiUrl);
   }
   /*
@@ -39,5 +48,16 @@ export class F011Service {
     const apiUrl: string = environment.UrlBackend + '/F011/Find_User/' + id;
 
     return this.http.get<P009Nadador>(apiUrl);
+  }
+
+  Find_Nadador(id: number) {
+    const apiUrl: string = environment.UrlBackend + '/F011/Find_Nadador/' + id;
+    return this.http.get<NadadorDto>(apiUrl);
+  }
+
+  findEntrenadores() {
+    const apiUrl: string = environment.UrlBackend + '/F011/findEntrenadores';
+
+    return this.http.get<F011Get_EntrenadoresDto[]>(apiUrl);
   }
 }
