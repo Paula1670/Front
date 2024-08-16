@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Time } from '../../../Models/time';
+import { Time } from '../../../Models/Private/DtosP006/time';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { P006Service } from '../../../Services/Private/p006.service';

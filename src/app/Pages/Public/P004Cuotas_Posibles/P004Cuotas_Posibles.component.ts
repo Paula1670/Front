@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
-import { Nav_BarComponent } from '../../../Components/Nav_Bars/Nav_Bar/Nav_Bar.component';
 import { P004Cuotas } from '../../../Models/Private/DtosP004/P004Get_CuotaDto';
 import { P004Service } from '../../../Services/Public/P004.service';
 import { Router } from '@angular/router';

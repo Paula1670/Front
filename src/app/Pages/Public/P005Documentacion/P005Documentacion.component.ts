@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
-import { Nav_Bar_publicComponent } from '../../../Components/Nav_Bars/Nav_Bar_public/Nav_Bar_public.component';
+
 import { P005GetDocumentacion } from '../../../Models/Public/DtosP005/P005Get_Documentacion';
 import { P005Service } from '../../../Services/Public/P005.service';
 import { Router } from '@angular/router';

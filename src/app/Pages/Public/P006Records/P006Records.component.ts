@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { Nav_Bar_publicComponent } from '../../../Components/Nav_Bars/Nav_Bar_public/Nav_Bar_public.component';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { P006Tiempo } from '../../../Models/Private/DtosP006/P006Get_TiemposDto';
 import { Public006Service } from '../../../Services/Public/P006.service';

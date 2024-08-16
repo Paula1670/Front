@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { ErrorComponent } from './error/error.component';
 import { P001Principal_SiteComponent } from './Pages/Private/p001Principal_Site/p001Principal_Site.component';
-import { P003My_ContractComponent } from './Pages/Private/P003My_Contract/P003My_Contract.component';
 import { Log_InComponent } from './Pages/Public/Log_In/Log_In.component';
 import { P001Principal_publicComponent } from './Pages/Public/p001Principal_public/p001Principal_public.component';
 import { P002EquipoComponent } from './Pages/Public/p002Equipo/p002Equipo.component';
@@ -9,7 +8,6 @@ import { P003GaleriaComponent } from './Pages/Public/p003Galeria/p003Galeria.com
 import { P006TiemposComponent } from './Pages/Private/P006Tiempos/P006Tiempos.component';
 import { P007MinimasComponent } from './Pages/Private/P007Minimas/P007Minimas.component';
 import { F009MiembroComponent } from './Form/F009Miembro/F009Miembro.component';
-import { P008DestinosComponent } from './Pages/Private/P008Destinos/P008Destinos.component';
 import { P009UsuariosComponent } from './Pages/Private/P009Usuarios/P009Usuarios.component';
 import { F005ContratosComponent } from './Form/F005Contratos/F005Contratos.component';
 import { P010ContratosComponent } from './Pages/Private/P010Contratos/P010Contratos.component';
@@ -27,7 +25,6 @@ import { F011CategoriaComponent } from './Form/F011Categoria/F011Categoria.compo
 
 export const routes: Routes = [
   { path: 'logged', component: P001Principal_SiteComponent },
-  { path: 'mis-contratos', component: P003My_ContractComponent },
   { path: 'cuotas', component: P004Cuotas_PosiblesComponent },
   { path: 'documentacion', component: P005DocumentacionComponent },
   { path: 'login', component: Log_InComponent },
@@ -39,7 +36,6 @@ export const routes: Routes = [
   { path: 'add_edit_user', component: F009MiembroComponent },
   { path: 'add_edit_tiempo', component: F006TiempoComponent },
   { path: 'add_edit_minima', component: F007MinimaComponent },
-  { path: 'destination', component: P008DestinosComponent },
   { path: 'users', component: P009UsuariosComponent },
   { path: 'contratos', component: P010ContratosComponent },
   { path: 'add_edit_contratos', component: F005ContratosComponent },

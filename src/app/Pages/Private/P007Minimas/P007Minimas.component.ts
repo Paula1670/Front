@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Nav_Bar_ENComponent } from '../../../Components/Nav_Bars/Nav_Bar_EN/Nav_Bar_EN.component';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { Table_MinimasComponent } from '../../../Components/Tables/Table_Minimas/Table_Minimas.component';
 import {
@@ -21,9 +20,9 @@ import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_B
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
 import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
-import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum copy 2';
+import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum';
 import { P007GetGeneroCategoriaDto } from '../../../Models/Private/DtosP007/P007GetGeneroCategoriaDto';
-import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum';
 import { FiltrosMinimaDto } from '../../../Models/Private/DtosP007/filtros_minima.dto';
 import {
   FormBuilder,

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
-import { Nav_Bar_ENComponent } from '../../../Components/Nav_Bars/Nav_Bar_EN/Nav_Bar_EN.component';
-import { Time } from '../../../Models/time';
+import { Time } from '../../../Models/Private/DtosP006/time';
 import { CommonModule } from '@angular/common';
 import { Table_TiemposComponent } from '../../../Components/Tables/Table_Tiempos/Table_Tiempos.component';
 import { P006Service } from '../../../Services/Private/p006.service';

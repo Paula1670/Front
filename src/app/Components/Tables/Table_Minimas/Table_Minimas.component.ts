@@ -6,7 +6,7 @@ import { P007Service } from '../../../Services/Private/P007.service';
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
 import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
-import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum copy 2';
+import { CampeonatoEnum } from '../../../Core/Constants/Enums/CampeonatoEnum';
 
 @Component({
   selector: 'app-Table_Minimas',

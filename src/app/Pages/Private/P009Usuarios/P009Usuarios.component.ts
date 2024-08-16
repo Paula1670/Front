@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../../Components/Tables/Table/Table.component';
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
-import { Nav_Bar_JuntaComponent } from '../../../Components/Nav_Bars/Nav_Bar_Junta/Nav_Bar_Junta.component';
 import { P009Usuario } from '../../../Models/Private/DtosP009/P009Get_UsersDto';
 import { P009Service } from '../../../Services/Private/P009.service';
 import { Router } from '@angular/router';

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Nav_Bar_publicComponent } from '../../../Components/Nav_Bars/Nav_Bar_public/Nav_Bar_public.component';
+
 import { HeaderComponent } from '../../../Components/Header/Header.component';
 import { FooterComponent } from '../../../Components/Footer/Footer.component';
 import { Router } from '@angular/router';

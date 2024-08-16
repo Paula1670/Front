@@ -1,4 +1,4 @@
-import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum copy';
+import { GeneroEnum } from '../../../Core/Constants/Enums/GeneroEnum';
 
 export interface F009Usuario {
   IDUsuario: number;
