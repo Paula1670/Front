@@ -2,11 +2,11 @@
   @if((authState$ | async) ;as authState){
   <thead>
     <tr>
-      <th>ID</th>
+      <!--  <th>ID</th>-->
       <th>Nombre</th>
       <th>Apellido</th>
       <th>Fecha de Nacimiento</th>
-      <th>Fecha de inscripcion</th>
+      <th>Fecha de inscripción</th>
       <th>Email</th>
       <th>Domicilio</th>
 
@@ -15,7 +15,7 @@
   </thead>
   @for(P009Usuario of memberlist;track P009Usuario.IDUsuario){
   <tr>
-    <td>{{ P009Usuario.IDUsuario }}</td>
+    <!-- <td>{{ P009Usuario.IDUsuario }}</td>-->
     <td>
       {{ P009Usuario.Nombre }}
     </td>

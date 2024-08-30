@@ -47,6 +47,7 @@
     </select>
     }
     <br /><br />
+
     <label for="categoria">Categoria*:</label>
     <select formControlName="categoria" id="categoria">
       @for( opcion of opcionCategoria; track opcion.valor){
@@ -55,6 +56,7 @@
       </option>
       }
     </select>
+
     <br /><br />
     <label for="entrenadorasociado">¿Cual será su entrenador?</label>
     <select formControlName="entrenadorasociado" id="entrenadorasociado">
@@ -86,6 +88,7 @@
       id="contrasena"
       formControlName="contrasena"
     /><br /><br />
+    @if(!editMode && !userForm.value.crearNadador){
     <label>Género*:</label><br />
 
     <a class="space">
@@ -108,7 +111,7 @@
       />
       <label for="genero_femenino">Femenino</label><br />
     </a>
-
+    }
     <label for="direccion">Correo Electronico*:</label>
     <input type="text" id="direccion" formControlName="direccion" /><br /><br />
 
@@ -133,7 +136,7 @@
       formControlName="fechaInscripcion"
     /><br />
     <div>
-      <!--  {{ userForm.invalid }}-->
+      {{ userForm.invalid }}
       <button
         [disabled]="this.userForm.invalid"
         class="addition"

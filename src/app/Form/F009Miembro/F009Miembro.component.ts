@@ -17,6 +17,9 @@ import { F009GetSociosDto } from '../../Models/Private/DtosF009/F009Get_SociosDt
 import { F009Get_EntrenadoresDto } from '../../Models/Private/DtosF009/F009Get_EntrenadoresDto';
 import { F009Create_UserDto } from '../../Models/Private/DtosF009/F009Create_UserDto';
 import { F009GetCategoriasDto } from '../../Models/Private/DtosF009/F009Get_CategoriasDto';
+import { AuthService, AuthState } from '../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
+import { GeneroEnum } from '../../Core/Constants/Enums/GeneroEnum';
 
 @Component({
   selector: 'app-F009Miembro',
@@ -33,11 +36,12 @@ export class F009MiembroComponent implements OnInit {
   opcionSocio: Opcion[] = [];
   opcionEntrenador: Opcion[] = [];
   opcionCategoria: Opcion[] = [];
+  esNadador: boolean = false;
+  gender?: GeneroEnum;
   constructor(
     private f009Service: F009Service,
     private router: Router,
     private fb: FormBuilder,
-
     private route: ActivatedRoute
   ) {
     this.userForm = this.fb.group({
@@ -49,7 +53,7 @@ export class F009MiembroComponent implements OnInit {
       domicilio: ['', [Validators.required]],
       telefono: ['', [Validators.required]],
       fechaInscripcion: ['', [Validators.required]],
-      genero: ['', [Validators.required]],
+      genero: [''],
 
       categoria: [0],
       crearSocio: [false],
@@ -69,6 +73,7 @@ export class F009MiembroComponent implements OnInit {
       if (this.editMode && this.idUser) {
         this.Get_User(this.idUser);
       }
+
       this.findCuotas();
       this.findSocios();
       this.findEntrenadores();
@@ -85,6 +90,11 @@ export class F009MiembroComponent implements OnInit {
       this.userForm.get('genero')?.patchValue(data.Genero);
       this.userForm.get('telefono')?.patchValue(data.Telefono);
       this.userForm.get('domicilio')?.patchValue(data.Domicilio);
+      console.log(data.Nadador);
+      this.esNadador = data.Nadador ? true : false;
+      if (this.esNadador) {
+        this.gender = data.Genero;
+      }
     });
   }
 
@@ -96,8 +106,11 @@ export class F009MiembroComponent implements OnInit {
       Direccion: this.userForm.value.direccion,
       Domicilio: this.userForm.value.domicilio,
       Telefono: this.userForm.value.telefono,
-      Genero: this.userForm.value.genero,
+      Genero: this.userForm.value.crearNadador
+        ? this.gender
+        : this.userForm.value.genero,
     };
+
     if (id) {
       this.f009Service.Update_User(id, updateF009Dto).subscribe(
         (response) => {
@@ -113,35 +126,49 @@ export class F009MiembroComponent implements OnInit {
   }
 
   Add_User() {
-    let createF009Dto: F009Create_UserDto = {
-      Nombre: this.userForm.value.nombre,
-      Apellido: this.userForm.value.apellido,
-      Contrasena: this.userForm.value.contrasena,
-      Direccion: this.userForm.value.direccion,
-      Domicilio: this.userForm.value.domicilio,
-      FechaInscripcion: this.userForm.value.fechaInscripcion,
-      FechaNacimiento: this.userForm.value.fechaNacimiento,
-      Genero: this.userForm.value.genero,
-      Telefono: this.userForm.value.telefono,
-      crearSocio: this.userForm.value.crearSocio,
-      crearNadador: this.userForm.value.crearNadador,
-      crearEntrenador: this.userForm.value.crearEntrenador,
-      especialidad: this.userForm.value.especialidad,
-      idCuota: this.userForm.value.idCuota,
-      socioAsociado: this.userForm.value.socioasociado,
-      entrenadorAsociado: this.userForm.value.entrenadorasociado,
-      Categoria: this.userForm.value.categoria,
-    };
-    this.f009Service.Create_User(createF009Dto).subscribe(
-      (response: any) => {
-        console.log('Respuesta del servidor:', response);
-        window.location.reload();
-      },
-      (error: any) => {
-        console.error('Error al llamar al endpoint:', error);
-      }
-    );
-    this.router.navigate(['/users']);
+    this.f009Service
+      .findCategorias()
+      .subscribe((data: F009GetCategoriasDto[]) => {
+        const gender = data.find(
+          (opcionCategoria) =>
+            opcionCategoria.IDCategoria == this.userForm.value.categoria
+        )?.Genero;
+
+        let createF009Dto: F009Create_UserDto = {
+          Nombre: this.userForm.value.nombre,
+          Apellido: this.userForm.value.apellido,
+          Contrasena: this.userForm.value.contrasena,
+          Direccion: this.userForm.value.direccion,
+          Domicilio: this.userForm.value.domicilio,
+          FechaInscripcion: this.userForm.value.fechaInscripcion,
+          FechaNacimiento: this.userForm.value.fechaNacimiento,
+          Genero: this.userForm.value.crearNadador
+            ? gender
+            : this.userForm.value.genero,
+          Telefono: this.userForm.value.telefono,
+          crearSocio: this.userForm.value.crearSocio,
+          crearNadador: this.userForm.value.crearNadador,
+          crearEntrenador: this.userForm.value.crearEntrenador,
+          especialidad: this.userForm.value.especialidad,
+          idCuota: this.userForm.value.idCuota,
+          socioAsociado: this.userForm.value.socioasociado,
+          entrenadorAsociado: this.userForm.value.entrenadorasociado,
+          Categoria: this.userForm.value.categoria,
+        };
+        console.log('addUser');
+        this.f009Service.Create_User(createF009Dto).subscribe(
+          (response: any) => {
+            console.log('Respuesta del servidor:', response);
+
+            window.location.reload();
+          },
+          (error: any) => {
+            console.error('Error al llamar al endpoint:', error);
+          }
+        );
+
+        this.router.navigate(['/users']);
+      });
   }
 
   opcionPersonal: Opcion[] = [
