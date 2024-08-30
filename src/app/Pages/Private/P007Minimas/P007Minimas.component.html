@@ -59,7 +59,8 @@
     </button>-->
 
     @if(authState.user?.miembroPuesto=="Presidente" ||
-    authState.user?.miembroPuesto=="Vicepresidente" ){
+    authState.user?.miembroPuesto=="Vicepresidente" ||
+    authState.user?.entrenador ){
 
     <button class="addition" (click)="gotoFormulario()">Agregar Minima</button>
     }
