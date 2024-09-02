@@ -5,11 +5,12 @@
     <th>Categoria</th>-->
 
     @if(authState.user?.entrenador){
-    <th>Id</th>
+
     <th>Nombre</th>
     <th>Apellidos</th>
     <th>Categoria</th>
     }
+    <th>Fecha de la Marca</th>
     <th>Piscina</th>
     <th>Estilo</th>
     <th>Prueba</th>
@@ -22,7 +23,6 @@
   @for(P006Tiempo of timelist;track P006Tiempo.IDTiempo ){
   <tr>
     @if(authState.user?.entrenador){
-    <td>{{ P006Tiempo.IDTiempo }}</td>
     <td>
       {{ P006Tiempo.Nombre }}
     </td>
@@ -32,7 +32,11 @@
     <td>
       {{ P006Tiempo.Categoria }}
     </td>
+
     }
+    <td>
+      {{ P006Tiempo.FechaMarcaNadador }}
+    </td>
     <td>{{ P006Tiempo.Piscina }}</td>
     <td>{{ P006Tiempo.Estilo }}</td>
     <td>{{ P006Tiempo.Prueba }}</td>

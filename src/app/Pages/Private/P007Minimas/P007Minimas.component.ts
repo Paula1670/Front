@@ -32,6 +32,7 @@ import {
 } from '@angular/forms';
 import { F007Service } from '../../../Services/Private/F007.service';
 import { F007GetCategoriasDto } from '../../../Models/Private/DtosF007/F007Get_CategoriasDto';
+import { FooterComponent } from '../../../Components/Footer/Footer.component';
 
 @Component({
   selector: 'app-P007Minimas',
@@ -42,6 +43,7 @@ import { F007GetCategoriasDto } from '../../../Models/Private/DtosF007/F007Get_C
     HeaderComponent,
     Table_MinimasComponent,
     ReactiveFormsModule,
+    FooterComponent,
   ],
   templateUrl: './P007Minimas.component.html',
   styleUrls: ['./P007Minimas.component.scss'],

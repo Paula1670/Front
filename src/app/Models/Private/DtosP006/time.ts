@@ -1,23 +1,21 @@
-export class Time {
-  IDTiempo: number;
-  Temporada: string;
-  Piscina: string;
-  Prueba: string;
-  Estilo: string;
+import { CategoriaEnum } from '../../../Core/Constants/Enums/CategoriaEnum';
+import { EstiloEnum } from '../../../Core/Constants/Enums/EstiloEnum';
+import { PiscinaEnum } from '../../../Core/Constants/Enums/PiscinaEnum';
+import { PruebaEnum } from '../../../Core/Constants/Enums/PruebaEnum';
+import { TemporadaEnum } from '../../../Core/Constants/Enums/TemporadaEnum';
+
+export interface Time {
   Tiempo: string;
+  Temporada: TemporadaEnum;
+  Prueba: PruebaEnum;
+  Piscina: PiscinaEnum;
+  Categoria: CategoriaEnum;
+  Estilo: EstiloEnum;
+  CumpleMinima: boolean;
+  IDCategoria: number;
+  IDUsuario: number;
   Nombre: string;
   Apellido: string;
-  Categoria: string;
-
-  constructor() {
-    this.IDTiempo = 1;
-    this.Estilo = 'braza';
-    this.Temporada = 'inv';
-    this.Piscina = '50m';
-    this.Prueba = '200m';
-    this.Tiempo = '2:48:23';
-    this.Apellido = '';
-    this.Nombre = '';
-    this.Categoria = '';
-  }
+  IDTiempo: number;
+  FechaMarcaNadador: Date;
 }

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { Final_Nav_BarComponent } from '../../../Components/Nav_Bars/Final_Nav_Bar/Final_Nav_Bar.component';
 import { AuthService, AuthState } from '../../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
+import { FooterComponent } from '../../../Components/Footer/Footer.component';
 
 @Component({
   selector: 'app-P006Tiempos',
@@ -17,6 +18,7 @@ import { Observable } from 'rxjs';
     Final_Nav_BarComponent,
     HeaderComponent,
     Table_TiemposComponent,
+    FooterComponent,
   ],
   templateUrl: './P006Tiempos.component.html',
   styleUrls: ['./P006Tiempos.component.scss'],

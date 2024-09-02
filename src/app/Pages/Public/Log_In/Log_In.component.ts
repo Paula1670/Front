@@ -9,11 +9,18 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../../Services/Public/Auth.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from '../../../Components/Header/Header.component';
+import { FooterComponent } from '../../../Components/Footer/Footer.component';
 
 @Component({
   selector: 'app-Log_In',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    HeaderComponent,
+    FooterComponent,
+  ],
   templateUrl: './Log_In.component.html',
   styleUrls: ['./Log_In.component.scss'],
 })

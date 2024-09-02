@@ -1,10 +1,11 @@
+<app-Header [title]="'Iniciar Sesión'"></app-Header> <br /><br /><br />
 <head>
   <title>Iniciar Sesión - Socio</title>
 </head>
 <body>
-  <h2>Iniciar Sesión - Socio</h2>
+  <br /><br />
   <form action="autenticar_socio.php" method="POST" [formGroup]="Login_Form">
-    <label for="direccion_usuario">Direccion de correo electronico:</label>
+    <label for="direccion_usuario">Dirección de correo electrónico:</label>
     <input
       type="text"
       id="direccion_usuario"
@@ -22,4 +23,7 @@
       Iniciar Sesión
     </button>
   </form>
+  <br /><br />
 </body>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<app-Footer></app-Footer>
