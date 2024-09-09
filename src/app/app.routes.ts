@@ -22,6 +22,8 @@ import { FFooterComponent } from './Form/FFooter/FFooter.component';
 import { F004CuotasPosiblesComponent } from './Form/F004CuotasPosibles/F004CuotasPosibles.component';
 import { F003JuntaComponent } from './Form/F003Junta/F003Junta.component';
 import { F011CategoriaComponent } from './Form/F011Categoria/F011Categoria.component';
+import { roleGuard } from './Core/Guards/role.guard';
+import { authGuard } from './Core/Guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'logged', component: P001Principal_SiteComponent },
@@ -31,7 +33,12 @@ export const routes: Routes = [
   { path: '', component: P001Principal_publicComponent },
   { path: 'equipo', component: P002EquipoComponent },
   { path: 'galeria', component: P003GaleriaComponent },
-  { path: 'tiempos', component: P006TiemposComponent },
+  {
+    path: 'tiempos',
+    component: P006TiemposComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['nadador', 'entrenador'] },
+  },
   { path: 'minimas', component: P007MinimasComponent },
   { path: 'add_edit_user', component: F009MiembroComponent },
   { path: 'add_edit_tiempo', component: F006TiempoComponent },
@@ -46,5 +53,6 @@ export const routes: Routes = [
   { path: 'add_edit_cuota', component: F004CuotasPosiblesComponent },
   { path: 'add_edit_miembroJunta', component: F003JuntaComponent },
   { path: 'add_edit_categoria', component: F011CategoriaComponent },
+
   { path: '**', component: ErrorComponent },
 ];

@@ -1,8 +1,13 @@
-<app-Header [title]="'Agregar Nuevo Contrato'"></app-Header>
-
+@if(!editMode) {<app-Header [title]="'Agregar Nuevo Contrato'"></app-Header>}
+@else {<app-Header [title]="'Editar Contrato'"></app-Header>}
 <body>
+  @if(!editMode){
   <h2>Agregar Nuevo Contrato</h2>
+  } @else{
+  <h2>Editar Contrato</h2>
+  }
   <form [formGroup]="contratoForm">
+    @if(!editMode){
     <label for="socioAsociado">¿Con que socio está asociado?*</label>
     <select formControlName="socioAsociado" id="socioAsociado">
       @for( opcion of opcionSocio; track opcion.valor){
@@ -19,6 +24,7 @@
       </option>
       }
     </select>
+    }
     <br />
     <br />
     <label>Fecha de Inicio*:</label>
@@ -43,12 +49,14 @@
     <p>{{ editMode }}</p>
     @if(!editMode){
     <div>
-      <button class="addition" (click)="Add_Contrato()">Agregar Cuota</button>
+      <button class="addition" (click)="Add_Contrato()">
+        Agregar Contrato
+      </button>
     </div>
     } @else {
     <div>
       <button class="addition" (click)="Update_Contrato(IDMiCuota)">
-        Editar Cuota
+        Editar Contrato
       </button>
     </div>
     }
