@@ -133,7 +133,6 @@ export class F009MiembroComponent implements OnInit {
           (opcionCategoria) =>
             opcionCategoria.IDCategoria == this.userForm.value.categoria
         )?.Genero;
-
         let createF009Dto: F009Create_UserDto = {
           Nombre: this.userForm.value.nombre,
           Apellido: this.userForm.value.apellido,

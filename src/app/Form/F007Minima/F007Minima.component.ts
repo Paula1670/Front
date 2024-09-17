@@ -118,25 +118,37 @@ export class F007MinimaComponent implements OnInit {
   }
 
   Add_Minima() {
-    let createF007Dto = new F007CreateMinimaDto();
+    this.f007Service
+      .findCategorias()
+      .subscribe((data: F007GetCategoriasDto[]) => {
+        const gender = data.find(
+          (opcionCategoria) =>
+            opcionCategoria.IDCategoria == this.minimaForm.value.categoria
+        )?.Genero;
 
-    createF007Dto.TiempoMinimo = this.minimaForm.value.tiempoMinimo;
-    createF007Dto.Temporada = this.minimaForm.value.temporada;
-    createF007Dto.Prueba = this.minimaForm.value.prueba;
-    createF007Dto.Piscina = this.minimaForm.value.piscina;
-    createF007Dto.Categoria = this.minimaForm.value.categoria;
-    createF007Dto.Estilo = this.minimaForm.value.estilo;
-    createF007Dto.Genero = this.minimaForm.value.genero;
-    createF007Dto.Campeonato = this.minimaForm.value.campeonato;
-    this.f007Service.Create_Minima(createF007Dto).subscribe(
-      (response) => {
-        console.log('Respuesta del servidor:', response);
+        let createF007Dto: F007CreateMinimaDto = {
+          TiempoMinimo: this.minimaForm.value.tiempoMinimo,
+          Temporada: this.minimaForm.value.temporada,
+          Prueba: this.minimaForm.value.prueba,
+          Piscina: this.minimaForm.value.piscina,
+          Categoria: this.minimaForm.value.categoria,
+          Estilo: this.minimaForm.value.estilo,
+          Genero: gender ? gender : this.minimaForm.value.genero,
+          Campeonato: this.minimaForm.value.campeonato,
+        };
+        this.f007Service.Create_Minima(createF007Dto).subscribe(
+          (response: any) => {
+            console.log('Respuesta del servidor:', response);
+
+            window.location.reload();
+          },
+          (error: any) => {
+            console.error('Error al llamar al endpoint:', error);
+          }
+        );
+
         this.router.navigate(['/minimas']);
-      },
-      (error) => {
-        console.error('Error al llamar al endpoint:', error);
-      }
-    );
+      });
   }
 
   private findCategorias() {
