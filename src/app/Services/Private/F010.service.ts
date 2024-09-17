@@ -30,7 +30,7 @@ export class F010Service {
 
   Get_Contrato(id: number) {
     const apiUrl: string = environment.UrlBackend + '/F010/Get_Contrato/' + id;
-
+    console.log(apiUrl);
     return this.http.get<P010ContratoDto>(apiUrl);
   }
 }

@@ -13,7 +13,7 @@ export const roleGuard: CanActivateFn = async (route, state) => {
   const authState = await firstValueFrom(authService.authState$);
 
   const user = authState.user;
-  console.log(user);
+
   if (user && hasRole(user, expectedRoles)) {
     return true;
   } else {
@@ -37,7 +37,10 @@ function hasRole(user: any, expectedRoles: string[]): boolean {
       case 'socio':
         return user.socio;
       case 'miembroPuesto':
-        return user.miembroPuesto !== null;
+        return (
+          user.miembroPuesto === 'Presidente' ||
+          user.miembroPuesto === 'Vicepresidente'
+        );
       default:
         return false;
     }

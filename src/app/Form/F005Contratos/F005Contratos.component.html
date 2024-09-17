@@ -8,8 +8,8 @@
   }
   <form [formGroup]="contratoForm">
     @if(!editMode){
-    <label for="socioAsociado">¿Con que socio está asociado?*</label>
-    <select formControlName="socioAsociado" id="socioAsociado">
+    <label for="Socio">¿Con que socio está asociado?*</label>
+    <select formControlName="Socio" id="Socio">
       @for( opcion of opcionSocio; track opcion.valor){
       <option [value]="opcion.valor">
         {{ opcion.etiqueta }}
@@ -28,17 +28,17 @@
     <br />
     <br />
     <label>Fecha de Inicio*:</label>
-    <input type="date" id="fechaInicio" formControlName="fechaInicio" /><br />
+    <input type="date" id="FechaInicio" formControlName="FechaInicio" /><br />
     <br />
     <label>Fecha de Vencimiento*:</label>
     <input
       type="date"
-      id="fechaVencimiento"
-      formControlName="fechaVencimiento"
+      id="FechaVencimiento"
+      formControlName="FechaVencimiento"
     />
     <br /><br />
-    <label for="estado">Estado*:</label>
-    <select formControlName="estado" id="estado">
+    <label for="Estado">Estado*:</label>
+    <select formControlName="Estado" id="Estado">
       @for( opcion of opcionEstado; track opcion.valor){
       <option [value]="opcion.valor">
         {{ opcion.etiqueta }}
@@ -46,7 +46,6 @@
       }
     </select>
     <br />
-    <p>{{ editMode }}</p>
     @if(!editMode){
     <div>
       <button class="addition" (click)="Add_Contrato()">
@@ -61,5 +60,5 @@
     </div>
     }
   </form>
-  /><br /><br />
+  <br /><br />
 </body>

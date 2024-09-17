@@ -1,9 +1,9 @@
 export class F004UpdateCuotaDto {
   Precio: number;
   Nombre: string;
-  Federado: Boolean;
+  Federado: number;
   constructor() {
-    this.Federado = true;
+    this.Federado = 1;
     this.Nombre = '';
     this.Precio = 1;
   }

@@ -108,6 +108,7 @@ export class F007MinimaComponent implements OnInit {
       this.f007Service.Update_Minima(id, updateF007Dto).subscribe(
         (response) => {
           console.log('Respuesta del servidor:', response);
+          this.router.navigate(['/minimas']);
         },
         (error) => {
           console.error('Error al llamar al endpoint:', error);
@@ -130,6 +131,7 @@ export class F007MinimaComponent implements OnInit {
     this.f007Service.Create_Minima(createF007Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
+        this.router.navigate(['/minimas']);
       },
       (error) => {
         console.error('Error al llamar al endpoint:', error);

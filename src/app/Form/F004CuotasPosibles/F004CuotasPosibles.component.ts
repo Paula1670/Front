@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { F004Service } from '../../Services/Public/F004.service';
 import { F004UpdateCuotaDto } from '../../Models/Public/DtosF004/F004Update_Cuota';
 import { F004GetCuotaDto } from '../../Models/Public/DtosF004/F004Get_Cuota';
+import { Opcion } from '../../Models/Desplegable/Opcion';
 
 @Component({
   selector: 'app-F004CuotasPosibles',
@@ -23,6 +24,16 @@ export class F004CuotasPosiblesComponent implements OnInit {
   cuotasForm: FormGroup;
   editMode?: boolean;
   IDCuota?: number;
+  opcionFederado: Opcion[] = [
+    {
+      valor: 'Si',
+      etiqueta: 'Si',
+    },
+    {
+      valor: 'No',
+      etiqueta: 'No',
+    },
+  ];
   constructor(
     private fb: FormBuilder,
     private f004Service: F004Service,
@@ -51,7 +62,7 @@ export class F004CuotasPosiblesComponent implements OnInit {
     let createF004Dto = {
       Nombre: this.cuotasForm.value.Nombre,
       Precio: this.cuotasForm.value.Precio,
-      Federado: this.cuotasForm.value.Federado,
+      Federado: this.cuotasForm.value.Federado === 'Si' ? 1 : 0,
     };
 
     this.f004Service
@@ -72,7 +83,7 @@ export class F004CuotasPosiblesComponent implements OnInit {
     let updateF004Dto: F004UpdateCuotaDto = {
       Nombre: this.cuotasForm.value.Nombre,
       Precio: this.cuotasForm.value.Precio,
-      Federado: this.cuotasForm.value.Federado,
+      Federado: this.cuotasForm.value.Federado === 'Si' ? 1 : 0,
     };
 
     if (id) {
@@ -92,7 +103,9 @@ export class F004CuotasPosiblesComponent implements OnInit {
     this.f004Service.Get_Cuota(id).subscribe((data: F004GetCuotaDto) => {
       this.cuotasForm.get('Nombre')?.patchValue(data.Nombre);
       this.cuotasForm.get('Precio')?.patchValue(data.Precio);
-      this.cuotasForm.get('Federado')?.patchValue(data.Federado);
+      this.cuotasForm
+        .get('Federado')
+        ?.patchValue(data.Federado === 1 ? 'Si' : 'No');
     });
   }
 }

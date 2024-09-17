@@ -45,18 +45,19 @@ export class F005ContratosComponent implements OnInit {
   ) {
     this.contratoForm = this.fb.group({
       cuotaAsociada: [null, [Validators.required]],
-      socioAsociado: [null, [Validators.required]],
-      fechaVencimiento: [null, [Validators.required]],
-      fechaInicio: [null, [Validators.required]],
-      estado: [null, [Validators.required]],
+      Socio: [null, [Validators.required]],
+      FechaVencimiento: [null, [Validators.required]],
+      FechaInicio: [null, [Validators.required]],
+      Estado: [null, [Validators.required]],
     });
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.editMode = params['editMode'];
-      console.log(this.editMode);
-      this.IDMiCuota = params['IDMiCuota'];
+
+      this.IDMiCuota = params['id'];
+
       if (this.editMode && this.IDMiCuota) {
         this.Get_Contrato(this.IDMiCuota);
       }
@@ -67,23 +68,28 @@ export class F005ContratosComponent implements OnInit {
 
   Get_Contrato(id: number) {
     this.f010Service.Get_Contrato(id).subscribe((data: any) => {
-      this.contratoForm.get('FechaInicio')?.patchValue(data.FechaInicio);
+      const fechaInicio = new Date(data.FechaInicio)
+        .toISOString()
+        .split('T')[0];
+      const fechaVencimiento = new Date(data.FechaVencimiento)
+        .toISOString()
+        .split('T')[0];
 
+      this.contratoForm.get('FechaInicio')?.patchValue(fechaInicio);
+      this.contratoForm.get('FechaVencimiento')?.patchValue(fechaVencimiento);
       this.contratoForm
-        .get('FechaVencimiento')
-        ?.patchValue(data.FechaVencimiento);
-
-      this.contratoForm.get('Estado')?.patchValue(data.Estado);
-      this.contratoForm.get('socio')?.patchValue(data.socio);
-      this.contratoForm.get('tipoCuota')?.patchValue(data.tipoCuota);
+        .get('Estado')
+        ?.patchValue(data.Estado === 'Pagado' ? 'Pagado' : 'Pendiente');
+      this.contratoForm.get('Socio')?.patchValue(data.Socio);
+      this.contratoForm.get('tipoCuota')?.patchValue(data.IDMiCuota);
     });
   }
 
   Update_Contrato(id: number | undefined) {
     const updateF010Dto: F010Update_ContratoDto = {
-      FechaInicio: this.contratoForm.value.fechaInicio,
-      FechaVencimiento: this.contratoForm.value.fechaVencimiento,
-      Estado: this.contratoForm.value.estado,
+      FechaInicio: this.contratoForm.value.FechaInicio,
+      FechaVencimiento: this.contratoForm.value.FechaVencimiento,
+      Estado: this.contratoForm.value.Estado,
     };
     if (id) {
       this.f010Service.Update_Contrato(id, updateF010Dto).subscribe(
@@ -102,13 +108,13 @@ export class F005ContratosComponent implements OnInit {
 
   Add_Contrato() {
     let createF010Dto: F010Create_ContratoDto = {
-      Estado: this.contratoForm.value.estado,
-      FechaInicio: this.contratoForm.value.fechaInicio,
-      FechaVencimiento: this.contratoForm.value.fechaVencimiento,
-      Socio: this.contratoForm.value.socioAsociado,
+      Estado: this.contratoForm.value.Estado,
+      FechaInicio: this.contratoForm.value.FechaInicio,
+      FechaVencimiento: this.contratoForm.value.FechaVencimiento,
+      Socio: this.contratoForm.value.Socio,
       CuotasPosibles: this.contratoForm.value.cuotaAsociada,
     };
-
+    console.log(createF010Dto);
     this.f010Service.Create_Contrato(createF010Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
