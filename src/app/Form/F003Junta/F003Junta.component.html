@@ -39,6 +39,7 @@
       </option>
       }
     </select>
+
     @if(!editMode){
 
     <div>
@@ -60,7 +61,8 @@
     </div>
     } @else { @if(idUser){
     <div>
-      <button class="addition" (click)="Update_MiembroJunta(idUser)">
+      <button [disabled]="this.juntaForm.invalid"
+      class="addition" (click)="Update_MiembroJunta(idUser)">
         Editar Miembro de la Junta
       </button>
       <button

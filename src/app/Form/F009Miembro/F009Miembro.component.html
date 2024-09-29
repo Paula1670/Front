@@ -157,7 +157,8 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Update_User(idUser)">
+      <button [disabled]="this.userForm.invalid"
+      class="addition" (click)="Update_User(idUser)">
         Editar Miembro
       </button>
 

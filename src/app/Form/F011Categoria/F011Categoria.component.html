@@ -21,8 +21,10 @@
       }
     </select>
     <br /><br /><br />
+    {{categoriaForm.invalid}}
     <div>
-      <button class="addition" (click)="clickButton()">
+      <button [disabled]="this.categoriaForm.invalid"
+      class="addition" (click)="clickButton()">
         Actualizar categoria
       </button>
 

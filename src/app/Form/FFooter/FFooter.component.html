@@ -10,7 +10,7 @@
     <input type="text" id="dato" formControlName="dato" /><br /><br />
     @if(!editMode){
     <div>
-      <button class="addition" (click)="Add_Contacto()">Agregar Minima</button>
+      <button [disabled]="this.ContactoForm.invalid" class="addition" (click)="Add_Contacto()">Agregar Minima</button>
       <button
       
       class="addition"
@@ -21,7 +21,7 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Update_Contacto(idDatosContacto)">
+      <button [disabled]="this.ContactoForm.invalid" class="addition" (click)="Update_Contacto(idDatosContacto)">
         Editar Contacto
       </button>
       <button

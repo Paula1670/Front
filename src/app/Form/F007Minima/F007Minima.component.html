@@ -70,7 +70,7 @@
     <input type="text" formControlName="tiempoMinimo" id="tiempoMinimo" />
     @if(!editMode){
     <div>
-      <button class="addition" (click)="Add_Minima()">Agregar Minima</button>
+      <button [disabled]="this.minimaForm.invalid" class="addition" (click)="Add_Minima()">Agregar Minima</button>
 
       <button
       
@@ -82,7 +82,7 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Update_Minima(idMinima)">
+      <button [disabled]="this.minimaForm.invalid" class="addition" (click)="Update_Minima(idMinima)">
         Editar Minima
       </button>
 

@@ -25,7 +25,7 @@
 
     @if(!editMode){
     <div>
-      <button type="button" (click)="Add_Cuota()">Agregar Cuota</button>
+      <button [disabled]="this.cuotasForm.invalid" type="button" (click)="Add_Cuota()">Agregar Cuota</button>
       <button
       
       class="addition"
@@ -37,7 +37,7 @@
 
     } @else {
     <div>
-      <button type="button" (click)="Edit_Cuota(IDCuota)">Editar Cuota</button>
+      <button [disabled]="this.cuotasForm.invalid" type="button" (click)="Edit_Cuota(IDCuota)">Editar Cuota</button>
    
     <button
       

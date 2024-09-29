@@ -53,7 +53,7 @@
     @if(editMode){
 
     <div>
-      <button class="addition" (click)="Update_Tiempo(idTiempo)">
+      <button [disabled]="this.tiempoForm.invalid" class="addition" (click)="Update_Tiempo(idTiempo)">
         Editar Tiempo
       </button>
 
@@ -67,7 +67,7 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
+      <button [disabled]="this.tiempoForm.invalid" class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
 
       <button
       

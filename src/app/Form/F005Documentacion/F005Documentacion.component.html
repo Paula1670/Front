@@ -24,7 +24,8 @@
 
     @if(!editMode){
     <div>
-      <button class="addition" (click)="Add_Documentacion()">
+      <button [disabled]="this.documentacionForm.invalid" 
+      class="addition" (click)="Add_Documentacion()">
         Agregar Documento
       </button>
       <button
@@ -37,7 +38,7 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Edit_Documentacion(idDocumentacion)">
+      <button [disabled]="this.documentacionForm.invalid" class="addition" (click)="Edit_Documentacion(idDocumentacion)">
         Editar Documento
       </button>
       <button

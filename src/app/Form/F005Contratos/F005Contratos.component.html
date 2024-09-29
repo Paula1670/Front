@@ -48,7 +48,7 @@
     <br />
     @if(!editMode){
     <div>
-      <button class="addition" (click)="Add_Contrato()">
+      <button [disabled]="this.contratoForm.invalid" class="addition" (click)="Add_Contrato()">
         Agregar Contrato
       </button>
       <button
@@ -61,7 +61,7 @@
     </div>
     } @else {
     <div>
-      <button class="addition" (click)="Update_Contrato(IDMiCuota)">
+      <button [disabled]="this.contratoForm.invalid" class="addition" (click)="Update_Contrato(IDMiCuota)">
         Editar Contrato
       </button>
       <button
