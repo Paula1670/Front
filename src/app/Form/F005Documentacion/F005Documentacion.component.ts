@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 export class F005DocumentacionComponent implements OnInit {
   documentacionForm: FormGroup;
   editMode?: boolean;
+  mostrarConfirmacion:boolean=false;
   opcionDocumento: Opcion[] = OpcionDocumento;
   idDocumentacion?: number;
   constructor(
@@ -102,4 +103,14 @@ export class F005DocumentacionComponent implements OnInit {
           ?.patchValue(data.categoriaDocumento);
       });
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/documentacion']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

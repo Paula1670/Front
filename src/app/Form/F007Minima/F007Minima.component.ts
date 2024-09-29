@@ -34,7 +34,7 @@ export class F007MinimaComponent implements OnInit {
   minimaForm: FormGroup;
   editMode?: boolean;
   idMinima?: number;
-
+mostrarConfirmacion:boolean=false;
   opcionEstilo: Opcion[] = OpcionEstilo;
   opcionPrueba: Opcion[] = OpcionPrueba;
   opcionPiscina: Opcion[] = OpcionPiscina;
@@ -163,4 +163,14 @@ export class F007MinimaComponent implements OnInit {
         });
       });
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/minimas']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

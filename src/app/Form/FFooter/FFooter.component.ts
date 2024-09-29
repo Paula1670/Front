@@ -23,7 +23,7 @@ export class FFooterComponent implements OnInit {
   ContactoForm: FormGroup;
   editMode?: boolean;
   idDatosContacto?: number;
-
+mostrarConfirmacion:boolean=false;
   constructor(
     private fb: FormBuilder,
     private fFooterService: FFooterService,
@@ -93,4 +93,14 @@ export class FFooterComponent implements OnInit {
       );
     }
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    window.history.back();
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

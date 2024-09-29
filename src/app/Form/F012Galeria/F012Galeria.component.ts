@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
 export class F012GaleriaComponent implements OnInit {
   GaleriaForm: FormGroup;
   editMode?: boolean;
-
+mostrarConfirmacion:boolean=false;
   constructor(
     private fb: FormBuilder,
     private f012Service: F012Service,
@@ -98,4 +98,14 @@ export class F012GaleriaComponent implements OnInit {
       reader.readAsArrayBuffer(file);
     }
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/galeria']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

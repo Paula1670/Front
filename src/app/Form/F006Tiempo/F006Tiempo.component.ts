@@ -43,7 +43,7 @@ export class F006TiempoComponent implements OnInit {
   opcionPiscina: Opcion[] = OpcionPiscina;
   opcionGenero: Opcion[] = OpcionGenero;
   opcionTemporada: Opcion[] = OpcionTemporada;
-
+mostrarConfirmacion:boolean=false;
   constructor(
     private f006Service: F006Service,
     private router: Router,
@@ -162,4 +162,14 @@ export class F006TiempoComponent implements OnInit {
         });
       });
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/tiempos']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

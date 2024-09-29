@@ -29,6 +29,7 @@ export class F003JuntaComponent implements OnInit {
   idUser?: number;
   opcionPuesto: Opcion[] = [];
   opcionUsuario: Opcion[] = [];
+  mostrarConfirmacion:boolean=false;
   constructor(
     private f003Service: F003Service,
     private router: Router,
@@ -120,4 +121,14 @@ export class F003JuntaComponent implements OnInit {
       });
     });
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/users']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

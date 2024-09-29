@@ -67,7 +67,7 @@
       }
     </select>
     } @if(userForm.value.crearEntrenador){
-    <label for="especialidad">Que especialidad?:</label>
+    <label for="especialidad">¿A que especialidad se dedicará el nuevo entrenador contratado?(todo, técnica, fondo, velocidad, mariposa, etilos,...Escribir tantas como sean necesarias):</label>
     <input formControlName="especialidad" id="especialidad" type="text" />
     }
 
@@ -134,9 +134,12 @@
       type="date"
       id="fecha_inscripcion"
       formControlName="fechaInscripcion"
-    /><br />
+    /><br /><br>
+      
     <div>
-      {{ userForm.invalid }}
+
+      <!--{{ userForm.invalid }}-->
+
       <button
         [disabled]="this.userForm.invalid"
         class="addition"
@@ -144,15 +147,48 @@
       >
         Agregar Miembro
       </button>
+      <button
+      
+      class="addition"
+      (click)="actualizarMiembro()"
+    >
+      Cancelar
+    </button>
     </div>
     } @else {
     <div>
       <button class="addition" (click)="Update_User(idUser)">
         Editar Miembro
       </button>
+
+      <button
+      
+      class="addition"
+      (click)="actualizarMiembro()"
+    >
+      Cancelar
+    </button>
     </div>
     }
     <!--<a href="/users" class="addition">Agregar Miembro</a>-->
     <!--<input (click)="Add_Member()" type="submit" value="Agregar Miembro" />-->
+ <br><br> <br>
+
   </form>
+
+  @if(mostrarConfirmacion == true) {
+    <div class="overlay">
+      <div class="confirmacionModal">
+        <div class="textoConfirmacion">
+          <p>¿Está seguro que desea cancelar el proceso?</p>
+        </div>
+  
+        <div class="botonesConfirmacion">
+          <button class="Aceptar" (click)="goBack()">Aceptar</button>
+          <button class="Cancelar" (click)="notGoBack()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  }
+  
 </body>

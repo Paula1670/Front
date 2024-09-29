@@ -28,7 +28,7 @@ export class F005ContratosComponent implements OnInit {
   contratoForm: FormGroup;
   editMode?: boolean;
   IDMiCuota?: number;
-
+  mostrarConfirmacion:boolean=false;
   opcionCuota: Opcion[] = [];
   // opcionSocio: Opcion[] = OpcionSocio;
   opcionEstado: Opcion[] = OpcionEstado;
@@ -151,4 +151,14 @@ export class F005ContratosComponent implements OnInit {
       });
     });
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/contratos']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

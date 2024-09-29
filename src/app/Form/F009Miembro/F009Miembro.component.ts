@@ -38,6 +38,7 @@ export class F009MiembroComponent implements OnInit {
   opcionCategoria: Opcion[] = [];
   esNadador: boolean = false;
   gender?: GeneroEnum;
+  mostrarConfirmacion:boolean=false;
   constructor(
     private f009Service: F009Service,
     private router: Router,
@@ -227,4 +228,15 @@ export class F009MiembroComponent implements OnInit {
         });
       });
   }
+  
+
+  actualizarMiembro() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/users']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

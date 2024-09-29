@@ -28,6 +28,7 @@ export class F011CategoriaComponent implements OnInit {
   categoriaForm: FormGroup;
   editMode?: boolean;
   idUser?: number;
+  mostrarConfirmacion:boolean=false;
   opcionEntrenador: Opcion[] = [];
   constructor(
     private f011Service: F011Service,
@@ -174,4 +175,14 @@ export class F011CategoriaComponent implements OnInit {
     ]);
     this.router.navigate(['/users']);
   }
+
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/users']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }

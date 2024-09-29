@@ -25,6 +25,29 @@
       <button class="addition" (click)="clickButton()">
         Actualizar categoria
       </button>
+
+      <button
+      
+      class="addition"
+      (click)="actualizar()"
+    >
+      Cancelar
+    </button>
     </div>
   </form>
+
+  @if(mostrarConfirmacion == true) {
+    <div class="overlay">
+      <div class="confirmacionModal">
+        <div class="textoConfirmacion">
+          <p>¿Está seguro que desea cancelar el proceso?</p>
+        </div>
+  
+        <div class="botonesConfirmacion">
+          <button class="Aceptar" (click)="goBack()">Aceptar</button>
+          <button class="Cancelar" (click)="notGoBack()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  }
 </body>

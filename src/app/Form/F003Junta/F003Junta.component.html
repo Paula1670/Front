@@ -50,15 +50,44 @@
       >
         Agregar Miembro de la Junta
       </button>
+      <button
+      
+      class="addition"
+      (click)="actualizar()"
+    >
+      Cancelar
+    </button>
     </div>
     } @else { @if(idUser){
     <div>
       <button class="addition" (click)="Update_MiembroJunta(idUser)">
         Editar Miembro de la Junta
       </button>
+      <button
+      
+      class="addition"
+      (click)="actualizar()"
+    >
+      Cancelar
+    </button>
     </div>
     }}
     <!--<a href="/users" class="addition">Agregar Miembro</a>-->
     <!--<input (click)="Add_Member()" type="submit" value="Agregar Miembro" />-->
   </form>
+
+  @if(mostrarConfirmacion == true) {
+    <div class="overlay">
+      <div class="confirmacionModal">
+        <div class="textoConfirmacion">
+          <p>¿Está seguro que desea cancelar el proceso?</p>
+        </div>
+  
+        <div class="botonesConfirmacion">
+          <button class="Aceptar" (click)="goBack()">Aceptar</button>
+          <button class="Cancelar" (click)="notGoBack()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  }
 </body>

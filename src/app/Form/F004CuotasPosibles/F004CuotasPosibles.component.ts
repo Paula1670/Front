@@ -24,6 +24,7 @@ export class F004CuotasPosiblesComponent implements OnInit {
   cuotasForm: FormGroup;
   editMode?: boolean;
   IDCuota?: number;
+  mostrarConfirmacion:boolean=false;
   opcionFederado: Opcion[] = [
     {
       valor: 'Si',
@@ -108,4 +109,13 @@ export class F004CuotasPosiblesComponent implements OnInit {
         ?.patchValue(data.Federado === 1 ? 'Si' : 'No');
     });
   }
+  actualizar() {
+    
+    this.mostrarConfirmacion = true;
+  }
+
+  goBack(){this.mostrarConfirmacion = false;
+    this.router.navigate(['/cuotas']);
+  }
+  notGoBack(){this.mostrarConfirmacion = false}
 }
