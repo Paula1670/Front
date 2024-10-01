@@ -4,14 +4,29 @@
 <body>
   <form class="time-form" [formGroup]="documentacionForm">
     <label for="titulo">Titulo*:</label><br />
-    <input type="text" id="titulo" formControlName="titulo" /><br /><br />
+    <input type="text" id="titulo" formControlName="titulo" />
+    @if(documentacionForm.get('titulo')?.invalid && documentacionForm.get('titulo')?.touched){
+      <div class="error-message">
+         @if(documentacionForm.get('titulo')?.hasError('required'))
+         {<small>El campo del titulo es obligatorio.</small>}
+      </div>
+    }<br /><br />
 
     <label for="nombreUrl">Nombre del enlace*:</label><br />
-    <input type="text" id="nombreUrl" formControlName="nombreUrl" /><br /><br />
-
+    <input type="text" id="nombreUrl" formControlName="nombreUrl" />
+    <div *ngIf="documentacionForm.get('nombreUrl')?.invalid && documentacionForm.get('nombreUrl')?.touched" class="error-message">
+      <small *ngIf="documentacionForm.get('nombreUrl')?.hasError('required')">El campo del nombre del link es obligatorio.</small>
+    </div>
+    <br /><br />
     <label for="url">Enlace*:</label><br />
-    <input type="text" id="url" formControlName="url" /><br /><br />
-
+    <input type="text" id="url" formControlName="url" />
+    @if(documentacionForm.get('url')?.invalid && documentacionForm.get('url')?.touched){
+      <div class="error-message">
+         @if(documentacionForm.get('url')?.hasError('required'))
+         {<small>El campo de la url es obligatorio.</small>}
+      </div>
+    }
+    <br /><br />
     <label for="categoriaDocumento">Tipo de documento*:</label>
     <select formControlName="categoriaDocumento" id="categoriaDocumento">
       @for( opcion of opcionDocumento; track opcion.valor){
@@ -20,11 +35,17 @@
       </option>
       }
     </select>
+    @if(documentacionForm.get('categoriaDocumento')?.invalid && documentacionForm.get('categoriaDocumento')?.touched){
+      <div class="error-message">
+         @if(documentacionForm.get('categoriaDocumento')?.hasError('required'))
+         {<small>El campo de la categoria del documento es obligatorio.</small>}
+      </div>
+    }
     <br /><br /><br />
 
     @if(!editMode){
     <div>
-      <button [disabled]="this.documentacionForm.invalid" 
+      <button 
       class="addition" (click)="Add_Documentacion()">
         Agregar Documento
       </button>
@@ -38,7 +59,7 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.documentacionForm.invalid" class="addition" (click)="Edit_Documentacion(idDocumentacion)">
+      <button  class="addition" (click)="Edit_Documentacion(idDocumentacion)">
         Editar Documento
       </button>
       <button

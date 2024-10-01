@@ -7,6 +7,7 @@
   <h2>Editar Contrato</h2>
   }
   <form [formGroup]="contratoForm">
+   
     @if(!editMode){
     <label for="Socio">¿Con que socio está asociado?*</label>
     <select formControlName="Socio" id="Socio">
@@ -14,8 +15,15 @@
       <option [value]="opcion.valor">
         {{ opcion.etiqueta }}
       </option>
-      }</select
-    ><br /><br />
+      }</select>
+      @if(contratoForm.get('Socio')?.invalid && contratoForm.get('Socio')?.touched){
+        <div class="error-message">
+           @if(contratoForm.get('Socio')?.hasError('required'))
+           {<small>El campo del socio asociado es obligatorio.</small>}
+        </div>
+      }
+      
+    <br /><br />
     <label for="cuotaAsociada">Que cuota desea*:</label>
     <select formControlName="cuotaAsociada" id="cuotaAsociada">
       @for( opcion of opcionCuota; track opcion.valor){
@@ -24,18 +32,36 @@
       </option>
       }
     </select>
+    @if(contratoForm.get('cuotaAsociada')?.invalid && contratoForm.get('cuotaAsociada')?.touched){
+      <div class="error-message">
+         @if(contratoForm.get('cuotaAsociada')?.hasError('required'))
+         {<small>El campo de la cuota asociada es obligatorio.</small>}
+      </div>
     }
     <br />
     <br />
     <label>Fecha de Inicio*:</label>
-    <input type="date" id="FechaInicio" formControlName="FechaInicio" /><br />
+    <input type="date" id="FechaInicio" formControlName="FechaInicio" /> 
+    @if(contratoForm.get('FechaInicio')?.invalid && contratoForm.get('FechaInicio')?.touched){
+      <div class="error-message">
+         @if(contratoForm.get('FechaInicio')?.hasError('required'))
+         {<small>El campo de la fecha de inicio es obligatorio.</small>}
+      </div>
+    }
     <br />
+    <br />
+  }
     <label>Fecha de Vencimiento*:</label>
     <input
       type="date"
       id="FechaVencimiento"
       formControlName="FechaVencimiento"
-    />
+    />  @if(contratoForm.get('FechaVencimiento')?.invalid && contratoForm.get('FechaVencimiento')?.touched){
+      <div class="error-message">
+         @if(contratoForm.get('FechaVencimiento')?.hasError('required'))
+         {<small>El campo de la fecha de vencimiento es obligatorio.</small>}
+      </div>
+    }
     <br /><br />
     <label for="Estado">Estado*:</label>
     <select formControlName="Estado" id="Estado">
@@ -45,10 +71,16 @@
       </option>
       }
     </select>
+    @if(contratoForm.get('Estado')?.invalid && contratoForm.get('Estado')?.touched){
+      <div class="error-message">
+         @if(contratoForm.get('Estado')?.hasError('required'))
+         {<small>El campo del estado es obligatorio.</small>}
+      </div>
+    }
     <br />
     @if(!editMode){
     <div>
-      <button [disabled]="this.contratoForm.invalid" class="addition" (click)="Add_Contrato()">
+      <button  class="addition" (click)="Add_Contrato()">
         Agregar Contrato
       </button>
       <button
@@ -61,7 +93,7 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.contratoForm.invalid" class="addition" (click)="Update_Contrato(IDMiCuota)">
+      <button class="addition" (click)="Update_Contrato(IDMiCuota)">
         Editar Contrato
       </button>
       <button

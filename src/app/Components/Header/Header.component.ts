@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Input } from '@angular/core';
-import { AuthService } from '../../Services/Public/Auth.service';
+import { AuthService, AuthState } from '../../Services/Public/Auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Header',
@@ -13,8 +14,11 @@ import { AuthService } from '../../Services/Public/Auth.service';
 export class HeaderComponent implements OnInit {
   @Input()
   title: string = '';
+  authState$: Observable<AuthState>;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    this.authState$ = this.authService.authState$;
+  }
 
   ngOnInit() {}
   LogOut() {

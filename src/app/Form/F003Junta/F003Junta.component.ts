@@ -16,6 +16,8 @@ import { P009Usuario } from '../../Models/Private/DtosP009/P009Get_UsersDto';
 import { P009GetJuntaDirectivaDto } from '../../Models/Private/DtosP009/P009GetJuntaDirectivaDto';
 import { F003Usuario } from '../../Models/Private/DtosF003/F003Get_UsersDto';
 
+
+
 @Component({
   selector: 'app-F003Junta',
   standalone: true,
@@ -60,15 +62,20 @@ export class F003JuntaComponent implements OnInit {
   Get_User(id: number) {
     this.f003Service
       .Get_UserMiembroJunta(id)
-      .subscribe((data: P009GetJuntaDirectivaDto) => {
-        this.juntaForm.get('puesto')?.patchValue(data.Puesto);
+      .subscribe((data: F003Update_MiembroJuntaDto) => {
+     
+        this.juntaForm.get('puesto')?.patchValue(data.puesto);
         this.juntaForm
           .get('fechaTerminoCargo')
-          ?.patchValue(data.FechaInicioCargo);
+          ?.patchValue(data.fechaTerminoCargo);
       });
   }
 
   Update_MiembroJunta(id: number) {
+    if (this.juntaForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const updateF009Dto: F003Update_MiembroJuntaDto = {
       puesto: this.juntaForm.value.puesto,
       fechaTerminoCargo: this.juntaForm.value.fechaTerminoCargo,
@@ -89,6 +96,10 @@ export class F003JuntaComponent implements OnInit {
   }
 
   Add_MiembroJunta() {
+    if (this.juntaForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     let createF003Dto: F003Create_MiembroJuntaDto = {
       puesto: this.juntaForm.value.puesto,
       IDUsuario: this.juntaForm.value.usuario,
@@ -112,7 +123,7 @@ export class F003JuntaComponent implements OnInit {
 
   private findUsuarios() {
     this.f003Service.findSUsuarios().subscribe((data: F003Usuario[]) => {
-      console.log(this.opcionUsuario);
+    
       this.opcionUsuario = data.map((usuario: F003Usuario) => {
         return {
           valor: usuario.IDUsuario,
@@ -131,4 +142,11 @@ export class F003JuntaComponent implements OnInit {
     this.router.navigate(['/users']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.juntaForm.controls).forEach(field => {
+      const control = this.juntaForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
 }

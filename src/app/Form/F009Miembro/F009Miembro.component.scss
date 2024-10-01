@@ -122,3 +122,22 @@ p {
   margin: 0 auto;
   width: 100%;
 }
+
+
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+select.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+textarea.ng-invalid.ng-touched {
+  border-color: red;
+}

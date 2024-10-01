@@ -13,6 +13,12 @@
       </option>
       }
     </select>
+    @if(juntaForm.get('usuario')?.invalid && juntaForm.get('usuario')?.touched){
+      <div class="error-message">
+         @if(juntaForm.get('usuario')?.hasError('required'))
+         {<small>El campo de usuario es obligatorio.</small>}
+      </div>
+    }
     <br />
     <br />
     <br />
@@ -21,15 +27,27 @@
       type="date"
       id="fechaInicioCargo"
       formControlName="fechaInicioCargo"
-    /><br /><br />
-    }
+    />
+    
+   @if(juntaForm.get('fechaInicioCargo')?.invalid && juntaForm.get('fechaInicioCargo')?.touched){
+    <div class="error-message">
+       @if(juntaForm.get('fechaInicioCargo')?.hasError('required'))
+       {<small>El campo de la fecha que inicia el cargo es obligatorio.</small>}
+    </div>
+  }
+    <br /><br />
+}
 
     <label>Fecha de Termino Cargo*:</label><br />
     <input
       type="date"
       id="fechaTerminoCargo"
       formControlName="fechaTerminoCargo"
-    /><br /><br />
+    />     
+    <!--<div *ngIf="juntaForm.get('fechaTerminoCargo')?.invalid && juntaForm.get('fechaTerminoCargo')?.touched" class="error-message">
+      <small *ngIf="juntaForm.get('fechaTerminoCargo')?.hasError('required')">El campo de la fecha que termina el cargo es obligatorio.</small>
+    </div>-->
+    <br /><br />
 
     <label for="puesto">Puesto*:</label>
     <select formControlName="puesto" id="puesto">
@@ -38,14 +56,20 @@
         {{ opcion.etiqueta }}
       </option>
       }
-    </select>
+    </select>   
+    @if(juntaForm.get('puesto')?.invalid && juntaForm.get('puesto')?.touched){
+      <div class="error-message">
+         @if(juntaForm.get('puesto')?.hasError('required'))
+         {<small>El campo del puesto es obligatorio.</small>}
+      </div>
+    }
 
     @if(!editMode){
 
     <div>
       {{ this.juntaForm.invalid }}
       <button
-        [disabled]="this.juntaForm.invalid"
+       
         class="addition"
         (click)="Add_MiembroJunta()"
       >
@@ -61,7 +85,7 @@
     </div>
     } @else { @if(idUser){
     <div>
-      <button [disabled]="this.juntaForm.invalid"
+      <button 
       class="addition" (click)="Update_MiembroJunta(idUser)">
         Editar Miembro de la Junta
       </button>

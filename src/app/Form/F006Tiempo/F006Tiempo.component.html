@@ -13,7 +13,14 @@
       </option>
       }
     </select>
-    }
+    @if(tiempoForm.get('nadador')?.invalid && tiempoForm.get('nadador')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('nadador')?.hasError('required'))
+         {<small>El campo del nadador asociado es obligatorio.</small>}
+      </div>
+    }<br><br>
+
+  }
     <label for="estilo">Estilo*:</label>
     <select formControlName="estilo" id="estilo">
       @for( opcion of opcionEstilo; track opcion.valor){
@@ -22,6 +29,12 @@
       </option>
       }
     </select>
+    @if(tiempoForm.get('estilo')?.invalid && tiempoForm.get('estilo')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('estilo')?.hasError('required'))
+         {<small>El campo del estilo es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="prueba">Prueba*:</label>
     <select formControlName="prueba" id="prueba">
@@ -31,6 +44,12 @@
       </option>
       }
     </select>
+    @if(tiempoForm.get('prueba')?.invalid && tiempoForm.get('prueba')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('prueba')?.hasError('required'))
+         {<small>El campo de la prueba es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="piscina">Piscina*:</label>
     <select formControlName="piscina" id="piscina">
@@ -40,20 +59,39 @@
       </option>
       }
     </select>
+    @if(tiempoForm.get('piscina')?.invalid && tiempoForm.get('piscina')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('piscina')?.hasError('required'))
+         {<small>El campo de la piscina es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label>Fecha de la Marca*:</label>
     <input
       type="date"
       id="FechaMarcaNadador"
       formControlName="FechaMarcaNadador"
-    />
+    />@if(tiempoForm.get('FechaMarcaNadador')?.invalid && tiempoForm.get('FechaMarcaNadador')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('FechaMarcaNadador')?.hasError('required'))
+         {<small>El campo de la fecha asociada a la marca del nadador es obligatorio.</small>}
+      </div>
+    }
 
     <label for="tiempo">Tiempo*:</label>
     <input type="text" formControlName="tiempo" id="tiempo" />
+    @if(tiempoForm.get('tiempo')?.invalid && tiempoForm.get('tiempo')?.touched){
+      <div class="error-message">
+         @if(tiempoForm.get('tiempo')?.hasError('required'))
+         {<small>El campo del tiempo es obligatorio.</small>}
+      </div>
+    }
+    <br><br>
+   
     @if(editMode){
 
     <div>
-      <button [disabled]="this.tiempoForm.invalid" class="addition" (click)="Update_Tiempo(idTiempo)">
+      <button  class="addition" (click)="Update_Tiempo(idTiempo)">
         Editar Tiempo
       </button>
 
@@ -67,7 +105,7 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.tiempoForm.invalid" class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
+      <button  class="addition" (click)="Add_Tiempo()">Agregar Tiempo</button>
 
       <button
       

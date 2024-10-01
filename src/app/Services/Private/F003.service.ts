@@ -18,10 +18,13 @@ import { F003Usuario } from '../../Models/Private/DtosF003/F003Get_UsersDto';
 })
 export class F003Service {
   constructor(private http: HttpClient) {}
+  
+  
   Get_UserMiembroJunta(id: number) {
     const apiUrl: string = environment.UrlBackend + '/F003/findById/' + id;
 
-    return this.http.get<P009GetJuntaDirectivaDto>(apiUrl);
+
+    return this.http.get<F003Update_MiembroJuntaDto>(apiUrl);
   }
   Add_MiembroJunta(createF003Dto: F003Create_MiembroJuntaDto, id: number) {
     return this.http.post(

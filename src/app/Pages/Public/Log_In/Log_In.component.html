@@ -10,16 +10,29 @@
       type="text"
       id="direccion_usuario"
       formControlName="direccion_usuario"
-    /><br /><br />
+    />
+    @if(Login_Form.get('direccion_usuario')?.invalid && Login_Form.get('direccion_usuario')?.touched){
+      <div class="error-message">
+         @if(Login_Form.get('direccion_usuario')?.hasError('required'))
+         {<small>El campo de la direccion de correo electrónico es obligatorio.</small>}
+      </div>
+    }<br /><br />
+
 
     <label for="contrasena">Contraseña:</label>
     <input
       type="password"
       id="contrasena"
       formControlName="contrasena"
-    /><br /><br />
+    />
+    @if(Login_Form.get('contrasena')?.invalid && Login_Form.get('contrasena')?.touched){
+      <div class="error-message">
+         @if(Login_Form.get('contrasena')?.hasError('required'))
+         {<small>El campo de la contraseña es obligatorio.</small>}
+      </div>
+    }<br /><br />
 
-    <button type="submit" [disabled]="Login_Form.invalid" (click)="login()">
+    <button type="submit"  (click)="login()">
       Iniciar Sesión
     </button>
   </form>

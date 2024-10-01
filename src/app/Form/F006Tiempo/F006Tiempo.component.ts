@@ -51,18 +51,21 @@ mostrarConfirmacion:boolean=false;
     private f009Service: F009Service,
     private route: ActivatedRoute
   ) {
-    this.tiempoForm = this.fb.group({
-      tiempo: ['', [Validators.required]],
-      prueba: [null, [Validators.required]],
-      piscina: [null, [Validators.required]],
-      estilo: [null, [Validators.required]],
-      nadador: [null, [Validators.required]],
-      temporada: [null, [Validators.required]],
-      FechaMarcaNadador: [null, [Validators.required]],
-    });
+    this.tiempoForm = this.fb.group({});
     this.findNadadores();
   }
-
+inicialize(){
+  this.tiempoForm = this.fb.group({
+    tiempo: ['', [Validators.required]],
+    prueba: [null, [Validators.required]],
+    piscina: [null, [Validators.required]],
+    estilo: [null, [Validators.required]],
+    nadador: this.editMode ? [''] : ['', [Validators.required]],
+    temporada: [null, [Validators.required]],
+    FechaMarcaNadador: [null, [Validators.required]],
+  });
+  
+}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.editMode = params['editMode'];
@@ -71,10 +74,15 @@ mostrarConfirmacion:boolean=false;
         this.Get_Tiempo(this.idTiempo);
       }
     });
+    this.inicialize();
   }
 
   Get_Tiempo(id: number) {
     this.f006Service.Get_Tiempo(id).subscribe((data: any) => {
+      const FechaMarcaNadador = new Date(data.FechaMarcaNadador)
+        .toISOString()
+        .split('T')[0];
+
       this.tiempoForm.get('tiempo')?.patchValue(data.Tiempo);
 
       this.tiempoForm.get('temporada')?.patchValue(data.Temporada);
@@ -87,11 +95,16 @@ mostrarConfirmacion:boolean=false;
 
       this.tiempoForm
         .get('FechaMarcaNadador')
-        ?.patchValue(data.FechaMarcaNadador);
+        ?.patchValue(FechaMarcaNadador);
     });
   }
 
   Update_Tiempo(id: number | undefined) {
+
+    if (this.tiempoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const updateF006Dto: F006Update_TiempoDto = {
       Tiempo: this.tiempoForm.value.tiempo,
       Temporada: TemporadaEnum.Invierno,
@@ -116,6 +129,10 @@ mostrarConfirmacion:boolean=false;
   }
 
   Add_Tiempo() {
+    if (this.tiempoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     let createF006Dto: F006CreateTiempoDto = {
       Estilo: this.tiempoForm.value.estilo,
       Prueba: this.tiempoForm.value.prueba,
@@ -172,4 +189,12 @@ mostrarConfirmacion:boolean=false;
     this.router.navigate(['/tiempos']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.tiempoForm.controls).forEach(field => {
+      const control = this.tiempoForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
 }

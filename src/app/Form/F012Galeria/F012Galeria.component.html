@@ -3,9 +3,21 @@
   <form class="time-form" [formGroup]="GaleriaForm">
     <label for="url">URL*:</label><br />
     <input type="text" id="url" formControlName="url" /><br /><br />
+    @if(GaleriaForm.get('url')?.invalid && GaleriaForm.get('url')?.touched){
+      <div class="error-message">
+         @if(GaleriaForm.get('url')?.hasError('required'))
+         {<small>El campo del url es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="pie">Pie de foto*:</label><br />
     <input type="text" id="pie" formControlName="pie" /><br /><br />
+    @if(GaleriaForm.get('pie')?.invalid && GaleriaForm.get('pie')?.touched){
+      <div class="error-message">
+         @if(GaleriaForm.get('pie')?.hasError('required'))
+         {<small>El campo del pie de la foto es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="nombreFoto">Nombre de la foto que presenta al album*:</label
     ><br />
@@ -13,15 +25,22 @@
       type="text"
       id="nombreFoto"
       formControlName="nombreFoto"
-    /><br /><br />
+    />
+    @if(GaleriaForm.get('nombreFoto')?.invalid && GaleriaForm.get('nombreFoto')?.touched){
+      <div class="error-message">
+         @if(GaleriaForm.get('nombreFoto')?.hasError('required'))
+         {<small>El campo del nombre de la foto es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <form>
       <input type="file" (change)="onFileSelected($event)" />
     </form>
+ <br><br>
 
     @if(!editMode){
     <div>
-      <button [disabled]="this.GaleriaForm.invalid" class="addition" (click)="Add_Galeria()">Agregar Galeria</button>
+      <button  class="addition" (click)="Add_Galeria()">Agregar Galeria</button>
       <button
       
       class="addition"
@@ -32,7 +51,7 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.GaleriaForm.invalid" class="addition" (click)="Update_Galeria(1)">
+      <button  class="addition" (click)="Update_Galeria(1)">
         Editar Galeria
       </button>
       <button

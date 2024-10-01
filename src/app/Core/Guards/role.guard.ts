@@ -17,7 +17,6 @@ export const roleGuard: CanActivateFn = async (route, state) => {
   if (user && hasRole(user, expectedRoles)) {
     return true;
   } else {
-    console.log('caso loggued without any role');
     return router.navigate(['/**']);
   }
 

@@ -4,13 +4,28 @@
 <body>
   <form class="time-form" [formGroup]="ContactoForm">
     <label for="nombre">Nombre*:</label><br />
-    <input type="text" id="nombre" formControlName="nombre" /><br /><br />
+    <input type="text" id="nombre" formControlName="nombre" />
+    @if(ContactoForm.get('nombre')?.invalid && ContactoForm.get('nombre')?.touched){
+      <div class="error-message">
+         @if(ContactoForm.get('nombre')?.hasError('required'))
+         {<small>El campo del nombre del contacto es obligatorio.</small>}
+      </div>
+    }
+    <br /><br />
+
 
     <label for="dato">Dato*:</label><br />
-    <input type="text" id="dato" formControlName="dato" /><br /><br />
+    <input type="text" id="dato" formControlName="dato" />
+    @if(ContactoForm.get('dato')?.invalid && ContactoForm.get('dato')?.touched){
+      <div class="error-message">
+         @if(ContactoForm.get('dato')?.hasError('required'))
+         {<small>El campo del dato del contacto es obligatorio.</small>}
+      </div>
+    }
+    <br /><br />
     @if(!editMode){
     <div>
-      <button [disabled]="this.ContactoForm.invalid" class="addition" (click)="Add_Contacto()">Agregar Minima</button>
+      <button  class="addition" (click)="Add_Contacto()">Agregar</button><br><br><br>
       <button
       
       class="addition"
@@ -21,9 +36,9 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.ContactoForm.invalid" class="addition" (click)="Update_Contacto(idDatosContacto)">
-        Editar Contacto
-      </button>
+      <button  class="addition" (click)="Update_Contacto(idDatosContacto)">
+        Editar
+      </button><br><br><br>
       <button
       
       class="addition"

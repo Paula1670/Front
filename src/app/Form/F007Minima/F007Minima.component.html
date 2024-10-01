@@ -12,6 +12,12 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('estilo')?.invalid && minimaForm.get('estilo')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('estilo')?.hasError('required'))
+         {<small>El campo del estilo es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="prueba">Prueba*:</label>
     <select formControlName="prueba" id="prueba">
@@ -21,6 +27,12 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('prueba')?.invalid && minimaForm.get('prueba')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('prueba')?.hasError('required'))
+         {<small>El campo de la prueba es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="piscina">Piscina*:</label>
     <select formControlName="piscina" id="piscina">
@@ -30,6 +42,13 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('piscina')?.invalid && minimaForm.get('piscina')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('piscina')?.hasError('required'))
+         {<small>El campo de la piscina es obligatorio.</small>}
+      </div>
+    }<br><br>
+
     <label for="temporada">Temporada*:</label>
     <select formControlName="temporada" id="temporada">
       @for( opcion of opcionTemporada; track opcion.valor){
@@ -38,6 +57,12 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('temporada')?.invalid && minimaForm.get('temporada')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('temporada')?.hasError('required'))
+         {<small>El campo de la temporada es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <!--<label for="genero">Genero*:</label>
     <select formControlName="genero" id="genero">
@@ -56,6 +81,12 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('categoria')?.invalid && minimaForm.get('categoria')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('categoria')?.hasError('required'))
+         {<small>El campo de la categoria es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="campeonato">Campeonato*:</label>
     <select formControlName="campeonato" id="campeonato">
@@ -65,12 +96,25 @@
       </option>
       }
     </select>
+    @if(minimaForm.get('campeonato')?.invalid && minimaForm.get('campeonato')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('campeonato')?.hasError('required'))
+         {<small>El campo del campeonato es obligatorio.</small>}
+      </div>
+    }<br><br>
 
     <label for="tiempoMinimo">Minima*</label>
     <input type="text" formControlName="tiempoMinimo" id="tiempoMinimo" />
+    @if(minimaForm.get('tiempoMinimo')?.invalid && minimaForm.get('tiempoMinimo')?.touched){
+      <div class="error-message">
+         @if(minimaForm.get('tiempoMinimo')?.hasError('required'))
+         {<small>El campo del tiempo es obligatorio.</small>}
+      </div>
+    }<br><br>
+
     @if(!editMode){
     <div>
-      <button [disabled]="this.minimaForm.invalid" class="addition" (click)="Add_Minima()">Agregar Minima</button>
+      <button  class="addition" (click)="Add_Minima()">Agregar Minima</button>
 
       <button
       
@@ -82,7 +126,7 @@
     </div>
     } @else {
     <div>
-      <button [disabled]="this.minimaForm.invalid" class="addition" (click)="Update_Minima(idMinima)">
+      <button  class="addition" (click)="Update_Minima(idMinima)">
         Editar Minima
       </button>
 

@@ -1,31 +1,33 @@
-<app-Header [title]="'Agregar Nuevo Miembro'"></app-Header>
+@if(!editMode){<app-Header [title]="'Agregar Nuevo Miembro'"></app-Header>}
+@else {<app-Header [title]="'Editar Miembro'"></app-Header>}
 
 <body>
-  <h2>Agregar Nuevo Miembro</h2>
+  @if(!editMode){<h2>Agregar Nuevo Miembro</h2>}
+  @else {<h2>Editar Miembro</h2>}
   <form [formGroup]="userForm">
     <!--(ngSubmit)="onSubmit()"-->
     @if(!editMode){
-    <label for="crearSocio">Socio</label>
-    <input
-      type="checkbox"
-      id="crearSocio"
-      formControlName="crearSocio"
-    /><br /><br />
-
-    <label for="crearNadador">Nadador</label>
-    <input
-      type="checkbox"
-      id="crearNadador"
-      formControlName="crearNadador"
-    /><br /><br />
-
-    <label for="crearEntrenador">Entrenador</label>
-    <input
-      type="checkbox"
-      id="crearEntrenador"
-      formControlName="crearEntrenador"
-    /><br /><br />
-    } @if(userForm.value.crearSocio){
+      <div formGroupName="checkboxesGroup">
+        <label for="crearSocio">Socio</label>
+        <input type="checkbox" id="crearSocio" formControlName="crearSocio" /><br /><br />
+    
+        <label for="crearNadador">Nadador</label>
+        <input type="checkbox" id="crearNadador" formControlName="crearNadador" /><br /><br />
+    
+        <label for="crearEntrenador">Entrenador</label>
+        <input type="checkbox" id="crearEntrenador" formControlName="crearEntrenador" /><br /><br />
+        
+        @if(userForm.get('checkboxesGroup')?.invalid && userForm.get('checkboxesGroup')?.touched){
+          <div class="error-message">
+             
+            @if(userForm.get('checkboxesGroup')?.hasError('atLeastOneRequired'))
+             {<small>Debe seleccionar al menos una opción: Socio, Nadador o Entrenador.</small>}
+          </div>
+        }
+      </div>
+    <br /><br />
+    } 
+    @if(userForm.value.checkboxesGroup.crearSocio){
 
     <label for="idCuota">Que cuota desea:</label>
     <select formControlName="idCuota" id="idCuota">
@@ -36,7 +38,7 @@
       }
     </select>
 
-    } @if(userForm.value.crearNadador){ @if(!userForm.value.crearSocio){
+    } @if(userForm.value.checkboxesGroup.crearNadador){ @if(!userForm.value.checkboxesGroup.crearSocio){
     <label for="socioasociado">¿Con que socio está asociado?</label>
     <select formControlName="socioasociado" id="socioasociado">
       @for( opcion of opcionSocio; track opcion.valor){
@@ -66,29 +68,35 @@
       </option>
       }
     </select>
-    } @if(userForm.value.crearEntrenador){
+    } @if(userForm.value.checkboxesGroup.crearEntrenador){
     <label for="especialidad">¿A que especialidad se dedicará el nuevo entrenador contratado?(todo, técnica, fondo, velocidad, mariposa, etilos,...Escribir tantas como sean necesarias):</label>
     <input formControlName="especialidad" id="especialidad" type="text" />
     }
 
     <label for="nombre">Nombre*:</label>
     <input type="text" id="nombre" formControlName="nombre" />
-    <!-- <div *ngIf="userForm.get('nombre').hasError('required') && userForm.get('nombre').touched">
-      El nombre es obligatorio.
-    </div>-->
+    <div *ngIf="userForm.get('nombre')?.invalid && userForm.get('nombre')?.touched" class="error-message">
+      <small *ngIf="userForm.get('nombre')?.hasError('required')">El campo del nombre es obligatorio.</small>
+    </div>
+
     <br /><br />
 
     <label for="apellido">Apellido*:</label>
-
-    <input type="text" id="apellido" formControlName="apellido" /><br /><br />
+    <input type="text" id="apellido" formControlName="apellido" />
+    <div *ngIf="userForm.get('apellido')?.invalid && userForm.get('apellido')?.touched" class="error-message">
+      <small *ngIf="userForm.get('apellido')?.hasError('required')">El campo del apellido es obligatorio.</small>
+    </div>
+    <br /><br />
 
     <label for="contrasena">Contraseña*:</label>
-    <input
-      type="password"
-      id="contrasena"
-      formControlName="contrasena"
-    /><br /><br />
-    @if(!editMode && !userForm.value.crearNadador){
+    <input type="password" id="contrasena" formControlName="contrasena" />
+    <div *ngIf="userForm.get('contrasena')?.invalid && userForm.get('contrasena')?.touched" class="error-message">
+      <small *ngIf="userForm.get('contrasena')?.hasError('required')">El campo de la contraseña es obligatorio.</small>
+    <!--  <small *ngIf="userForm.get('contrasena')?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</small>-->
+    </div>
+    <br /><br />
+
+    @if(!editMode && !userForm.value.checkboxesGroup.crearNadador){
     <label>Género*:</label><br />
 
     <a class="space">
@@ -111,16 +119,27 @@
       />
       <label for="genero_femenino">Femenino</label><br />
     </a>
+   <br><br>
     }
     <label for="direccion">Correo Electronico*:</label>
-    <input type="text" id="direccion" formControlName="direccion" /><br /><br />
+    <input type="text" id="direccion" formControlName="direccion" />
+    <div *ngIf="userForm.get('direccion')?.invalid && userForm.get('direccion')?.touched" class="error-message">
+      <small *ngIf="userForm.get('direccion')?.hasError('required')">El campo del correo electrónico es obligatorio.</small>
+    </div>
+    <br /><br />
 
     <label for="domicilio">Domicilio*:</label>
-    <input type="text" id="domicilio" formControlName="domicilio" /><br /><br />
-
+    <input type="text" id="domicilio" formControlName="domicilio" />
+    <div *ngIf="userForm.get('domicilio')?.invalid && userForm.get('domicilio')?.touched" class="error-message">
+      <small *ngIf="userForm.get('domicilio')?.hasError('required')">El campo del domicilio es obligatorio.</small>
+    </div>
+    <br /><br />
     <label for="telefono">Teléfono*:</label>
-    <input type="tel" id="telefono" formControlName="telefono" /><br /><br />
-
+    <input type="tel" id="telefono" formControlName="telefono" />
+    <div *ngIf="userForm.get('telefono')?.invalid && userForm.get('telefono')?.touched" class="error-message">
+      <small *ngIf="userForm.get('telefono')?.hasError('required')">El campo del teléfono es obligatorio.</small>
+    </div>
+    <br /><br />
     @if(!editMode){
     <label>Fecha de Nacimiento*:</label><br />
     <input
@@ -128,6 +147,9 @@
       id="fecha_nacimiento"
       formControlName="fechaNacimiento"
     /><br /><br />
+    <div *ngIf="userForm.get('fecha_nacimiento')?.invalid && userForm.get('fecha_nacimiento')?.touched" class="error-message">
+      <small *ngIf="userForm.get('fecha_nacimiento')?.hasError('required')">El campo de la fecha de nacimiento es obligatoria.</small>
+    </div>
 
     <label>Fecha de Inscripción*:</label><br />
     <input
@@ -135,13 +157,16 @@
       id="fecha_inscripcion"
       formControlName="fechaInscripcion"
     /><br /><br>
-      
+      <div *ngIf="userForm.get('fecha_inscripcion')?.invalid && userForm.get('fecha_inscripcion')?.touched" class="error-message">
+      <small *ngIf="userForm.get('fecha_inscripcion')?.hasError('required')">El campo de la fecha de incripción es obligatoria.</small>
+    </div>
+
     <div>
 
-      <!--{{ userForm.invalid }}-->
+
 
       <button
-        [disabled]="this.userForm.invalid"
+        
         class="addition"
         (click)="Add_User()"
       >
@@ -156,8 +181,9 @@
     </button>
     </div>
     } @else {
+      {{ userForm.invalid }}
     <div>
-      <button [disabled]="this.userForm.invalid"
+      <button
       class="addition" (click)="Update_User(idUser)">
         Editar Miembro
       </button>

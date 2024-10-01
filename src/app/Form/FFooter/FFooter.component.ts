@@ -56,6 +56,10 @@ mostrarConfirmacion:boolean=false;
   }
 
   Add_Contacto() {
+    if (this.ContactoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     this.fFooterService
       .Create_Contacto({
         dato: this.ContactoForm.value.dato,
@@ -76,6 +80,10 @@ mostrarConfirmacion:boolean=false;
     // this.location.back();
   }
   Update_Contacto(id: number | undefined) {
+    if (this.ContactoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     let fUpdateFooterDto: FUpdateFooterDto = {
       dato: this.ContactoForm.value.dato,
       nombre: this.ContactoForm.value.nombre,
@@ -103,4 +111,12 @@ mostrarConfirmacion:boolean=false;
     window.history.back();
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.ContactoForm.controls).forEach(field => {
+      const control = this.ContactoForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
 }

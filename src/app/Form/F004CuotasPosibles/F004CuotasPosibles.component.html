@@ -1,17 +1,26 @@
 <app-Header [title]="'Formulario para Agregar/ Editar Cuotas'"></app-Header>
 <body>
   <form class="time-form" [formGroup]="cuotasForm">
+    
     <label for="Nombre">Nombre de la cuota*:</label><br />
-    <input type="text" id="Nombre" formControlName="Nombre" /><br /><br />
+    <input type="text" id="Nombre" formControlName="Nombre" />
+    @if(cuotasForm.get('Nombre')?.invalid && cuotasForm.get('Nombre')?.touched){
+      <div class="error-message">
+         @if(cuotasForm.get('Nombre')?.hasError('required'))
+         {<small>El campo del nombre es obligatorio.</small>}
+      </div>
+    }<br /><br />
 
     <label for="Precio">Precio de la cuota*:</label><br />
-    <input type="text" id="Precio" formControlName="Precio" /><br /><br />
+    <input type="text" id="Precio" formControlName="Precio" />
+    @if(cuotasForm.get('Precio')?.invalid && cuotasForm.get('Precio')?.touched){
+      <div class="error-message">
+         @if(cuotasForm.get('Precio')?.hasError('required'))
+         {<small>El campo del precio es obligatorio.</small>}
+      </div>
+    }
+    <br /><br />
 
-    <!--<label for="Federado"
-      >¿Es una cuota para federados?*(en caso afirmativo '1'/en caso negativo
-      '0'):</label
-    ><br />
-    <input type="text" id="Federado" formControlName="Federado" /><br /><br />-->
     <label for="Federado">Federado*:</label>
 
     <select formControlName="Federado" id="Federado">
@@ -21,11 +30,15 @@
       </option>
       }
     </select>
-    <br /><br /><br />
+    @if(cuotasForm.get('Federado')?.invalid && cuotasForm.get('Federado')?.touched){
+      <div class="error-message">
+         @if(cuotasForm.get('Federado')?.hasError('required'))
+         {<small>El campo del federado es obligatorio.</small>}
+      </div>
+    }<br /><br />
 
     @if(!editMode){
     <div>
-      <button [disabled]="this.cuotasForm.invalid" type="button" (click)="Add_Cuota()">Agregar Cuota</button>
       <button
       
       class="addition"
@@ -33,19 +46,22 @@
     >
       Cancelar
     </button>
+      <button  type="button" (click)="Add_Cuota()">Agregar Cuota</button>
+
     </div>
 
     } @else {
+      <button
+      
+      class="addition"
+      (click)="actualizar()"
+    >
+      Cancelar
+    </button>
     <div>
       <button [disabled]="this.cuotasForm.invalid" type="button" (click)="Edit_Cuota(IDCuota)">Editar Cuota</button>
    
-    <button
-      
-    class="addition"
-    (click)="actualizar()"
-  >
-    Cancelar
-  </button>
+
     </div>}
   </form>
 

@@ -75,6 +75,7 @@ mostrarConfirmacion:boolean=false;
 
   Get_Minima(id: number) {
     this.f007Service.Get_Minima(id).subscribe((data: F007Get_MinimaDto) => {
+
       this.minimaForm.get('tiempoMinimo')?.patchValue(data.TiempoMinimo);
 
       this.minimaForm.get('temporada')?.patchValue(data.Temporada);
@@ -90,10 +91,15 @@ mostrarConfirmacion:boolean=false;
       this.minimaForm.get('estilo')?.patchValue(data.Estilo);
 
       this.minimaForm.get('genero')?.patchValue(data.Genero);
+
     });
   }
 
   Update_Minima(id: number | undefined) {
+    if (this.minimaForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const updateF007Dto: F007Update_Minima = {
       TiempoMinimo: this.minimaForm.value.tiempoMinimo,
       Temporada: this.minimaForm.value.temporada,
@@ -118,6 +124,10 @@ mostrarConfirmacion:boolean=false;
   }
 
   Add_Minima() {
+    if (this.minimaForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     this.f007Service
       .findCategorias()
       .subscribe((data: F007GetCategoriasDto[]) => {
@@ -173,4 +183,11 @@ mostrarConfirmacion:boolean=false;
     this.router.navigate(['/minimas']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.minimaForm.controls).forEach(field => {
+      const control = this.minimaForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
 }

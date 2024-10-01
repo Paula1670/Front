@@ -42,14 +42,8 @@ export class F005ContratosComponent implements OnInit {
     private f009Service: F009Service,
 
     private route: ActivatedRoute
-  ) {
-    this.contratoForm = this.fb.group({
-      cuotaAsociada: [null, [Validators.required]],
-      Socio: [null, [Validators.required]],
-      FechaVencimiento: [null, [Validators.required]],
-      FechaInicio: [null, [Validators.required]],
-      Estado: [null, [Validators.required]],
-    });
+  ) {    this.contratoForm = this.fb.group({});
+    
   }
 
   ngOnInit(): void {
@@ -64,8 +58,17 @@ export class F005ContratosComponent implements OnInit {
       this.findSocios();
       this.findCuotas();
     });
+    this.inicializar();
   }
-
+inicializar(){
+  this.contratoForm = this.fb.group({
+    cuotaAsociada: this.editMode ? [''] : ['', [Validators.required]],
+    Socio: this.editMode ? [''] : ['', [Validators.required]],
+    FechaVencimiento: ['', [Validators.required]],
+    FechaInicio: ['', [Validators.required]],
+    Estado: ['', [Validators.required]],
+  });
+}
   Get_Contrato(id: number) {
     this.f010Service.Get_Contrato(id).subscribe((data: any) => {
       const fechaInicio = new Date(data.FechaInicio)
@@ -86,6 +89,10 @@ export class F005ContratosComponent implements OnInit {
   }
 
   Update_Contrato(id: number | undefined) {
+    if (this.contratoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const updateF010Dto: F010Update_ContratoDto = {
       FechaInicio: this.contratoForm.value.FechaInicio,
       FechaVencimiento: this.contratoForm.value.FechaVencimiento,
@@ -107,6 +114,10 @@ export class F005ContratosComponent implements OnInit {
   }
 
   Add_Contrato() {
+    if (this.contratoForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     let createF010Dto: F010Create_ContratoDto = {
       Estado: this.contratoForm.value.Estado,
       FechaInicio: this.contratoForm.value.FechaInicio,
@@ -114,7 +125,6 @@ export class F005ContratosComponent implements OnInit {
       Socio: this.contratoForm.value.Socio,
       CuotasPosibles: this.contratoForm.value.cuotaAsociada,
     };
-    console.log(createF010Dto);
     this.f010Service.Create_Contrato(createF010Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
@@ -161,4 +171,24 @@ export class F005ContratosComponent implements OnInit {
     this.router.navigate(['/contratos']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+  markAllFieldsAsTouched() {
+    Object.keys(this.contratoForm.controls).forEach(field => {
+      const control = this.contratoForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
+  private markFormGroupTouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control); // Si es un grupo, marcar los hijos
+      } else {
+        control?.markAsTouched({ onlySelf: true });
+      }
+    });
+  }
 }
+
+
+

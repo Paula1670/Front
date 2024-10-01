@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../Components/Header/Header.component';
-
+import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { F009Service } from '../../Services/Private/F009.service';
 import { F009Update_UserDto } from '../../Models/Private/DtosF009/F009Update_UserDto';
@@ -20,16 +20,17 @@ import { F009GetCategoriasDto } from '../../Models/Private/DtosF009/F009Get_Cate
 import { AuthService, AuthState } from '../../Services/Public/Auth.service';
 import { Observable } from 'rxjs';
 import { GeneroEnum } from '../../Core/Constants/Enums/GeneroEnum';
+import { FFooterComponent } from "../FFooter/FFooter.component";
 
 @Component({
   selector: 'app-F009Miembro',
   standalone: true,
-  imports: [CommonModule, HeaderComponent, ReactiveFormsModule],
+  imports: [CommonModule, HeaderComponent, ReactiveFormsModule, FFooterComponent],
   templateUrl: './F009Miembro.component.html',
   styleUrls: ['./F009Miembro.component.scss'],
 })
 export class F009MiembroComponent implements OnInit {
-  userForm: FormGroup;
+  userForm: FormGroup ;
   editMode?: boolean;
   idUser?: number;
   opcionCuota: Opcion[] = [];
@@ -45,28 +46,10 @@ export class F009MiembroComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute
   ) {
-    this.userForm = this.fb.group({
-      nombre: ['', [Validators.required]],
-      apellido: ['', [Validators.required]],
-      contrasena: ['', [Validators.required]],
-      fechaNacimiento: ['', [Validators.required]],
-      direccion: ['', [Validators.required]],
-      domicilio: ['', [Validators.required]],
-      telefono: ['', [Validators.required]],
-      fechaInscripcion: ['', [Validators.required]],
-      genero: [''],
-
-      categoria: [0],
-      crearSocio: [false],
-      crearNadador: [false],
-      crearEntrenador: [false],
-      idCuota: [0],
-      socioasociado: [0],
-      entrenadorasociado: [0],
-      especialidad: [''],
-    });
+    this.userForm = this.fb.group({});
   }
 
+      
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.editMode = params['editMode'];
@@ -80,6 +63,32 @@ export class F009MiembroComponent implements OnInit {
       this.findEntrenadores();
     });
     this.findCategorias();
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.userForm = this.fb.group({
+      nombre: ['', [Validators.required]],
+      apellido: ['', [Validators.required]],
+      contrasena: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      domicilio: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
+      // Aquí es donde se aplica la lógica condicional
+      fechaInscripcion: this.editMode ? [''] : ['', [Validators.required]],
+      fechaNacimiento: this.editMode ? [''] : ['', [Validators.required]],
+      genero: [''],
+      categoria: [0],
+       checkboxesGroup: this.fb.group({
+        crearSocio: [false],
+        crearNadador: [false],
+        crearEntrenador: [false],
+      }, { validator: this.editMode ? null : this.atLeastOneCheckboxChecked() }),
+      idCuota: [0],
+      socioasociado: [0],
+      entrenadorasociado: [0],
+      especialidad: [''],
+    });
   }
 
   Get_User(id: number) {
@@ -91,7 +100,7 @@ export class F009MiembroComponent implements OnInit {
       this.userForm.get('genero')?.patchValue(data.Genero);
       this.userForm.get('telefono')?.patchValue(data.Telefono);
       this.userForm.get('domicilio')?.patchValue(data.Domicilio);
-      console.log(data.Nadador);
+
       this.esNadador = data.Nadador ? true : false;
       if (this.esNadador) {
         this.gender = data.Genero;
@@ -100,6 +109,10 @@ export class F009MiembroComponent implements OnInit {
   }
 
   Update_User(id: number | undefined) {
+    if (this.userForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const updateF009Dto: F009Update_UserDto = {
       Nombre: this.userForm.value.nombre,
       Apellido: this.userForm.value.apellido,
@@ -127,6 +140,10 @@ export class F009MiembroComponent implements OnInit {
   }
 
   Add_User() {
+    if (this.userForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     this.f009Service
       .findCategorias()
       .subscribe((data: F009GetCategoriasDto[]) => {
@@ -155,7 +172,7 @@ export class F009MiembroComponent implements OnInit {
           entrenadorAsociado: this.userForm.value.entrenadorasociado,
           Categoria: this.userForm.value.categoria,
         };
-        console.log('addUser');
+
         this.f009Service.Create_User(createF009Dto).subscribe(
           (response: any) => {
             console.log('Respuesta del servidor:', response);
@@ -228,7 +245,13 @@ export class F009MiembroComponent implements OnInit {
         });
       });
   }
-  
+  markAllFieldsAsTouched() {
+    Object.keys(this.userForm.controls).forEach(field => {
+      const control = this.userForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
 
   actualizarMiembro() {
     
@@ -239,4 +262,19 @@ export class F009MiembroComponent implements OnInit {
     this.router.navigate(['/users']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+   atLeastOneCheckboxChecked(): ValidatorFn {
+    return (formGroup: AbstractControl): ValidationErrors | null => {
+     
+      const crearSocio = formGroup.get('crearSocio')?.value;
+      const crearNadador = formGroup.get('crearNadador')?.value;
+      const crearEntrenador = formGroup.get('crearEntrenador')?.value;
+  
+      if (crearSocio || crearNadador || crearEntrenador) {
+        return null; // Válido si al menos uno está marcado
+      } else {
+        return { atLeastOneRequired: true }; 
+      }
+    };
+  }
 }

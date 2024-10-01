@@ -40,6 +40,12 @@ mostrarConfirmacion:boolean=false;
   ngOnInit() {}
 
   Add_Galeria() {
+    
+ if (this.GaleriaForm.invalid) {
+  this.markAllFieldsAsTouched();
+  return;
+}
+
     const fileData = new FormData();
 
     this.f012Service
@@ -62,6 +68,12 @@ mostrarConfirmacion:boolean=false;
     this.router.navigate(['/galeria']);
   }
   Update_Galeria(id: number | undefined) {
+    
+ if (this.GaleriaForm.invalid) {
+  this.markAllFieldsAsTouched();
+  return;
+}
+
     let updateF012Dto: F012UpdateGaleriaDto = {
       pie: this.GaleriaForm.value.pie,
       nombreFoto: this.GaleriaForm.value.nombreFoto,
@@ -108,4 +120,12 @@ mostrarConfirmacion:boolean=false;
     this.router.navigate(['/galeria']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.GaleriaForm.controls).forEach(field => {
+      const control = this.GaleriaForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
 }

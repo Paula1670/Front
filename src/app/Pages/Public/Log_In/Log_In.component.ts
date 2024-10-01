@@ -40,9 +40,21 @@ export class Log_InComponent implements OnInit {
   ngOnInit(): void {}
 
   login() {
+    
+    if (this.Login_Form.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     const direccion_usuario: string =
       this.Login_Form.get('direccion_usuario')?.value;
     const contrasena: string = this.Login_Form.get('contrasena')?.value;
     this.auth.log_in(direccion_usuario, contrasena);
+  }
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.Login_Form.controls).forEach(field => {
+      const control = this.Login_Form.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
   }
 }

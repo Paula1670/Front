@@ -66,10 +66,12 @@ export class AuthService {
 
           this.router.navigate(['']);
         },
-        error: (e: Error) => {},
+        error: (e: Error) => { 
+         alert('Correo electrónico y/o contraseña son incorrectos.');
+        },
       });
   }
-
+  
   setCookies(data: LogInAuthResponseDto) {
     sessionStorage.setItem('token', data.token);
     sessionStorage.setItem('nombre', data.nombre);

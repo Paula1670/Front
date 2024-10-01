@@ -52,6 +52,14 @@ export class F005DocumentacionComponent implements OnInit {
   }
 
   Add_Documentacion() {
+    if (this.documentacionForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
+    if (this.documentacionForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     this.f005Service
       .Create_Documento({
         titulo: this.documentacionForm.value.titulo,
@@ -71,6 +79,10 @@ export class F005DocumentacionComponent implements OnInit {
     this.router.navigate(['/documentacion']);
   }
   Edit_Documentacion(id: number | undefined) {
+    if (this.documentacionForm.invalid) {
+      this.markAllFieldsAsTouched();
+      return;
+    }
     let updateF005Dto: F005UpdateDocumentacionDto = {
       titulo: this.documentacionForm.value.titulo,
       nombreUrl: this.documentacionForm.value.nombreUrl,
@@ -113,4 +125,12 @@ export class F005DocumentacionComponent implements OnInit {
     this.router.navigate(['/documentacion']);
   }
   notGoBack(){this.mostrarConfirmacion = false}
+
+  markAllFieldsAsTouched() {
+    Object.keys(this.documentacionForm.controls).forEach(field => {
+      const control = this.documentacionForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
 }
