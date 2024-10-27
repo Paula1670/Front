@@ -61,7 +61,6 @@ inicialize(){
     piscina: [null, [Validators.required]],
     estilo: [null, [Validators.required]],
     nadador: this.editMode ? [''] : ['', [Validators.required]],
-    temporada: [null, [Validators.required]],
     FechaMarcaNadador: [null, [Validators.required]],
   });
   
@@ -130,6 +129,7 @@ inicialize(){
 
   Add_Tiempo() {
     if (this.tiempoForm.invalid) {
+      console.log(this.tiempoForm.value);
       this.markAllFieldsAsTouched();
       return;
     }
@@ -142,6 +142,8 @@ inicialize(){
       Temporada: TemporadaEnum.Invierno,
       FechaMarcaNadador: this.tiempoForm.value.FechaMarcaNadador,
     };
+    console.log("hola");
+    console.log(createF006Dto);
     this.f006Service.Create_Tiempo(createF006Dto).subscribe(
       (response) => {
         console.log('Respuesta del servidor:', response);
