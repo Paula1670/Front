@@ -163,9 +163,9 @@ export class F009MiembroComponent implements OnInit {
             ? gender
             : this.userForm.value.genero,
           Telefono: this.userForm.value.telefono,
-          crearSocio: this.userForm.value.crearSocio,
-          crearNadador: this.userForm.value.crearNadador,
-          crearEntrenador: this.userForm.value.crearEntrenador,
+          crearSocio: this.userForm.value.checkboxesGroup.crearSocio,
+          crearNadador: this.userForm.value.checkboxesGroup.crearNadador,
+          crearEntrenador: this.userForm.value.checkboxesGroup.crearEntrenador,
           especialidad: this.userForm.value.especialidad,
           idCuota: this.userForm.value.idCuota,
           socioAsociado: this.userForm.value.socioasociado,
@@ -177,14 +177,14 @@ export class F009MiembroComponent implements OnInit {
           (response: any) => {
             console.log('Respuesta del servidor:', response);
 
-            window.location.reload();
+           window.location.reload();
           },
           (error: any) => {
             console.error('Error al llamar al endpoint:', error);
           }
         );
 
-        this.router.navigate(['/users']);
+      this.router.navigate(['/users']);
       });
   }
 
