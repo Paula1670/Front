@@ -104,16 +104,21 @@ export class P007MinimasComponent implements OnInit {
     this.findCategorias();
   }
   GetMinimas() {
-    this.Get_MinimasEuropeas();
-    this.Get_MinimasRegionales();
-    this.Get_MinimasMundiales();
-    this.Get_MinimasNacionales();
-    this.Get_MinimasOlimpicas();
+    this.service.findNadadorByUserId(this.authService.getUserFromCookies().idUsuario)
+    .subscribe((idNadador: number) => {
+
+    this.Get_MinimasEuropeas(idNadador);
+    this.Get_MinimasRegionales(idNadador);
+    this.Get_MinimasMundiales(idNadador);
+    this.Get_MinimasNacionales(idNadador);
+    this.Get_MinimasOlimpicas(idNadador);
+    })
   }
-  Get_MinimasEuropeas() {
+  Get_MinimasEuropeas(idNadador:number) {
     //Si es entrenador, que me coja el valor de genero del formulario, sino, el del idUser
     this.service
       .Get_MinimasByFilters({
+        IDNadador: this.esEntrenador ? undefined : idNadador,
         campeonato: CampeonatoEnum.Continental,
         genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
         categoria: this.esEntrenador
@@ -125,23 +130,27 @@ export class P007MinimasComponent implements OnInit {
       });
   }
 
-  Get_MinimasRegionales() {
-    this.service
-      .Get_MinimasByFilters({
-        campeonato: CampeonatoEnum.Regional,
-        genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
-        categoria: this.esEntrenador
-          ? this.minimaForm.value.categoria
-          : this.categoria,
-      })
-      .subscribe((data: any) => {
-        this.regionalList = data;
-      });
+  Get_MinimasRegionales(idNadador:number) {
+   
+        this.service
+          .Get_MinimasByFilters({
+            IDNadador: this.esEntrenador ? undefined : idNadador,
+            campeonato: CampeonatoEnum.Regional,
+            genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
+            categoria: this.esEntrenador ? this.minimaForm.value.categoria : this.categoria,
+          })
+          .subscribe((data: any) => {
+            this.regionalList = data;
+          });
+      
   }
+  
+  
 
-  Get_MinimasNacionales() {
+  Get_MinimasNacionales(idNadador:number) {
     this.service
       .Get_MinimasByFilters({
+        IDNadador: this.esEntrenador ? undefined : idNadador,
         campeonato: CampeonatoEnum.Nacional,
         genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
         categoria: this.esEntrenador
@@ -153,9 +162,10 @@ export class P007MinimasComponent implements OnInit {
       });
   }
 
-  Get_MinimasMundiales() {
+  Get_MinimasMundiales(idNadador:number) {
     this.service
       .Get_MinimasByFilters({
+        IDNadador: this.esEntrenador ? undefined : idNadador,
         campeonato: CampeonatoEnum.Mundial,
         genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
         categoria: this.esEntrenador
@@ -167,9 +177,10 @@ export class P007MinimasComponent implements OnInit {
       });
   }
 
-  Get_MinimasOlimpicas() {
+  Get_MinimasOlimpicas(idNadador:number) {
     this.service
       .Get_MinimasByFilters({
+        IDNadador: this.esEntrenador ? undefined : idNadador,
         campeonato: CampeonatoEnum.Olimpico,
         genero: this.esEntrenador ? this.minimaForm.value.genero : this.genero,
         categoria: this.esEntrenador

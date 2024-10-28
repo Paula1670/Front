@@ -57,8 +57,7 @@ mostrarConfirmacion:boolean=false;
       piscina: [null, [Validators.required]],
       campeonato: [null, [Validators.required]],
       categoria: [null, [Validators.required]],
-      estilo: [null, [Validators.required]],
-      genero: [null, [Validators.required]],
+      estilo: [null, [Validators.required]]
     });
   }
 
@@ -135,7 +134,6 @@ mostrarConfirmacion:boolean=false;
           (opcionCategoria) =>
             opcionCategoria.IDCategoria == this.minimaForm.value.categoria
         )?.Genero;
-
         let createF007Dto: F007CreateMinimaDto = {
           TiempoMinimo: this.minimaForm.value.tiempoMinimo,
           Temporada: this.minimaForm.value.temporada,

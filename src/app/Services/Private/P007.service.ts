@@ -47,6 +47,19 @@ export class P007Service {
     );
   }
 
+  
+  findNadadorByUserId(id:number) {
+    return this.http.get<number>(
+      environment.UrlBackend + '/P007/findNadadorByUserId/'+id
+    );
+  }
+
+  Get_MinimasByNadador(id:number) {
+    return this.http.get<P007Minima[]>(
+      environment.UrlBackend + '/P006/findMinimasByNadador/'+id
+    );
+  }
+
   GetGeneroCategoriaByIDUser(id: number) {
     const apiUrl: string =
       environment.UrlBackend + '/P007/GetGeneroCategoriaByIDUser/' + id;
