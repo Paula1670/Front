@@ -1,0 +1,40 @@
+
+<app-Header [title]="'Actualiar contraseña'"></app-Header>
+<body>
+<form class="time-form" [formGroup]="passwordForm" >
+
+    <label for="password">Nueva Contraseña:</label>
+    <input
+      type="password"
+      id="password"
+      formControlName="password"
+    />
+    @if(passwordForm.get('password')?.invalid && passwordForm.get('password')?.touched){
+      <div class="error-message">
+         @if(passwordForm.get('password')?.hasError('required'))
+         {<small>El campo de la contraseña no puede estar vacío.</small>}
+      </div>
+    }
+   
+
+    <button (click)="actualizarContrasena()">Enviar</button>
+    <br><br>
+    <button (click)="cancelar()">Cancelar</button>
+</form>
+
+@if(mostrarConfirmacion == true) {
+  <div class="overlay">
+    <div class="confirmacionModal">
+      <div class="textoConfirmacion">
+        <p>¿Está seguro que desea cancelar el proceso?</p>
+      </div>
+
+      <div class="botonesConfirmacion">
+        <button class="Aceptar" (click)="goBack()">Aceptar</button>
+        <button class="Cancelar" (click)="notGoBack()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+}
+
+</body>

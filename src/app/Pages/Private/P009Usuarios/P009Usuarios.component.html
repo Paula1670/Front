@@ -77,14 +77,25 @@ authState.user?.miembroPuesto=="Vicepresidente" ){ @if(juntaTabla){<button
 <br /><br />
 } @if(authState.user?.entrenador){
 <br /><br /><br />
+<button class="addition" (click)="actualizarContrasena()">Actualizar contraseña</button>
 <h2 class="title">Mis Nadadores</h2>
 <app-Table_Nadadores [swimerlist]="swimerlist"></app-Table_Nadadores>
 <br />
 } @if(authState.user?.socio){
+
+
 <br /><br /><br />
 <h2 class="title">Mis Nadadores</h2>
 <app-Table_Nadadores [swimerlist]="swimerlist"></app-Table_Nadadores>
 <br />
-}}
+<button class="addition" (click)="actualizarContrasena()">Actualizar contraseña</button>
+}
+@if(authState.user?.nadador){
+
+
+  
+  <button class="addition" (click)="actualizarContrasena()">Actualizar contraseña</button>
+  }
+}
 <br /><br /><br /><br /><br /><br />
 <app-Footer></app-Footer>

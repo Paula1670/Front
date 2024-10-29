@@ -189,4 +189,8 @@ export class P009UsuariosComponent implements OnInit {
         this.swimerlist = data;
       });
   }
+
+  actualizarContrasena() {
+    this.router.navigate(['/edit_contrasena']);
+  }
 }

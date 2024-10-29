@@ -24,6 +24,7 @@ import { F003JuntaComponent } from './Form/F003Junta/F003Junta.component';
 import { F011CategoriaComponent } from './Form/F011Categoria/F011Categoria.component';
 import { roleGuard } from './Core/Guards/role.guard';
 import { authGuard } from './Core/Guards/auth.guard';
+import { F014ActualizarContrasenaComponent } from './Form/F014ActualizarContrasena/F014ActualizarContrasena.component';
 
 export const routes: Routes = [
   {
@@ -72,7 +73,7 @@ export const routes: Routes = [
     path: 'users',
     component: P009UsuariosComponent,
     canActivate: [authGuard, roleGuard],
-    data: { roles: ['juntaDirectiva', 'socio', 'entrenador'] },
+    data: { roles: ['juntaDirectiva', 'socio', 'entrenador', 'nadador'] },
   },
   {
     path: 'contratos',
@@ -122,6 +123,12 @@ export const routes: Routes = [
     component: F011CategoriaComponent,
     canActivate: [authGuard, roleGuard],
     data: { roles: ['entrenador'] },
+  },
+  {
+    path: 'edit_contrasena',
+    component: F014ActualizarContrasenaComponent,
+    canActivate: [authGuard, roleGuard],
+    data: { roles: ['entrenador','socio','nadador'] },
   },
 
   { path: '**', component: ErrorComponent },

@@ -87,7 +87,7 @@
       <small *ngIf="userForm.get('apellido')?.hasError('required')">El campo del apellido es obligatorio.</small>
     </div>
     <br /><br />
-
+    @if(!editMode){
     <label for="contrasena">Contraseña*:</label>
     <input type="password" id="contrasena" formControlName="contrasena" />
     <div *ngIf="userForm.get('contrasena')?.invalid && userForm.get('contrasena')?.touched" class="error-message">
@@ -95,6 +95,7 @@
     <!--  <small *ngIf="userForm.get('contrasena')?.hasError('minlength')">La contraseña debe tener al menos 6 caracteres.</small>-->
     </div>
     <br /><br />
+  }
 
     @if(!editMode && !userForm.value.checkboxesGroup.crearNadador){
     <label>Género*:</label><br />

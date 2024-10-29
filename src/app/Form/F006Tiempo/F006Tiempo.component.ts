@@ -46,9 +46,10 @@ export class F006TiempoComponent implements OnInit {
 mostrarConfirmacion:boolean=false;
   constructor(
     private f006Service: F006Service,
+   
+    private f009Service: F009Service,
     private router: Router,
     private fb: FormBuilder,
-    private f009Service: F009Service,
     private route: ActivatedRoute
   ) {
     this.tiempoForm = this.fb.group({});
